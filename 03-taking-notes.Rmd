@@ -1,0 +1,21 @@
+# Taking Notes 
+
+One of the most important aspects of studying at the graduate level is taking notes so as to **build a knowledge base**. Unlike taking notes in other contexts (like undergrad), the goal for a graduate student/GRA is not to keep a linear track of what you've learned over a finite period of time. In undergraduate classes, you take notes per lecture, per week, with the objective being a final at the end. You probably never look back to the notes for any particular class once the semester is over. But graduate school note taking has an altogether different goal. Instead of tracking what you are learning in a linear way for a finite time, you are building up what you are learning into a knowledge base to be referenced for the rest of your life. 
+
+So, I highly recommend that you take notes in a way that helps you connect concepts across coursework and RA work. During my 3rd year of grad school, my advisor shared some of his note-taking strategies with me. These strategies transformed the way I learn. Here are some of the ideas that led to that transformation. 
+
+## The Zettlekasten system {#zettelkasten}
+
+One [non-linear note taking approach](https://en.wikipedia.org/wiki/Note-taking#Non-linear_note-taking) is the [Zettelkasten method](https://zettelkasten.de/posts/overview/). The [Writing Cooperative has an article](https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125) that describes the Zettlekasten system of taking notes. The Zettelkasten method allows you to connect your notes to one another, so that you end up with a web of ideas. This web is similar to the way Wikipedia is set up, with pages linked to other pages. Other variants of this kind of note taking include [digital gardening](https://maggieappleton.com/garden-history) and [Evergreen notes](https://notes.andymatuschak.org/Evergreen_note-writing_as_fundamental_unit_of_knowledge_work?stackedNotes=z4SDCZQeRo4xFEQ8H4qrSqd68ucpgE6LU155C). 
+
+## How to connect your notes 
+
+So, this raises the question: where do you start in building up a knowledge base like this? I use the free app called [Obsidian](https://obsidian.md/). Obsidian allows you to store all your notes in Markdown files on your local machine. There are other apps out there, like [Roam](https://roamresearch.com/). Just keep in mind that Roam does not have a free version (as of the time of this writing). 
+
+Some people who use this kind of note-taking system have made their notes publicly available. I have learned much from studying these peoples' notes: 
+
+  - [Andy Matuschak](https://notes.andymatuschak.org/About_these_notes)
+  
+  - [Maggie Appleton](https://maggieappleton.com/notes) 
+  
+  - [Bryan Jenks](https://publish.obsidian.md/bryan-jenks/Z/INDEX)

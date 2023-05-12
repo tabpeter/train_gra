@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA</title>
+  <meta name="description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
+  <meta name="github-repo" content="tabpeter/ra_training_manual" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA" />
+  
+  <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
+  
+
+<meta name="author" content="T. K. Peter" />
+
+
+<meta name="date" content="2023-05-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cultivating-professionalism.html"/>
+<link rel="next" href="writing-reports.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Reference Manual for the Biostatistics Research Assistant</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-assumes"><i class="fa fa-check"></i><b>1.1</b> What this book assumes</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acronymns"><i class="fa fa-check"></i><b>1.2</b> Acronymns</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#working-with-the-garage-door-open"><i class="fa fa-check"></i><b>1.3</b> Working with the garage door open</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.4</b> Dedication</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-principles---invisible-and-integral-work.html"><a href="first-principles---invisible-and-integral-work.html"><i class="fa fa-check"></i><b>2</b> First Principles - invisible and integral work</a></li>
+<li class="chapter" data-level="3" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html"><i class="fa fa-check"></i><b>3</b> Getting organized: The first 3 days of a new RA job</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#file-structure"><i class="fa fa-check"></i><b>3.1</b> File structure</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#folder-video"><i class="fa fa-check"></i><b>3.1.1</b> Folder setup video</a></li>
+<li class="chapter" data-level="3.1.2" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#please-use-relative-file-paths"><i class="fa fa-check"></i><b>3.1.2</b> Please use relative file paths</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#emails"><i class="fa fa-check"></i><b>3.2</b> Emails</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#organizing-your-inbox"><i class="fa fa-check"></i><b>3.2.1</b> Organizing your inbox</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#project-notes"><i class="fa fa-check"></i><b>3.3</b> Project notes and README files</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#project-notes-1"><i class="fa fa-check"></i><b>3.3.1</b> Project notes</a></li>
+<li class="chapter" data-level="3.3.2" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html#readme"><i class="fa fa-check"></i><b>3.3.2</b> README files</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="taking-notes.html"><a href="taking-notes.html"><i class="fa fa-check"></i><b>4</b> Taking Notes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="taking-notes.html"><a href="taking-notes.html#zettelkasten"><i class="fa fa-check"></i><b>4.1</b> The Zettlekasten system</a></li>
+<li class="chapter" data-level="4.2" data-path="taking-notes.html"><a href="taking-notes.html#how-to-connect-your-notes"><i class="fa fa-check"></i><b>4.2</b> How to connect your notes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html"><i class="fa fa-check"></i><b>5</b> Cultivating professionalism</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#data-management"><i class="fa fa-check"></i><b>5.1</b> Data management</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#write-a-data-management-plan"><i class="fa fa-check"></i><b>5.1.1</b> Write a data management plan</a></li>
+<li class="chapter" data-level="5.1.2" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#specify-a-explicit-set-of-operating-procedures"><i class="fa fa-check"></i><b>5.1.2</b> Specify a explicit set of operating procedures</a></li>
+<li class="chapter" data-level="5.1.3" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#create-a-data-dictionary"><i class="fa fa-check"></i><b>5.1.3</b> Create a data dictionary</a></li>
+<li class="chapter" data-level="5.1.4" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#determine-a-data-storage-location"><i class="fa fa-check"></i><b>5.1.4</b> Determine a data storage location</a></li>
+<li class="chapter" data-level="5.1.5" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#develop-an-analysis-plan"><i class="fa fa-check"></i><b>5.1.5</b> Develop an analysis plan</a></li>
+<li class="chapter" data-level="5.1.6" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#archive-all-of-your-procedures"><i class="fa fa-check"></i><b>5.1.6</b> Archive all of your procedures</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#what-to-do-when"><i class="fa fa-check"></i><b>5.2</b> What to do when …</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#the-data-is-not-organized-in-a-way-that-is-conducive-to-analysis"><i class="fa fa-check"></i><b>5.2.1</b> The data is not organized in a way that is conducive to analysis</a></li>
+<li class="chapter" data-level="5.2.2" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#the-data-accidentally-contain-hippa-protected-information"><i class="fa fa-check"></i><b>5.2.2</b> The data accidentally contain HIPPA protected information</a></li>
+<li class="chapter" data-level="5.2.3" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#the-pi-is-insistent-on-presenting-results-in-a-way-that-i-believe-is-sub-optimal"><i class="fa fa-check"></i><b>5.2.3</b> The PI is insistent on presenting results in a way that I believe is sub-optimal</a></li>
+<li class="chapter" data-level="5.2.4" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#i-realized-i-made-a-mistake-in-my-code"><i class="fa fa-check"></i><b>5.2.4</b> I realized I made a mistake in my code!</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#maintaining-a-cv"><i class="fa fa-check"></i><b>5.3</b> Maintaining a CV</a></li>
+<li class="chapter" data-level="5.4" data-path="cultivating-professionalism.html"><a href="cultivating-professionalism.html#point-to-point"><i class="fa fa-check"></i><b>5.4</b> Responding to reviewers</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="your-computing-setup.html"><a href="your-computing-setup.html"><i class="fa fa-check"></i><b>6</b> Your computing setup</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="your-computing-setup.html"><a href="your-computing-setup.html#setting-up-r-and-rstudio-now-posit"><i class="fa fa-check"></i><b>6.1</b> Setting up R and RStudio (now Posit)</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="your-computing-setup.html"><a href="your-computing-setup.html#download-and-install-r"><i class="fa fa-check"></i><b>6.1.1</b> Download and install R</a></li>
+<li class="chapter" data-level="6.1.2" data-path="your-computing-setup.html"><a href="your-computing-setup.html#download-and-install-rstudio"><i class="fa fa-check"></i><b>6.1.2</b> Download and install RStudio</a></li>
+<li class="chapter" data-level="6.1.3" data-path="your-computing-setup.html"><a href="your-computing-setup.html#customize-rstudio"><i class="fa fa-check"></i><b>6.1.3</b> Customize RStudio</a></li>
+<li class="chapter" data-level="6.1.4" data-path="your-computing-setup.html"><a href="your-computing-setup.html#setting-up-your-r-library"><i class="fa fa-check"></i><b>6.1.4</b> Setting up your R library</a></li>
+<li class="chapter" data-level="6.1.5" data-path="your-computing-setup.html"><a href="your-computing-setup.html#tips-things-you-should-never-do-in-rrstudio"><i class="fa fa-check"></i><b>6.1.5</b> Tips: things you should never do in R/RStudio</a></li>
+<li class="chapter" data-level="6.1.6" data-path="your-computing-setup.html"><a href="your-computing-setup.html#cool-keyboard-shortcuts-in-rrstudio"><i class="fa fa-check"></i><b>6.1.6</b> Cool keyboard shortcuts in R/RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="your-computing-setup.html"><a href="your-computing-setup.html#setting-up-your-terminal-i.e.-the-command-line"><i class="fa fa-check"></i><b>6.2</b> Setting up your terminal (i.e., the command line)</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="your-computing-setup.html"><a href="your-computing-setup.html#resources-for-learning-the-command-line"><i class="fa fa-check"></i><b>6.2.1</b> Resources for learning the command line</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="your-computing-setup.html"><a href="your-computing-setup.html#getting-started-with-git"><i class="fa fa-check"></i><b>6.3</b> Getting started with Git</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="your-computing-setup.html"><a href="your-computing-setup.html#resources-for-learning-git"><i class="fa fa-check"></i><b>6.3.1</b> Resources for learning Git</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="your-computing-setup.html"><a href="your-computing-setup.html#using-high-performance-computing-clusters"><i class="fa fa-check"></i><b>6.4</b> Using high performance computing clusters</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="your-computing-setup.html"><a href="your-computing-setup.html#interactive-sessions-v.-submitting-jobs"><i class="fa fa-check"></i><b>6.4.1</b> Interactive sessions v. submitting jobs</a></li>
+<li class="chapter" data-level="6.4.2" data-path="your-computing-setup.html"><a href="your-computing-setup.html#writing-your-first-bash-script"><i class="fa fa-check"></i><b>6.4.2</b> Writing your first bash script</a></li>
+<li class="chapter" data-level="6.4.3" data-path="your-computing-setup.html"><a href="your-computing-setup.html#conda-environments-v.-module-configurations"><i class="fa fa-check"></i><b>6.4.3</b> Conda environments v. module configurations</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="your-computing-setup.html"><a href="your-computing-setup.html#advanced-r-and-some-julia"><i class="fa fa-check"></i><b>6.5</b> Advanced R and some Julia</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="writing-reports.html"><a href="writing-reports.html"><i class="fa fa-check"></i><b>7</b> Writing reports</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-reports.html"><a href="writing-reports.html#what-makes-a-report-good"><i class="fa fa-check"></i><b>7.1</b> What makes a report ‘good’?</a></li>
+<li class="chapter" data-level="7.2" data-path="writing-reports.html"><a href="writing-reports.html#tables"><i class="fa fa-check"></i><b>7.2</b> Tools for writing reports</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="giving-presentations.html"><a href="giving-presentations.html"><i class="fa fa-check"></i><b>8</b> Giving presentations</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="giving-presentations.html"><a href="giving-presentations.html#tools-for-giving-presentations"><i class="fa fa-check"></i><b>8.1</b> Tools for giving presentations</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html"><i class="fa fa-check"></i><b>9</b> The basics: t-tests, ANOVA, and linear regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#t-tests-anova"><i class="fa fa-check"></i><b>9.1</b> t-tests &amp; ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#assumptionsdiagnostics"><i class="fa fa-check"></i><b>9.1.1</b> Assumptions/diagnostics</a></li>
+<li class="chapter" data-level="9.1.2" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#examples"><i class="fa fa-check"></i><b>9.1.2</b> Examples:</a></li>
+<li class="chapter" data-level="9.1.3" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#r-code-tips"><i class="fa fa-check"></i><b>9.1.3</b> R code tips</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#linear-regression"><i class="fa fa-check"></i><b>9.2</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#assumptionsdiagnostics-1"><i class="fa fa-check"></i><b>9.2.1</b> Assumptions/diagnostics</a></li>
+<li class="chapter" data-level="9.2.2" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#examples-1"><i class="fa fa-check"></i><b>9.2.2</b> Examples:</a></li>
+<li class="chapter" data-level="9.2.3" data-path="the-basics-t-tests-anova-and-linear-regression.html"><a href="the-basics-t-tests-anova-and-linear-regression.html#r-code-tips-1"><i class="fa fa-check"></i><b>9.2.3</b> R code tips</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="power-and-sample-size-calculations.html"><a href="power-and-sample-size-calculations.html"><i class="fa fa-check"></i><b>10</b> Power and sample size calculations</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="power-and-sample-size-calculations.html"><a href="power-and-sample-size-calculations.html#sas"><i class="fa fa-check"></i><b>10.1</b> SAS</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="survival-time-to-event-analysis.html"><a href="survival-time-to-event-analysis.html"><i class="fa fa-check"></i><b>11</b> Survival (time-to-event) analysis</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="survival-time-to-event-analysis.html"><a href="survival-time-to-event-analysis.html#assumptionsdiagnostics-2"><i class="fa fa-check"></i><b>11.1</b> Assumptions/diagnostics</a></li>
+<li class="chapter" data-level="11.2" data-path="survival-time-to-event-analysis.html"><a href="survival-time-to-event-analysis.html#examples-2"><i class="fa fa-check"></i><b>11.2</b> Examples:</a></li>
+<li class="chapter" data-level="11.3" data-path="survival-time-to-event-analysis.html"><a href="survival-time-to-event-analysis.html#r-code-tips-2"><i class="fa fa-check"></i><b>11.3</b> R code tips</a></li>
+<li class="chapter" data-level="11.4" data-path="survival-time-to-event-analysis.html"><a href="survival-time-to-event-analysis.html#references"><i class="fa fa-check"></i><b>11.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="survey-data-analysis.html"><a href="survey-data-analysis.html"><i class="fa fa-check"></i><b>12</b> Survey data analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="survey-data-analysis.html"><a href="survey-data-analysis.html#tools-for-analyzing-survey-data"><i class="fa fa-check"></i><b>12.1</b> Tools for analyzing survey data</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="longitudinal-data-analysis.html"><a href="longitudinal-data-analysis.html"><i class="fa fa-check"></i><b>13</b> Longitudinal data analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="longitudinal-data-analysis.html"><a href="longitudinal-data-analysis.html#tools-for-longitudinal-data-analysis"><i class="fa fa-check"></i><b>13.1</b> Tools for longitudinal data analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="microbiome-data-analysis.html"><a href="microbiome-data-analysis.html"><i class="fa fa-check"></i><b>14</b> Microbiome data analysis</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="microbiome-data-analysis.html"><a href="microbiome-data-analysis.html#tools-for-working-with-microbiome-data"><i class="fa fa-check"></i><b>14.1</b> Tools for working with microbiome data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="genetics-gwas-data-analysis.html"><a href="genetics-gwas-data-analysis.html"><i class="fa fa-check"></i><b>15</b> Genetics (GWAS) data analysis</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="genetics-gwas-data-analysis.html"><a href="genetics-gwas-data-analysis.html#r-packages"><i class="fa fa-check"></i><b>15.1</b> R packages</a></li>
+<li class="chapter" data-level="15.2" data-path="genetics-gwas-data-analysis.html"><a href="genetics-gwas-data-analysis.html#command-line-tools"><i class="fa fa-check"></i><b>15.2</b> Command-line tools</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="geographic-gis-data-analysis.html"><a href="geographic-gis-data-analysis.html"><i class="fa fa-check"></i><b>16</b> Geographic (GIS) data analysis</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Reference Manual for the Biostatistics GRA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="your-computing-setup" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Your computing setup<a href="your-computing-setup.html#your-computing-setup" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Your computing setup is an essential part of working as a biostats GRA. It is like organizing a toolbox - you have to choose the tools to work with, invest in those tools, decide how to organize/store them, and then (of course) actually work with them.</p>
+<p>Developing a ‘toolbox’ for quantitative work can have a lot of overhead – a steep learning curve – because systems for working in a computational/quantitative space are highly customizable. There are lots of ways to do things – and in may cases, there are multiple ways to do something well. The sheer number of options can make it hard to know where to start. So, that is the objective of this chapter. For each of the components of my current toolbox, I am sharing <em>one</em> way to begin. My goal is to help you get started, trusting that you will gradually customize your setup as you learn more.</p>
+<p>I am writing as if I was writing to who I was 5 years ago – a <strong>total</strong> novice. If that’s not you, feel free to skip around – I’ve tried to name the subheadings so that you can grab and go based on what you need from this chapter.</p>
+<div id="setting-up-r-and-rstudio-now-posit" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Setting up R and RStudio (now Posit)<a href="your-computing-setup.html#setting-up-r-and-rstudio-now-posit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="download-and-install-r" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Download and install R<a href="your-computing-setup.html#download-and-install-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The tools I use the most are <code>R</code>/RStudio - in addition doing statistical analysis, I also use these tools to write documents (like this book!) and create graphics for publications.</p>
+<p>To get started with RStudio (now called Posit), you first need to <a href="https://www.r-project.org/">install R</a>. <code>R</code> is a programming language, meaning it provides a way to talk to your computer. <code>R</code> is specifically designed for statistics. Another great feature of <code>R</code> is that it is free – anyone can use it.</p>
+<p>In order for your computer to understand <code>R</code>, you need to download it and install it on your computer. This is your computer’s way of ‘learning’ a new language. Once you have downloaded R from the link above, you will have a file on your computer that you need to ‘unpack’ – click on what you’ve downloaded and follow the prompts to get <code>R</code> installed.</p>
+</div>
+<div id="download-and-install-rstudio" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Download and install RStudio<a href="your-computing-setup.html#download-and-install-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After your computer is ready to speak <code>R</code>, you need to have a way to talk to your computer. Just like when talking to a person, you need to both speak their language <em>and</em> have a way to communicate with them. We talk to each other in a number of ways, like using phones and messaging apps – in an analogous way, there are multiple avenues for ‘talking’ to your computer. One wayo talk <code>R</code> with your computer is to use <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>. RStudio is an application (an ‘app’) that will let you interact with your computer in ways that make you more productive. Follow the link above to install RStudio for your computer – be sure to click on the download option that matches the kind of operating system your computer has (e.g., Mac OSX, Windows, Linux). Again, you need to install what you download – click on the file that shows up in your downloads folder, and follow the prompts to install RStudio.</p>
+<p>If you’d rather watch a video on how to install R and RStudio, check out <a href="https://www.youtube.com/watch?v=lVKMsaWju8w">this 15 minute video on YouTube</a>.</p>
+</div>
+<div id="customize-rstudio" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Customize RStudio<a href="your-computing-setup.html#customize-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once you have RStudio installed, you will see that you have a ‘Tools’ option at the top of your screen. Follow this menu to Tools &gt; Global Options. This will give you a pane that offers lots of settings. One cool thing to check out is the theme, meaning the color scheme/appearance of your terminal. You can choose a custom font or color palette in the ‘Appearances’ menu. I always use a dark mode theme (<code>Tomorrow night</code> is the theme I am using these days; <code>Dracula</code> is cool too).</p>
+<p>You will see that in your default RStudio viewer, you have 4 panes: one is the console (probably bottom left); code runs here, but <strong>nothing is saved here</strong> – it is like a place for ‘scratch work’. To save your work in a file, you need to open it in File &gt; Open file (this will probably open in the top left). Third, you will have a pane that shows your files (like a ‘Finder’ window on Mac, or a ‘Files’ window on Windows) - this pane is usually at the bottom right. At the top right, you will see a pane with a bar at the top listing options like ‘Environment’, ‘History’, etc. <code>R</code> is an <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented programming language</a> (you can get really deep into thinking about this) – for our purposes now, just know that in <code>R</code>, the objects you create will show up in this ‘Environment’ pane.</p>
+</div>
+<div id="setting-up-your-r-library" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Setting up your R library<a href="your-computing-setup.html#setting-up-your-r-library" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using <code>R</code> requires packages. Most packages that you use will come from one of three places: <a href="https://cran.r-project.org/">CRAN</a>, <a href="https://www.bioconductor.org/">Bioconductor</a>, or someone’s GitHub repository.</p>
+<p>To download and use a package from CRAN, use</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="your-computing-setup.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># only need to do this once </span></span>
+<span id="cb2-2"><a href="your-computing-setup.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># this is what you would do each time </span></span></code></pre></div>
+<p>To download a package from Bioconductor, use</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="your-computing-setup.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) </span>
+<span id="cb3-2"><a href="your-computing-setup.html#cb3-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;package_name&quot;</span>))</span>
+<span id="cb3-3"><a href="your-computing-setup.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>)</span></code></pre></div>
+<p>To download a package from a GitHub repository, use</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="your-computing-setup.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb4-2"><a href="your-computing-setup.html#cb4-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;user/repo&quot;</span>)</span></code></pre></div>
+<p>When you download a package, the package is saved in location that is specified as your <em>library path</em>. If you want to know where that is, type</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="your-computing-setup.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library&quot;</code></pre>
+</div>
+<div id="tips-things-you-should-never-do-in-rrstudio" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Tips: things you should never do in R/RStudio<a href="your-computing-setup.html#tips-things-you-should-never-do-in-rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>In the Environment pane, there is an icon to ‘save workspace as…’ - <strong>you should never save your R environment and/or your R workspace</strong>. This is bad practice for a number of reasons, including that you do not have control of what is being saved. Better alternative: save only the object(s) you need using <code>saveRDS()</code>. You can always re-access these later with <code>readRDS()</code>.</p></li>
+<li><p>Going back to the comment on file paths in the organization chapter (CROSS REF), there is a function in <code>R</code> called <code>setwd()</code> where you can tell the computer where (what folder) to point. When writing a script, <strong>the first line of your script should never be</strong> <code>setwd("a/directory/that/only/I/have)</code> – you want your code to be <a href="https://www.techtarget.com/searchstorage/definition/portability#:~:text=Source%20code%20portability%20refers%20to,or%20data%20center%20to%20another.">portable</a>, so that other people can run it (and so that you can run it even after you have reorganized your folders!). Better alternative: use relative file paths, like the structure provided in the super handy <a href="https://here.r-lib.org/">here R package</a>.</p></li>
+</ol>
+</div>
+<div id="cool-keyboard-shortcuts-in-rrstudio" class="section level3 hasAnchor" number="6.1.6">
+<h3><span class="header-section-number">6.1.6</span> Cool keyboard shortcuts in R/RStudio<a href="your-computing-setup.html#cool-keyboard-shortcuts-in-rrstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>to make a chunk of code align (e.g., to fix the indentation): highlight the chunk and then <code>CNTRL + I</code> (Windows), <code>Command + I</code> (OSX)</p></li>
+<li><p>to create a new R script: <code>CNTRL + Shift + N</code> or <code>Command + Shift + N</code></p></li>
+<li><p>to see all available keyboard shortcuts: <code>ALT/Option + Shift + K</code></p></li>
+</ul>
+</div>
+</div>
+<div id="setting-up-your-terminal-i.e.-the-command-line" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Setting up your terminal (i.e., the command line)<a href="your-computing-setup.html#setting-up-your-terminal-i.e.-the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are two ways to interact with your computer: via ‘point and click’ interfaces (e.g., File Explorer, Finder) and via the <strong>command line</strong>. The command line is much more efficient for many computational tasks – I encourage anyone working in biostatistics to begin learning to use the command line for creating/moving/manipulating files, as this will be good preparation for doing more complicated work (e.g., writing your own <code>R</code> packages and so on).</p>
+<p>On a Mac, you can open the command line by searching for the <strong>‘Terminal’</strong> app (this is installed on every Mac by default). On Windows, the analog is called <strong>‘Command Prompt.’</strong> You have a lot of choices in addition to the apps that are on your computer by default. I use the app <a href="https://iterm2.com/">iTerm2</a>, and I customized the appearance of my terminal window with <a href="https://ohmyz.sh/">Oh My ZSH</a>.</p>
+<p>As a first step in learning to work with the command line, try to find your files – in the video below, I show how I do this with <a href="https://www.freecodecamp.org/news/linux-ln-how-to-create-a-symbolic-link-in-linux-example-bash-command/">symbolic links (‘symlinks’)</a>.</p>
+<p><a href="https://youtu.be/f-xsKZVWavo">Here</a> is a quick video of me doing this.</p>
+<p>More details on working with the command line are explained in the <a href="https://missing.csail.mit.edu/">online course</a> called “The missing semester of your computer science (CS) education.” This free online course was compiled by people at MIT. I have found this to be a really helpful place to begin.</p>
+<div id="resources-for-learning-the-command-line" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Resources for learning the command line<a href="your-computing-setup.html#resources-for-learning-the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><a href="https://arstechnica.com/gadgets/2021/08/linux-bsd-command-line-101-using-awk-sed-and-grep-in-the-terminal/">ARStechnica: command line wizardry, part I</a></li>
+</ul>
+<p>-<a href="https://arstechnica.com/gadgets/2021/09/command-line-wizardry-part-two-variables-and-loops-in-bash/">ARStechnica: command line wizardry, part II</a></p>
+<p>-<a href="http://linuxcommand.org/">Linux Command line</a> – official tutorial that starts from the <sub>very</sub> beginning</p>
+<ul>
+<li><a href="https://eastmanreference.com/a-quick-start-guide-for-beginners-to-the-vim-text-editor">Quick-start guide to the VIM text editor</a> – VIM is a popular choice for text editing (other kinds of text editors are TextEdit (ships with Mac), NotePad/NotePad ++ (Windows))</li>
+</ul>
+</div>
+</div>
+<div id="getting-started-with-git" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Getting started with Git<a href="your-computing-setup.html#getting-started-with-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://git-scm.com/">Git</a> is a free and open source tool for <a href="https://en.wikipedia.org/wiki/Version_control">version control</a>. What this means is that Git allows you to avoid the problems that arise when you try to work with multiple copies of code for a project. Have you ever had a folder with files like this: <code>analysis1.R</code>, <code>04-05-2023_analysis.R</code>, <code>old_analysis.R</code>, <code>final_version.R</code>, and <code>final_final_version.R</code>? This way of working is not only inefficient, but also inhibits collaboration and makes your work harder to reproduce. None of that is good for science. So, Git offers a way to manage versions, so that you can keep track of the current version of your code and have access to looking back at older versions.</p>
+<p>There are a lot of online tutorials to get you started with Git – just Google ‘git tutorial for beginners’ and several free options will show up. Again, the <a href="https://missing.csail.mit.edu/2020/version-control/">missing semester of your CS education</a> course has a whole section on learning version control – highly recommend.</p>
+<p>Here is a brief overview of a few major vocab words you need to know to use Git (in the order in which you will probably encounter them):</p>
+<ul>
+<li><p><strong>repository (‘repo’)</strong> (noun): The directory (a.k.a., the folder) that holds all the files for a project</p></li>
+<li><p><strong>local</strong> versus <strong>remote</strong> (adjectives): These terms describe the location of a repo. A local repo exists only on one computer - for instance, a project that I have created on my laptop is a local repo. A remote repo is hosted online (probably on <a href="https://github.com/">GitHub</a>). Sort of like keeping files in OneDrive or GoogleDrive, remote repositories make it possible for multiple people to access a project from any computer.</p></li>
+<li><p><strong>clone</strong> (verb): The action of making a copy of a repo; e.g., “I will clone Person A’s remote repo onto my laptop.” The command line code for this is <code>git clone &lt;repo&gt;</code></p></li>
+<li><p><strong>pull</strong> (verb): The action of incorporating all of the changes from a remote repo into a local repo. Example: “My local copy of Repo A is out of sync with the master copy, since Person B made some more changes to our code yesterday. I need to pull those changes from our remote repo into my local repo.” Pulling is done with <code>git pull</code>.</p></li>
+<li><p><strong>stage</strong> (verb): The action of preparing changes for a commit. This is like looking at your scratch work and deciding which of your ideas you want to keep. This is done with <code>git add &lt;edited files to keep&gt;</code>.</p></li>
+<li><p><strong>commit</strong> (noun or verb): A commit (the noun) refers to a documented change to one or more files in a project. To make a commit (verb) is the action of saving a change. In broad, general terms, Git keeps a timeline of all the changes in a project. Once something is committed in Git, the changes that were part of that commit are permanently saved in the project timeline. To make a commit, use <code>git commit -m "a message describing the changes made"</code></p></li>
+<li><p><strong>push</strong> (verb): The action of moving commits you made in your local copy of the repo to the remote copy of the repo. Example: Me and my colleague Y are working on project A together. The master copy of project A is in our remote repo; me and Y have each cloned this repo, so we have local copies on our respective laptops. I have committed some changes in the files on my local copy, so now I need to <em>push</em> my commits to the remote repo. After I push, Y will be able to see what I did.”</p></li>
+<li><p><strong>branch</strong> (noun): When working on a more complex project, there arises a need to keep two versions of the project: a ‘master’ version that has everything you want to keep for sure, and a ‘development’ version where you are debugging/troubleshooting/playing with new ideas. Having multiple branches in your repo allows you to achieve having multiple versions of a project as I’ve described. The commands that go along with branching are usually <code>git branch</code> and <code>git checkout</code>.</p></li>
+</ul>
+<div id="resources-for-learning-git" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Resources for learning Git<a href="your-computing-setup.html#resources-for-learning-git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><a href="https://docs.github.com/en/get-started/quickstart/set-up-git">Quick-start: setting up Git</a></p></li>
+<li><p><a href="https://git-scm.com/book/en/v2">Full book on Git</a> - well divided into sections, so you can skip around to the chapters most relevant to what you need</p></li>
+</ul>
+</div>
+</div>
+<div id="using-high-performance-computing-clusters" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Using high performance computing clusters<a href="your-computing-setup.html#using-high-performance-computing-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In many contemporary applications, the computational work for data analysis needs to be done in a high performance computing cluster. At the University of Iowa, our high performance computing cluster is called <a href="https://wiki.uiowa.edu/display/hpcdocs/Argon+Cluster">Argon</a>. My appreciation for Argon grows the more I work on my dissertation. One resources I have found super helpful in working with high performance computing clusters is the <a href="https://iowabiostat.github.io/hpc/index.html">online tutorial</a> written by Profs. <a href="https://myweb.uiowa.edu/pbreheny/">Patrick Breheny</a> and <a href="http://grantbrown.github.io/">Grant Brown</a>. This tutorial outlines how to use the UI Argon cluster. Much of what is here would generalize to other HPC systems as well.</p>
+<div id="interactive-sessions-v.-submitting-jobs" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Interactive sessions v. submitting jobs<a href="your-computing-setup.html#interactive-sessions-v.-submitting-jobs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are two ways to interact with a high performance computing cluster: an <em>interactive session</em> and a <em>job submission</em>. An interactive session involves you logging into the computer and telling it what to do one step at a time, whereas a job submission means you give the computer a whole set of instructions at once. In an interactive session, you stay logged in and watch the screen for results as they come in. In a job submission, you send you instructions (via a <em>script</em>) to the computer and then you are free to log out – the job will run until it either hits and error or finishes the job, and it will notify you in either case (for Argon, you get an email when your job is finished running). From here, you can see that jobs which you expect to take more than a couple of hours should be done via job submission.</p>
+</div>
+<div id="writing-your-first-bash-script" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Writing your first bash script<a href="your-computing-setup.html#writing-your-first-bash-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For submitting jobs to a computing cluster, you will need to write a <em>script</em> – the set of instructions for the computer. <a href="https://www.linuxfoundation.org/blog/blog/classic-sysadmin-writing-a-simple-bash-script">Here</a> is a tutorial for how to write a simple <code>bash</code> script – this is a great place to start if you are new to script writing.</p>
+</div>
+<div id="conda-environments-v.-module-configurations" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Conda environments v. module configurations<a href="your-computing-setup.html#conda-environments-v.-module-configurations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When it comes to using version-specific programs (this comes up a lot when working with <code>Python</code>), you will need to change the version of a tool that your computer is ‘pointing at’ depending on the work you are doing. Example: to use the <a href="https://github.com/bulik/ldsc/wiki/Heritability-and-Genetic-Correlation">LDSC</a> command line tool for genetic correlation analysis, you need Python version 2.7 – but Python 3.10 is the most updated release of Python. In such a scenario, you need to tell your computer which version of Python to use. Moreover, you want to create a ‘setup’ for working with a tool like LDSC, and then every time you need to use this tool, you tell you computer: “load this special configuration of software” and it ‘remembers’ what configuration that is. Saving a configuration in this way can be done with either <code>conda</code> environments or <code>module</code> configurations. <a href="https://docs.conda.io/en/latest/">Conda</a> is a package management system that you can download for your computer and then use the command <code>conda</code> to <em>create custom environments</em>. Alternatively, some computer systems (like the UI Argon HPC) have pre-installed capability to <em>configure custom modules</em>. One thing that gave me issues early on in my dissertation work is that I was trying to create a <code>conda</code> environment inside of my module configuration. <strong>Don’t mix and match the two approaches</strong> – choose to either create environments or configure modules, and stick with you choice. Your choice here will depend in large part to the type of computer system you are working with, e.g., on UI Argon, it is much simpler to configure modules because that is already pre-installed and set to the default. Checkout the <a href="https://iowabiostat.github.io/hpc/3.html">program files and modules</a> section of the HPC tutorial for an example of this syntax.</p>
+</div>
+</div>
+<div id="advanced-r-and-some-julia" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Advanced R and some Julia<a href="your-computing-setup.html#advanced-r-and-some-julia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Just for reference, here are some links I have found helpful for learning more advaned R and some Julia – special thanks again to Grant Brown for touching on these ideas in his course on Advanced Computing:</p>
+<ul>
+<li><p><a href="https://adv-r.hadley.nz/">Advanced R, 2nd edition</a> – again, well-divided into sections, so its simple to navigate</p></li>
+<li><p><a href="https://bookdown.org/csgillespie/efficientR/programming.html">Efficient R programming</a> – this is really great for people who are learning R with more of a math/stats background than a computing background. Regarding tips for writing better R code, <strong>there are some real gems here</strong>.</p></li>
+<li><p><a href="https://juliaacademy.com/p/intro-to-julia">Free course in Julia</a> – yes, it really is free.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cultivating-professionalism.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-reports.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/tabpeter/ra_training_manual/edit/master/05-computing-setup.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

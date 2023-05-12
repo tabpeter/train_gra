@@ -1,0 +1,70 @@
+# Favorite packages by topic 
+
+In addition to the packages mentioned in each chapter, this is an index of my favorite packages, arranged by topic. 
+
+
+## Data cleaning/ processing 
+
+  - `dplyr`
+  - `tidyr`
+  - `naniar`
+  - `magrittr`
+  - `forcats`
+  - `readxl`
+  - `tidyxl` (add example on reading in Excel file with color-coded info)
+  
+
+
+## Creating graphs/figures  
+
+   - `ggplot2`
+   - `ggpubr`
+   - `corrplot`
+   - `vennDiagram`
+
+## Making tables 
+
+  - `arsenal`
+  - `gtsummary`
+  - `kableExtra`
+  - `compareGroups`
+
+## Bivariate tests 
+
+  - `gtsummary` 
+
+## Linear regression 
+
+  - NEEDS WORK 
+
+## General regression 
+
+  - NEEDS WORK 
+
+## Penalized regression 
+
+  - `ncvreg`
+  - `glmnet`
+  - `penalizedLMM` (my baby)
+
+## Mixed models (i.e. random effects)
+
+  - `lme4`
+  - `nlme`
+
+## Matrix algebra 
+
+  - `Matrix` (`::bandSparse` served me well on my comps exam)
+  - ``
+
+
+## Genetics (GWAS) data
+
+  - `bigsnpr`
+  - `snpStats`
+  
+## Microbiome data 
+
+  - `vegan`
+  - `metacoder`
+  

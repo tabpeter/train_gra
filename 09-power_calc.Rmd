@@ -1,0 +1,79 @@
+# Power and sample size calculations 
+
+Power and sample size calculations are a common request for a GRA. In order to estimate the power or calculate the necessary sample size, you will need some measure of [effect size](https://en.wikipedia.org/wiki/Effect_size). Often, the PI may not have an effect size in mind -- in this case, offer some example scenarios and gauge the PI's reaction. Examples: 
+
+  - "If you saw that a subject being treated in group B had a 2 mm increase in the outcome, would you be impressed? Would that be a 'big' or notable change?" 
+  - "How much of an impact would you need to see in order to catch you attention in an abstract? A 50% increase? Double the outcome?" 
+  
+  
+Your calculations for power/sample size could be done several ways in `R`: the `pwr` and `pwr2` packages can be a good place to start. Suppose you are planning an ANOVA study with these specifications: 
+
+  - desired power - 85\%
+  - outcome - 4 level ordered factor which I will treat as numeric (0 - 3)
+  - main predictor - 3 level factor (treatment A, treatment B, positive control (C))
+  - desired alpha = 0.05 
+
+Suppose your PIs don't know what effect size they are looking for, but they do offer some preliminary data from a similar study. Begin with that preliminary data: 
+
+```{r}
+library(dplyr)
+prelim <- matrix(data = c("A", 1.94, 1.20,
+                             "A", 2.75, 0.39,
+                             "B", 0.15, 0.55,
+                             "B", 0.33, 0.74),
+                    nrow = 4,
+                    byrow = T)
+prelim <- prelim |> 
+  as.data.frame() |>
+  mutate(across(.cols = 2:3, .fns = as.numeric)) |>
+  # collapse isthmus and canal measures, since our study is primarily 
+  # aimed at comparing treatments A and B with standard of care 
+  group_by(V1) |> 
+  # average the mean and sd of each A/B group 
+  summarise(mean = mean(V2),
+            sd = mean(V3))
+
+names(prelim) <- c("measure", "mean", "sd")
+```
+
+Next, you can break down the types of variation: 
+
+```{r}
+# estimate the between group variance to be the variance in mean
+btw_group_var <- var(prelim$mean)
+
+# estimate the common variance to be the average of the reported variances 
+within_group_var <- mean((prelim$sd)^2)
+
+```
+
+After taking these steps, I recommend calculating power using multiple tools and comparing the results you see: 
+
+
+```{r}
+# using 'stats' package - this ships with R
+power.anova.test(groups = 3,
+                 n = NULL,
+                 between.var = btw_group_var,
+                 within.var = within_group_var,
+                 sig.level = 0.05,
+                 power = 0.90)
+```
+
+```{r}
+# using pwr2
+library(pwr2)
+# using 'pwr2' package 
+ss.1way(k = 3,
+        alpha = 0.05,
+        beta = 0.1,
+        delta = abs(diff(prelim$mean)),
+        sigma = mean(prelim$sd),
+        B = 100)
+```
+
+The first method estimated that 3 observations would be needed in each group, while the second method estimated this value to be 5. In this case, 5 was a feasible number of observations to achieve, so I reported that value to the PIs. This higher value will also help maintain the level of power desired if I have to pivot to a non-parametric test like the [Kruskal-Wallis](https://en.wikipedia.org/wiki/Kruskal%E2%80%93Wallis_one-way_analysis_of_variance). 
+
+## SAS 
+
+Note that SAS offers the `PROC POWER` procedure for doing power and sample size calculations. I have often used both R and SAS functions for the same calculation and compared the results. Typically, SAS has much more in-depth documentation -- if you are wondering about the theoretical details for a calculation, SAS documentation is a helpful resource. 

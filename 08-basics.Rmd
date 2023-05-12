@@ -1,0 +1,48 @@
+# The basics: t-tests, ANOVA, and linear regression
+
+The most basic statistical analyses for a GRA to use are t-tests, analysis of variance, and linear regression. Here are some tips and references for getting started using any of these tools: 
+
+## t-tests & ANOVA
+
+Many t-test and ANOVA results can be implemented by the same functions I've suggested for creating [summary tables](#tables) 
+
+
+### Assumptions/diagnostics 
+
+
+### Examples: 
+
+
+### R code tips 
+
+## Linear regression
+
+### Assumptions/diagnostics 
+
+As the [regression diagnostics page](https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/R/R5_Correlation-Regression/R5_Correlation-Regression7.html) at Boston University explains, there are 4 key assumptions in linear regression: 
+
+  1. **Linearity**: the data $X$ are in a linear relationship with the mean of the outcome $\hat Y$ 
+  
+  2. **Homoskedasticity**: The variance of the residual $\sigma^2$ is the same for all observations of $X$. 
+  
+  3. **Independence**: For all observations $i$ and $j$, $i \perp j$. 
+  
+  4. **Normality**: The residuals $\textbf{r} \equiv Y - X\beta$ are distributed normally. 
+
+
+When using a linear model, here are the diagnostics you should check: 
+
+  1. Check the linearity assumption: make a plot of the residuals $\textbf{r}$ versus the fitted values $\hat Y$. If this assumption holds, you should see a horizontal line without a distinct pattern. Patterns like a cone-shape or a curve are red flags. 
+  
+  2. Check the normality assumption: Make a QQ plot of the residuals using `qqnorm` and `qqline`. If the normality assumption is reasonable, the points should fall on the diagonal line drawn by `qqline`. You could also make a histogram of the residuals and see if the histogram has a bell-curve shape. 
+  
+  3. Check the heteroskedasticity assumption: Plot the standardized residuals versus the fitted values (this is a scale-location plot). You want to see no pattern here; if you notice a curved or cone-shaped pattern, that's a red flag. 
+  
+  4. Check for outliers and high leverage points: [Cooks distance](https://en.wikipedia.org/wiki/Cook%27s_distance) is a metric for identifying influential points. You can calculate this in `R` using `cooks.distance()`, which is one of several functions provided in the `stats` package for assessing influence. See `?influence.measures` for details. 
+
+
+### Examples: 
+
+  - This article on [STHDA](http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/) gives some examples of residual plots in `R`. 
+
+### R code tips 

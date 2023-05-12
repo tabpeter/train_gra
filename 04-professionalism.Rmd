@@ -1,0 +1,114 @@
+# Cultivating professionalism 
+
+
+## Data management
+
+Many graduate research assistants have data management responsibilities in addition to data analysis. [Oracle](https://www.oracle.com/database/what-is-data-management/) defines data management as the "...practice of collecting, keeping, and using data securely, efficiently, and cost-effectively." Based on [these notes from the University of Mass.](https://people.umass.edu/biostat690c/pdf/1.%20%20Principles%20of%20Data%20Management%202020.pdf), here are the general components of data management: 
+
+  1. Write a data management plan 
+  
+  2. Specify a explicit set of operating procedures 
+  
+  3. Create a data dictionary 
+  
+  4. Determine a data storage location 
+  
+  5. Develop an analysis plan 
+  
+  6. Archive all of your procedures 
+  
+  
+I expand on each of these items below: 
+
+
+### Write a data management plan
+
+As soon as you receive a new project, you should establish your organization system [CROSS REF]. After this, your next step should be to spend some time contemplating a data management plan. This plan should describe how you will keep track of all of the data so that you can explain each step of your analysis process. 
+
+If collected data comes to you (especially if it comes via an Excel spreadsheet), you should immediately make a copy of this data. **You should never edit the original data you receive** - do not do any data cleaning or re-formatting. Instead, do all of your work on the copy, so that you can always refer back to the original data. 
+
+If you are planning a study with yet-to-be- collected data, spend some time thinking about how the data will get to you.
+
+  - Will the data come from electronic records? If so, save the SQL query/other code used to extract the records. 
+  
+  - Will the data come from a chart review (e.g., a doctor will manually collect data from patient records)? If so, I recommend making a template for the doctor (or whoever is doing the chart review) to fill in. 
+  
+  - Think about each person who will interact with the data, and have a flow-chart in your mind that traces exactly how this data will come to you. This will help you when you write the "Methods" section of your paper/poster, and will keep you from making mistakes in your analysis downstream. 
+
+### Specify a explicit set of operating procedures
+
+If you are in a situation where multiple people will handle the data (as in the chart review scenario), you should go beyond 'having a flow chart in your mind' -- in cases like these, write down who will do what with the data at each step of data collection. Send this written document to everyone on the team, and make sure everyone agrees/is on the same page.
+
+If you are in the chart review scenario, instruct the person doing chart review on how to collect data that is in a consistent form. Remember that the computer will recognize these responses as four different values: "Yes", "yes", "y", ✅. 
+
+### Create a data dictionary
+
+Create a spreadsheet with all the variables in the study listed in one column, and their definitions listed in the next column. As you write your scripts for analysis, you may even want to add a third column that lists the name you used in the script for that variable. [The US Dept. of Agriculture](https://data.nal.usda.gov/manually-creating-data-dictionary) offers some best practices on organizing a data dictionary. 
+
+### Determine a data storage location
+
+Where you keep your data matters. This is of particular importance when working with data protected by HIPPA (e.g., health records data). As a general principle, don't store data on your personal computer. Store it either online (e.g., a secure OneDrive folder, a GoogleDrive folder, an AWS location) or in an external drive (e.g., a company or university-owned secure shared drive). 
+
+### Develop an analysis plan
+
+At the outset of a project, outline the data analysis tools you think you will use based on the kind of data you expect to receive. Begin with the end in mind. Ask your collaborators these questions:
+
+  1. What is your research question? 
+
+  2. What kind of interpretations/generalizations you want to be able to make at the end of the project?  
+
+### Archive all of your procedures
+
+Document what you have done for data cleaning and analysis. This documentation can include: 
+
+  1. Well-organized, well-commented code (well-commented does not necessarily mean more comments; in fact [comments should not explain what the code is doing](https://visualstudiomagazine.com/articles/2013/07/26/why-commenting-code-is-still-bad.aspx)). 
+  
+  2. Stick to your file structure; file names themselves can track what you have done. 
+  
+  3. Save a copy of every file you send out for others to read. Even as you update versions of a report, save one copy of each version you have shared. 
+
+## What to do when ... 
+
+Here are some tricky situations that may arise when working in a GRA position, along with some suggestions on how to handle them. 
+
+### The data is not organized in a way that is conducive to analysis 
+
+If you've received data from folks with whom you did not consult before data collection, you may find that the data are 'messy' - maybe there are lots of notes in one column, or the data you want is in the column names, or the values within columns are not consistent. There are several resources to help you with [processing data in R](https://www.geeksforgeeks.org/processing-of-raw-data-to-tidy-data-in-r/) and/or [cleaning data in R](https://www.geeksforgeeks.org/data-cleaning-in-r/). The packages in the [tidyverse](https://www.tidyverse.org/packages/) have been super helpful to me for these tasks. I **highly recommend** that you write functions for your data cleaning/data processing scripts. [CROSS REF]
+
+Before you dig into the computing, though, two more important questions are: 
+
+  1. **Does the PI know what data you have?** It is quite possible that the PI was not directly involved in data collection. When the PI does not know what data you have, there is room for miscommunication - for example, the names of the variables in the data may not align with what the terminology that the PI is using. You may consider sending the PI a follow up email that describes the data you have (numbers of rows and columns, or a mock 'Table 1') and ask something like, "I want to confirm that I am looking at the right information as I begin to analyze your data. Is this [the description you've given] aligned with your expectations?" 
+  
+  2. **Does the data contain what you need to answer the PI's research question?** Related to the question above, if the PI is not familiar with the details of the data, it is possible that the data to which you have access is not adequate for addressing the research question. Again, describe the data you have and ask something like, "here is the data to which I have access; with my current understanding of your research question, I think you intend to analyze ... Is my understanding correct? If so, some additional information is needed."
+
+### The data accidentally contain HIPPA protected information
+
+This is one of those things that needs to be addressed early. Suppose that in your first exploration of a data set, you find that there is [HIPPA protected (identifiable) data](https://compliancy-group.com/what-is-hipaa-pii/#:~:text=What%20Kinds%20of%20Information%20Constitute,numbers%2C%20and%20bank%20account%20numbers.). **As soon as you realize you have this**, send an email to the person who shared the data with you and CC your GRA supervisor. Explain exactly what you have access to; say something like, "When I began to examine these data, I noticed that ___ information is included. This does not look like something to which I need access in order to address the research question. Please advise me on what needs to be done to de-identify these data?" 
+
+### The PI is insistent on presenting results in a way that I believe is sub-optimal 
+
+This is a tricky one -- talk to your supervisor about this problem and ask for advice. It may be that there is a happy medium; for example, if the PI is insistent on using p-values, it may be possible for you to convince them to present confidence intervals or some measure of effect size to the results as well. 
+
+Also, encourage your PI to name the limitation of the analysis choices you've made. For example, if you have done a bunch of multiple tests and have not corrected for multiple comparisons, you should mention that explicitly in the methods section of your work. 
+
+
+### I realized I made a mistake in my code! 
+
+As soon as you've realized you made a mistake, sit down and take a minute to reconstruct when you made the mistake. Write down: 
+
+  1. When you realized you made the mistake 
+  2. Whose work will be impacted by this mistake
+  
+Once you have these things, consider your answer to (2). If the only people impacted by your mistake are other statisticians on your team, then email those people directly and explain what happened and what you are doing to make it right. If collaborators' (e.g., clinicians or administrators) work is impacted by your mistake, email your RA supervisor first and explain what happened. As your supervisor to help you craft an email to the impacted individuals. 
+
+
+
+## Maintaining a CV
+
+A curriculum vitae (CV) is not something you do once. It is something that requires constant maintenance. The tool I've found helpful for both 1) maintaining a CV that both looks professional and 2) is simple to update is the [vitae](https://pkg.mitchelloharawild.com/vitae/) package. The package site has a detailed README file with links to videos on how to set this up. I try to update my CV each time another publication is released. 
+
+
+## Responding to reviewers {#point-to-point}
+
+One more aspect of professionalism that is a part of many research jobs is publishing in academic journals. When you submit a manuscript for publication, the draft you submit is given to peer-reviewers. These reviewers offer anonymous feedback to critique your work. Knowing how to respond to these reviewers is an integral part of the writing process. My research supervisor taught me to use the [point-to-point](https://www.nature.com/documents/Effective_Response_To_Reviewers-1.pdf) method for responding to reviewers. Templates for point-to-point response are available [here](https://onlinelibrary.wiley.com/pb-assets/assets/13989995/Point-by-point%20response-24-January%202019_CA%20approved-1549540165760.docx) and [here](https://apastyle.apa.org/style-grammar-guidelines/research-publication/sample-response-reviewers.pdf) --- check out these templates to get an idea of how to write your responses. 
+

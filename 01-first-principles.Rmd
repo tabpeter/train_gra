@@ -1,0 +1,17 @@
+# First Principles - invisible and integral work
+
+There are professions in which excellence brings invisibility. In such professions, the reward of a job well done is the unnoticed reception of the work into the foundation of the organization which the worker supports. Successes are silent, while failures are deafening. 
+
+An illustrative example of this phenomena is observed in custodial work. Custodial staff members know that when their job is done well, no one will notice. However, when their job is undone or done poorly, *everyone* will notice.^[I borrow this example from a phrase often used by my late grandmother (my father's mother), Jean, who was a housekeeper in a hospital.] The work in such professions is both integral and invisible. I argue that the field biostatistics epitomizes this phenomena. We who work as biostatisticians are called upon to work in humility, willing to invest much in the invisible and integral art of communicating the truth in this data-saturated historic moment. 
+
+This work is a reference manual, which means most of its contents are not new. Rather, the novelty in what I am providing here is in its form and organization. As a 4th year PhD student, I set out to gather resources together to help the newer GRAs on my team, with the goal of helping them by sharing the links, lectures, and tips that have helped me the most. What I am publishing here is the result of that work. Although this reference manual is intended to serve graduate students and early career professionals in biostatistics, I think many of those working in the fields of statistics, data science, and bioinformatics may resonate with the calling to work in invisible and integral spaces and find this manual relevant to their work. 
+
+The objective of this manual is twofold: to provide starting points from which to address common questions of practice, and to summarize the references and tools which I have found most helpful in my journey through gradate school and my early years as a biostatistician. Overarching these two goals is a desire to make a contribution toward training biostatisticians whose work is readable, rigorous, and reproducible. 
+
+If even one other person is encouraged and sharpened by this work, my goal will be accomplished. 
+
+
+Yours faithfully,
+TKP 
+
+2023 

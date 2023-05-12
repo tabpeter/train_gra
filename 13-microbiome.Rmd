@@ -1,0 +1,9 @@
+# Microbiome data analysis 
+
+Microbiome data analysis requires working with two separate subtypes of data: the taxonomic data and the sample (meta)data. Taxonomic data is *hierarchical*, meaning that the data are structured in tiers. These tiers are typically the [Operational Taxonomic Units](https://en.wikipedia.org/wiki/Operational_taxonomic_unit) (OTUs). The sample data is the data describing the observations (people or subjects) in the data, and often includes demographic/clinical features. 
+
+## Tools for working with microbiome data 
+
+  - [metacoder](https://grunwaldlab.github.io/metacoder_documentation/) is an `R` package that is built on previous packages [vegan](https://peat-clark.github.io/BIO381/veganTutorial.html) and [phyloseq](https://vaulot.github.io/tutorials/Phyloseq_tutorial.html#phyloseq-r-library). All of these links include tutorials for working with taxonomic data. 
+  
+  

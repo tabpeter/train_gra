@@ -1,0 +1,37 @@
+# Survival (time-to-event) analysis 
+
+Survival analysis is one of the problem-solving settings that separates biostatistics from pure statistics. Survival analysis research questions ask, "How long until (some event) happens?". This is a messy question, especially in biomedical research contexts where the investigators do not observe what happens to every observational unit (e.g, every patient) in the study. A patient may come to the clinic once, receive treatment, and then never come back to the clinic again. Whatever outcome the investigators wanted to observe remains unknown for that patient -- we would say the outcome for such a patient is *censored*. 
+
+The most-used methods in survival analysis are the *log-rank test* and the *Cox proportional hazards model*. The log-rank test is a conceptual analog to a [Cochran-Mantel-Haenzel test](https://en.wikipedia.org/wiki/Cochran%E2%80%93Mantel%E2%80%93Haenszel_statistics) in categorical data analysis. When working with a survival outcome and a single categorical predictor, the log-rank test can be used to test the null hypothesis: “there is no difference in survival between the groups being compared." The Cox proportional hazards model is a multivariate regression approach in which the exponentiated coefficients are the *hazard ratios*.
+
+[ADD A WORD BANK HERE]
+
+## Assumptions/diagnostics
+
+
+[ADD INFO HERE]
+
+## Examples: 
+
+  - Clinical trials: patients battling a chronic condition are randomized to either new drug B or the standard of care drug A. Patients have follow-up visits once per month for 1 year to monitor the time until their symptoms flare up again (e.g., time to relapse or time to recurrence). 
+  
+  - Dentistry: electronic dental records are used to assess the time until re-intervention for crown margin repairs (CMRs). CMRs are compared to assess which materials last longer: glass ionomer, resin-modified glass ionomer, resin-based composite, and amalgam. 
+  
+  
+  - Industry/manufacturing: Suppose there are four machines on a factor floor, two from brand A and two from brand B. The time until next malfunction could be used to compare the two brands of machines. 
+
+## R code tips 
+
+Packages to know about: 
+
+  - `survival`: a must-have for survival analysis 
+  - `ggsurvfit`: more options for for graphics
+
+
+## References 
+
+  - Emily Zaboor's [survival analysis tutorial in R](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html). Good quick-reference for code and plots. 
+
+  - Patrick Breheny's [publically available course notes for survival analysis](https://myweb.uiowa.edu/pbreheny/7210/f19/index.html). Lots of examples here, goes in depth in the theory. 
+
+  

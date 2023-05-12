@@ -1,0 +1,71 @@
+# Table of Contents 
+
+The contents of this reference manual are written with the intent that readers can begin at any point, looking only at what is most relevant to their research. 
+
+This manual is separated into two parts: "Learning the ropes" and "References/examples." "Learning the ropes" refers to issues of organization and professionalism specific to working as a research assistant in biostatistics (or a related field), and the "references/examples" offer tips for doing the work of data management and analysis (e.g., links to online resources for working with specific types of data, names of specific `R` packages, etc.)
+
+## Learning the ropes 
+
+### First principles 
+
+  - Invisible and integral work
+
+### Getting organized
+
+  - Starting from scratch: The first 3 days at your new RA job
+  - File structure
+  - Emails 
+  - Weekly notes v. README files 
+  
+### Taking notes
+
+  - Nonlinear notetaking
+  - Zettlekasten system 
+  - Maggie Appleton, Andy Matuschak, Bryan Jenks (sp?)
+  
+
+### Cultivating professionalism 
+
+### Setting up your computing tools 
+
+- Setting up R and RStudio (now Posit)
+- Setting up your terminal (command line)
+- Getting started with Git
+- Using high performance computing clusters 
+- Additional references (links to tutorials in Python and Julia)
+
+### Writing reports 
+
+
+
+### Giving presentations/talks
+  - LaTeX template 
+  - Melissa Marshall's work on using PowerPoint 
+
+## References and examples 
+
+###  t-tests, ANOVA, and linear regression 
+
+
+### Power and sample size calculations
+
+### Survival (time-to-event) analysis 
+
+  - Emily Zaboor tutorial 
+  - PB's class notes 
+
+### Survey data analysis 
+
+
+### Longitudinal data analysis 
+
+
+### Microbiome data analysis 
+
+
+### Genetic data (GWAS) analysis 
+
+
+### Geographic (GIS) data analysis 
+
+  

@@ -1,0 +1,163 @@
+# Your computing setup 
+
+
+Your computing setup is an essential part of working as a biostats GRA. It is like organizing a toolbox - you have to choose the tools to work with, invest in those tools, decide how to organize/store them, and then (of course) actually work with them. 
+
+Developing a 'toolbox' for quantitative work can have a lot of overhead -- a steep learning curve -- because systems for working in a computational/quantitative space are highly customizable. There are lots of ways to do things -- and in may cases, there are multiple ways to do something well. The sheer number of options can make it hard to know where to start. So, that is the objective of this chapter. For each of the components of my current toolbox, I am sharing *one* way to begin. My goal is to help you get started, trusting that you will gradually customize your setup as you learn more.
+
+I am writing as if I was writing to who I was 5 years ago -- a **total** novice. If that's not you, feel free to skip around -- I've tried to name the subheadings so that you can grab and go based on what you need from this chapter. 
+
+
+## Setting up R and RStudio (now Posit)
+
+
+### Download and install R 
+The tools I use the most are `R`/RStudio - in addition doing statistical analysis, I also use these tools to write documents (like this book!) and create graphics for publications. 
+
+To get started with RStudio (now called Posit), you first need to [install R](https://www.r-project.org/). `R` is a programming language, meaning it provides a way to talk to your computer. `R` is specifically designed for statistics. Another great feature of `R` is that it is free -- anyone can use it. 
+
+In order for your computer to understand `R`, you need to download it and install it on your computer. This is your computer's way of 'learning' a new language. Once you have downloaded R from the link above, you will have a file on your computer that you need to 'unpack' -- click on what you've downloaded and follow the prompts to get `R` installed. 
+
+### Download and install RStudio 
+
+After your computer is ready to speak `R`, you need to have a way to talk to your computer. Just like when talking to a person, you need to both speak their language *and* have a way to communicate with them. We talk to each other in a number of ways, like using phones and messaging apps -- in an analogous way, there are multiple avenues for 'talking' to your computer. One wayo talk `R` with your computer is to use [RStudio](https://posit.co/download/rstudio-desktop/). RStudio is an application (an 'app') that will let you interact with your computer in ways that make you more productive. Follow the link above to install RStudio for your computer -- be sure to click on the download option that matches the kind of operating system your computer has (e.g., Mac OSX, Windows, Linux). Again, you need to install what you download -- click on the file that shows up in your downloads folder, and follow the prompts to install RStudio. 
+
+If you'd rather watch a video on how to install R and RStudio, check out [this 15 minute video on YouTube](https://www.youtube.com/watch?v=lVKMsaWju8w). 
+
+
+### Customize RStudio 
+
+Once you have RStudio installed, you will see that you have a 'Tools' option at the top of your screen. Follow this menu to Tools > Global Options. This will give you a pane that offers lots of settings. One cool thing to check out is the theme, meaning the color scheme/appearance of your terminal. You can choose a custom font or color palette in the 'Appearances' menu. I always use a dark mode theme (`Tomorrow night` is the theme I am using these days; `Dracula` is cool too). 
+
+You will see that in your default RStudio viewer, you have 4 panes: one is the console (probably bottom left); code runs here, but **nothing is saved here** -- it is like a place for 'scratch work'. To save your work in a file, you need to open it in File > Open file (this will probably open in the top left). Third, you will have a pane that shows your files (like a 'Finder' window on Mac, or a 'Files' window on Windows) - this pane is usually at the bottom right. At the top right, you will see a pane with a bar at the top listing options like 'Environment', 'History', etc. `R` is an [object-oriented programming language](https://en.wikipedia.org/wiki/Object-oriented_programming) (you can get really deep into thinking about this) -- for our purposes now, just know that in `R`, the objects you create will show up in this 'Environment' pane. 
+
+
+### Setting up your R library 
+
+Using `R` requires packages. Most packages that you use will come from one of three places: [CRAN](https://cran.r-project.org/), [Bioconductor](https://www.bioconductor.org/), or someone's GitHub repository. 
+
+To download and use a package from CRAN, use 
+
+```{r, eval=FALSE}
+install.packages("package_name") # only need to do this once 
+library("package_name") # this is what you would do each time 
+```
+
+To download a package from Bioconductor, use 
+
+```{r eval=FALSE}
+install.packages("BiocManager") 
+BiocManager::install(c("package_name"))
+library("package_name")
+```
+
+To download a package from a GitHub repository, use 
+
+```{r, eval=FALSE}
+install.packages("devtools")
+devtools::install_github("user/repo")
+```
+
+When you download a package, the package is saved in location that is specified as your *library path*. If you want to know where that is, type 
+
+```{r}
+.libPaths()
+```
+
+
+### Tips: things you should never do in R/RStudio 
+
+  1.  In the Environment pane, there is an icon to 'save workspace as...' - **you should never save your R environment and/or your R workspace**. This is bad practice for a number of reasons, including that you do not have control of what is being saved. Better alternative: save only the object(s) you need using `saveRDS()`. You can always re-access these later with `readRDS()`. 
+  
+  2. Going back to the comment on file paths in the organization chapter (CROSS REF), there is a function in `R` called `setwd()` where you can tell the computer where (what folder) to point. When writing a script, **the first line of your script should never be** `setwd("a/directory/that/only/I/have)` -- you want your code to be [portable](https://www.techtarget.com/searchstorage/definition/portability#:~:text=Source%20code%20portability%20refers%20to,or%20data%20center%20to%20another.), so that other people can run it (and so that you can run it even after you have reorganized your folders!). Better alternative: use relative file paths, like the structure provided in the super handy [here R package](https://here.r-lib.org/). 
+  
+### Cool keyboard shortcuts in R/RStudio 
+
+  - to make a chunk of code align (e.g., to fix the indentation): highlight the chunk and then `CNTRL + I` (Windows), `Command + I` (OSX)
+  
+  - to create a new R script: `CNTRL + Shift + N` or `Command + Shift + N`
+  
+  - to see all available keyboard shortcuts: `ALT/Option + Shift + K`
+
+## Setting up your terminal (i.e., the command line)
+
+There are two ways to interact with your computer: via 'point and click' interfaces (e.g., File Explorer, Finder) and via the **command line**. The command line is much more efficient for many computational tasks -- I encourage anyone working in biostatistics to begin learning to use the command line for creating/moving/manipulating files, as this will be good preparation for doing more complicated work (e.g., writing your own `R` packages and so on).
+
+On a Mac, you can open the command line by searching for the **'Terminal'** app (this is installed on every Mac by default). On Windows, the analog is called **'Command Prompt.'** You have a lot of choices in addition to the apps that are on your computer by default. I use the app [iTerm2](https://iterm2.com/), and I customized the appearance of my terminal window with [Oh My ZSH](https://ohmyz.sh/). 
+
+As a first step in learning to work with the command line, try to find your files -- in the video below, I show how I do this with [symbolic links ('symlinks')](https://www.freecodecamp.org/news/linux-ln-how-to-create-a-symbolic-link-in-linux-example-bash-command/). 
+
+[Here](https://youtu.be/f-xsKZVWavo) is a quick video of me doing this. 
+
+More details on working with the command line are explained in the [online course](https://missing.csail.mit.edu/) called "The missing semester of your computer science (CS) education." This free online course was compiled by people at MIT. I have found this to be a really helpful place to begin. 
+
+### Resources for learning the command line 
+
+  - [ARStechnica: command line wizardry, part I](https://arstechnica.com/gadgets/2021/08/linux-bsd-command-line-101-using-awk-sed-and-grep-in-the-terminal/)
+  
+   -[ARStechnica: command line wizardry, part II](https://arstechnica.com/gadgets/2021/09/command-line-wizardry-part-two-variables-and-loops-in-bash/)
+  
+  -[Linux Command line](http://linuxcommand.org/) -- official tutorial that starts from the ~very~ beginning 
+  
+  - [Quick-start guide to the VIM text editor](https://eastmanreference.com/a-quick-start-guide-for-beginners-to-the-vim-text-editor) -- VIM is a popular choice for text editing (other kinds of text editors are TextEdit (ships with Mac), NotePad/NotePad ++ (Windows))
+
+
+
+## Getting started with Git
+
+[Git](https://git-scm.com/) is a free and open source tool for [version control](https://en.wikipedia.org/wiki/Version_control). What this means is that Git allows you to avoid the problems that arise when you try to work with multiple copies of code for a project. Have you ever had a folder with files like this: `analysis1.R`, `04-05-2023_analysis.R`, `old_analysis.R`, `final_version.R`, and `final_final_version.R`?  This way of working is not only inefficient, but also inhibits collaboration and makes your work harder to reproduce. None of that is good for science. So, Git offers a way to manage versions, so that you can keep track of the current version of your code and have access to looking back at older versions.
+
+There are a lot of online tutorials to get you started with Git -- just Google 'git tutorial for beginners' and several free options will show up. Again, the [missing semester of your CS education](https://missing.csail.mit.edu/2020/version-control/) course has a whole section on learning version control -- highly recommend. 
+
+Here is a brief overview of a few major vocab words you need to know to use Git (in the order in which you will probably encounter them)\footnote{**Disclaimer**: my training has consisted of much more math than computer science; what I am presenting here pertaining to version control is a broad and loose conceptual sketch.}:
+
+  - **repository ('repo')** (noun): The directory (a.k.a., the folder) that holds all the files for a project 
+  
+  - **local** versus **remote** (adjectives): These terms describe the location of a repo. A local repo exists only on one computer - for instance, a project that I have created on my laptop is a local repo. A remote repo is hosted online (probably on [GitHub](https://github.com/)). Sort of like keeping files in OneDrive or GoogleDrive, remote repositories make it possible for multiple people to access a project from any computer.  
+  
+  - **clone** (verb): The action of making a copy of a repo; e.g., "I will clone Person A's remote repo onto my laptop." The command line code for this is `git clone <repo>` 
+  
+  - **pull** (verb): The action of incorporating all of the changes from a remote repo into a local repo. Example: "My local copy of Repo A is out of sync with the master copy, since Person B made some more changes to our code yesterday. I need to pull those changes from our remote repo into my local repo." Pulling is done with `git pull`.
+  
+  - **stage** (verb): The action of preparing changes for a commit. This is like looking at your scratch work and deciding which of your ideas you want to keep. This is done with `git add <edited files to keep>`.  
+  
+  - **commit** (noun or verb): A commit (the noun) refers to a documented change to one or more files in a project. To make a commit (verb) is the action of saving a change. In broad, general terms, Git keeps a timeline of all the changes in a project. Once something is committed in Git, the changes that were part of that commit are permanently saved in the project timeline. To make a commit, use `git commit -m "a message describing the changes made"`
+  
+  - **push** (verb): The action of moving commits you made in your local copy of the repo to the remote copy of the repo. Example: Me and my colleague Y are working on project A together. The master copy of project A is in our remote repo; me and Y have each cloned this repo, so we have local copies on our respective laptops. I have committed some changes in the files on my local copy, so now I need to *push* my commits to the remote repo. After I push, Y will be able to see what I did." 
+  
+  - **branch** (noun):  When working on a more complex project, there arises a need to keep two versions of the project: a 'master' version that has everything you want to keep for sure, and a 'development' version where you are debugging/troubleshooting/playing with new ideas. Having multiple branches in your repo allows you to achieve having multiple versions of a project as I've described. The commands that go along with branching are usually `git branch` and `git checkout`. 
+  
+### Resources for learning Git 
+
+  - [Quick-start: setting up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+  
+  - [Full book on Git](https://git-scm.com/book/en/v2) - well divided into sections, so you can skip around to the chapters most relevant to what you need 
+
+
+## Using high performance computing clusters 
+
+In many contemporary applications, the computational work for data analysis needs to be done in a high performance computing cluster. At the University of Iowa, our high performance computing cluster is called [Argon](https://wiki.uiowa.edu/display/hpcdocs/Argon+Cluster). My appreciation for Argon grows the more I work on my dissertation. One resources I have found super helpful in working with high performance computing clusters is the  [online tutorial](https://iowabiostat.github.io/hpc/index.html) written by Profs. [Patrick Breheny](https://myweb.uiowa.edu/pbreheny/) and [Grant Brown](http://grantbrown.github.io/). This tutorial outlines how to use the UI Argon cluster. Much of what is here would generalize to other HPC systems as well. 
+
+### Interactive sessions v. submitting jobs 
+
+There are two ways to interact with a high performance computing cluster: an *interactive session* and a *job submission*. An interactive session involves you logging into the computer and telling it what to do one step at a time, whereas a job submission means you give the computer a whole set of instructions at once. In an interactive session, you stay logged in and watch the screen for results as they come in. In a job submission, you send you instructions (via a *script*) to the computer and then you are free to log out -- the job will run until it either hits and error or finishes the job, and it will notify you in either case (for Argon, you get an email when your job is finished running). From here, you can see that jobs which you expect to take more than a couple of hours should be done via job submission. 
+
+
+### Writing your first bash script 
+
+For submitting jobs to a computing cluster, you will need to write a *script* -- the set of instructions for the computer. [Here](https://www.linuxfoundation.org/blog/blog/classic-sysadmin-writing-a-simple-bash-script) is a tutorial for how to write a simple `bash` script -- this is a great place to start if you are new to script writing. 
+
+### Conda environments v. module configurations
+
+  When it comes to using version-specific programs (this comes up a lot when working with `Python`), you will need to change the version of a tool that your computer is 'pointing at' depending on the work you are doing. Example: to use the [LDSC](https://github.com/bulik/ldsc/wiki/Heritability-and-Genetic-Correlation) command line tool for genetic correlation analysis, you need Python version 2.7 -- but Python 3.10 is the most updated release of Python. In such a scenario, you need to tell your computer which version of Python to use. Moreover, you want to create a 'setup' for working with a tool like LDSC, and then every time you need to use this tool, you tell you computer: "load this special configuration of software" and it 'remembers' what configuration that is. Saving a configuration in this way can be done with either `conda` environments or `module` configurations. [Conda](https://docs.conda.io/en/latest/) is a package management system that you can download for your computer and then use the command `conda` to *create custom environments*. Alternatively, some computer systems (like the UI Argon HPC) have pre-installed capability to *configure custom modules*. One thing that gave me issues early on in my dissertation work is that I was trying to create a `conda` environment inside of my module configuration. **Don't mix and match the two approaches** -- choose to either create environments or configure modules, and stick with you choice. Your choice here will depend in large part to the type of computer system you are working with, e.g., on UI Argon, it is much simpler to configure modules because that is already pre-installed and set to the default. Checkout the [program files and modules](https://iowabiostat.github.io/hpc/3.html) section of the HPC tutorial for an example of this syntax. 
+
+## Advanced R and some Julia
+
+Just for reference, here are some links I have found helpful for learning more advaned R and some Julia -- special thanks again to Grant Brown for touching on these ideas in his course on Advanced Computing: 
+  
+  - [Advanced R, 2nd edition](https://adv-r.hadley.nz/) -- again, well-divided into sections, so its simple to navigate 
+  
+  - [Efficient R programming](https://bookdown.org/csgillespie/efficientR/programming.html) -- this is really great for people who are learning R with more of a math/stats background than a computing background. Regarding tips for writing better R code, **there are some real gems here**. 
+  
+  - [Free course in Julia](https://juliaacademy.com/p/intro-to-julia) -- yes, it really is free. 
+

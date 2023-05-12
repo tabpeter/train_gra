@@ -1,0 +1,27 @@
+# Genetics (GWAS) data analysis 
+
+The rate at which new tools for GWAS data analysis are created is mind-boggling. It seems like a new paper in this area comes out each week -- which makes it a challenge to summarize the tools available for working in this area. With this in mind, consider the set of tools and tips provided here as select suggesions from my own experience rather than an exhaustive list. 
+
+## R packages 
+
+  - [bigsnpr]()
+  
+  - [snpStats]()
+  
+  - [ncvreg]()
+  
+  - [penalizedLMM]()
+  
+  - [qqman]()
+
+  - [CMplot]()
+  
+  - [PLACO](): this isn't a 'package' per se, but this method for assessing pleiotropy between traits is implemented in `R`. 
+
+## Command-line tools 
+
+  - [PLINK]()
+  
+  - [LDSC]()
+  
+  

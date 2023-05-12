@@ -1,0 +1,39 @@
+# Writing reports 
+
+
+## What makes a report 'good'? 
+
+The final product for a project is usually a report, rather than a script or a set of unformatted results. Once you have your statistical estimates, consider how you can craft the results into a story. Good research reports effectively communicate stories. 
+
+Here are some general features of reports that tell stories: 
+
+  - Reproducibility: can you reproduce your report in one line of code? If not, this is usually a red flag. 
+  
+  - Easily navigated by audience: don't send raw output to collaborators! 
+  
+  - Outlines context, methods, results, and limitations. You need all four to tell the truth. 
+  
+  - Summarizes information in graphs whenever possible. 
+  
+  
+[Here is a video](https://youtu.be/Bs6EYlw6di0) showing an example of one of my reports. 
+
+## Tools for writing reports {#tables}
+
+**R packages to create tables**: 
+
+  - [gtsummary](https://www.danieldsjoberg.com/gtsummary/) - best overall; best for displaying regression model estimates; 'prettiest' output
+  
+  - [compareGroups](https://cran.r-project.org/web/packages/compareGroups/vignettes/compareGroups_vignette.html) - best bivariate testing table (shows ORs)
+  
+  - [arsenal](https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html) - easiest to customize
+  
+
+**Resources to format reports**: 
+
+  - [kable/kableExtra R packages](https://bookdown.org/yihui/rmarkdown-cookbook/kableextra.html)
+  
+  - [tutorial on LaTeX tables in PDF](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf)
+  
+  - [tutorial on tables in HTML](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+

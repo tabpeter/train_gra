@@ -1,0 +1,11 @@
+# Giving presentations 
+
+A presentation is effective when everyone in the audience learns something. With that in mind, craft your presentations with the audience in mind. If you're using PowerPoint/Beamer/some other slide deck tool, use more pictures than words. As Dr. Melissa Marshall says, "Bullets kill" -- meaning too many bullet points will kill your presentation. 
+
+## Tools for giving presentations 
+  
+  - [Melissa Marshall's resources](https://www.presentyourscience.com/resources) at Present Your Science. There's a lot here (including a TED talk) on how to use slideshows to effectively communicate to diverse audiences. 10/10, highly recommend.
+  
+  - [Quarto presentations](https://quarto.org/docs/presentations/) - unlike Rmd files, you can knit to PowerPoint in Quarto. Also, Quarto is great for presentations where you need to show blocks of code. 
+  
+  - [University of Iowa Beamer slides template](https://github.com/tabpeter/ui_latex). This template is UI specific, and the color schemes stay within the guidelines of the [UI brand manual](https://brand.uiowa.edu/color). 
