@@ -1,27 +1,27 @@
 # Genetics (GWAS) data analysis 
 
-The rate at which new tools for GWAS data analysis are created is mind-boggling. It seems like a new paper in this area comes out each week -- which makes it a challenge to summarize the tools available for working in this area. With this in mind, consider the set of tools and tips provided here as select suggesions from my own experience rather than an exhaustive list. 
+The rate at which new tools for GWAS data analysis are created is mind-boggling. It seems like a new paper in this area comes out each week -- which makes it a challenge to summarize the tools available for working in this area. With this in mind, consider the set of tools and tips provided here as select suggestions from my own experience rather than an exhaustive list. 
 
 ## R packages 
 
-  - [bigsnpr]()
+  - [bigsnpr](https://privefl.github.io/bigsnpr/index.html) - a relatively new package that offers functions for manipulating PLINK data files, doing [QC](#acronyms) and relatedness/imputation, pruning/clumping and correlation analysis, and calculation of polygenic scores.  Functions for basic marginal association analysis are also available. 
   
-  - [snpStats]()
+  - [snpStats](https://www.bioconductor.org/packages/release/bioc/html/snpStats.html) - an older, widely-used Bioconductor package that has functions for doing QC, imputation, and marginal association analysis. Note: this package is not as memory efficient as `bigsnpr`. 
   
-  - [ncvreg]()
+  - [ncvreg](https://pbreheny.github.io/ncvreg/) - a newer package that implements penalized regression models for high dimensional data. TL;DR: this package will allow you to analyze SNPs (or whatever the features of the data are) *jointly*, taking into account the relationships between them. This is in stark contrast to the marginal (one-feature-at-a-time) approaches that are widely used. A note for the stats nerds: unlike the popular [glmnet](https://glmnet.stanford.edu/articles/glmnet.html#:~:text=Glmnet%20is%20a%20package%20that,for%20the%20regularization%20parameter%20lambda.) package, `ncvreg` offers non-convex penalties in addition to the lasso. 
   
-  - [penalizedLMM]()
+  - [penalizedLMM](https://areisett.github.io/penalizedLMM/) - an in-development package for joint analysis of features in contexts where the data are structured (e.g., admixed populations, family-based GWAS data, etc.). This package has contributions from several of [Patrick Breheny's doc students](https://myweb.uiowa.edu/pbreheny/students.html) (including me). 
   
-  - [qqman]()
+  - [qqman](https://cran.r-project.org/web/packages/qqman/) - a package for creating QQ plots and Manhattan plots from GWAS analysis results. 
 
-  - [CMplot]()
+  - [CMplot](https://github.com/YinLiLin/CMplot) - a package for creating 'fancy' QQ plots and Manhattan plots, including those that are circular. This package offers many customization options for annotation these plots. 
   
-  - [PLACO](): this isn't a 'package' per se, but this method for assessing pleiotropy between traits is implemented in `R`. 
+  - [PLACO](https://github.com/RayDebashree/PLACO): this isn't a 'package' *per se*, but this method for assessing pleiotropy between traits is implemented in `R`. 
 
 ## Command-line tools 
 
-  - [PLINK]()
+  - [PLINK](https://www.cog-genomics.org/plink/1.9/)
   
-  - [LDSC]()
+  - [LDSC](https://github.com/bulik/ldsc/wiki/Heritability-and-Genetic-Correlation)
   
   

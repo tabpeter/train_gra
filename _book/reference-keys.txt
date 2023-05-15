@@ -79,3 +79,5 @@ genetics-gwas-data-analysis
 r-packages
 command-line-tools
 geographic-gis-data-analysis
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+acronyms

@@ -4,6 +4,6 @@ Microbiome data analysis requires working with two separate subtypes of data: th
 
 ## Tools for working with microbiome data 
 
-  - [metacoder](https://grunwaldlab.github.io/metacoder_documentation/) is an `R` package that is built on previous packages [vegan](https://peat-clark.github.io/BIO381/veganTutorial.html) and [phyloseq](https://vaulot.github.io/tutorials/Phyloseq_tutorial.html#phyloseq-r-library). All of these links include tutorials for working with taxonomic data. 
+  - [metacoder](https://grunwaldlab.github.io/metacoder_documentation/) and [taxa](https://docs.ropensci.org/taxa/) are `R` packages built on previous packages [vegan](https://peat-clark.github.io/BIO381/veganTutorial.html) and [phyloseq](https://vaulot.github.io/tutorials/Phyloseq_tutorial.html#phyloseq-r-library). All of these links include tutorials for working with taxonomic data. 
   
   

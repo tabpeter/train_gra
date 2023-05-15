@@ -23,7 +23,7 @@
 <meta name="author" content="T. K. Peter" />
 
 
-<meta name="date" content="2023-05-12" />
+<meta name="date" content="2023-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,10 +136,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Reference Manual for the Biostatistics Research Assistant</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Motivation</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-assumes"><i class="fa fa-check"></i><b>1.1</b> What this book assumes</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acronymns"><i class="fa fa-check"></i><b>1.2</b> Acronymns</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acronyms"><i class="fa fa-check"></i><b>1.2</b> Acronymns</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#working-with-the-garage-door-open"><i class="fa fa-check"></i><b>1.3</b> Working with the garage door open</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.4</b> Dedication</a></li>
 </ul></li>
@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The most basic statistical analyses for a GRA to use are t-tests, analysis of variance, and linear regression. Here are some tips and references for getting started using any of these tools:</p>
 <div id="t-tests-anova" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> t-tests &amp; ANOVA<a href="the-basics-t-tests-anova-and-linear-regression.html#t-tests-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Many t-test and ANOVA results can be implemented by the same functions I’ve suggested for creating <a href="writing-reports.html#tables">summary tables</a></p>
+<p>Many t-test and ANOVA results can be implemented by the same functions I’ve suggested for creating <a href="writing-reports.html#tables">summary tables</a>.</p>
 <div id="assumptionsdiagnostics" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Assumptions/diagnostics<a href="the-basics-t-tests-anova-and-linear-regression.html#assumptionsdiagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
@@ -316,11 +316,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>When using a linear model, here are the diagnostics you should check:</p>
 <ol style="list-style-type: decimal">
-<li><p>Check the linearity assumption: make a plot of the residuals <span class="math inline">\(\textbf{r}\)</span> versus the fitted values <span class="math inline">\(\hat Y\)</span>. If this assumption holds, you should see a horizontal line without a distinct pattern. Patterns like a cone-shape or a curve are red flags.</p></li>
-<li><p>Check the normality assumption: Make a QQ plot of the residuals using <code>qqnorm</code> and <code>qqline</code>. If the normality assumption is reasonable, the points should fall on the diagonal line drawn by <code>qqline</code>. You could also make a histogram of the residuals and see if the histogram has a bell-curve shape.</p></li>
+<li><p>Check the linearity assumption: make a plot of the residuals <span class="math inline">\(\textbf{r}\)</span> versus the fitted values <span class="math inline">\(\hat{\mathbf{Y}}\)</span>. If this assumption holds, you should see a horizontal line without a distinct pattern. Patterns like a cone-shape or a curve are red flags.</p></li>
+<li><p>Check the normality assumption: Make a QQ plot of the residuals using <code>qqnorm</code> and <code>qqline</code>. If the normality assumption is reasonable, the points should fall on the diagonal line drawn by <code>qqline</code>. You could also make a histogram of the residuals and see if the histogram has a bell-curve shape. <strong>Note</strong>: plotting the observed outcomes <span class="math inline">\(Y\)</span> is <em>not</em> the same as checking this assumption. The linearity assumption pertains to the residuals being bell-curve shaped, not the observed outcome values.</p></li>
 <li><p>Check the heteroskedasticity assumption: Plot the standardized residuals versus the fitted values (this is a scale-location plot). You want to see no pattern here; if you notice a curved or cone-shaped pattern, that’s a red flag.</p></li>
 <li><p>Check for outliers and high leverage points: <a href="https://en.wikipedia.org/wiki/Cook%27s_distance">Cooks distance</a> is a metric for identifying influential points. You can calculate this in <code>R</code> using <code>cooks.distance()</code>, which is one of several functions provided in the <code>stats</code> package for assessing influence. See <code>?influence.measures</code> for details.</p></li>
+<li><p>It is a good idea to check for <a href="https://en.wikipedia.org/wiki/Multicollinearity">multicollinearity</a> – to do this, you can start by estimating the <a href="https://en.wikipedia.org/wiki/Variance_inflation_factor">variance inflation factor</a> (VIF) values for each parameter in your model using the <code>vif</code> function from the <code>car</code> package. Rule of thumb: if any VIF values are greater than 10, the degree of multicollinearity in your model is causing your estimates to suffer. To deal with highly correlated values, you can try any of the following:</p></li>
 </ol>
+<pre><code>1. Where there are two or more variables that are measuring the same thing, narrow down the model to include just one of these variables. 
+
+2. Try [ridge regression](https://myweb.uiowa.edu/pbreheny/7240/s23/notes/2-02.pdf)</code></pre>
 </div>
 <div id="examples-1" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> Examples:<a href="the-basics-t-tests-anova-and-linear-regression.html#examples-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -330,6 +334,1013 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="r-code-tips-1" class="section level3 hasAnchor" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> R code tips<a href="the-basics-t-tests-anova-and-linear-regression.html#r-code-tips-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This extended example shows how I fit a model, check diagnostics, and deal with multicollinearity:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="co"># example data &#39;penguins&#39; </span></span>
+<span id="cb2-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># has vif() function </span></span></code></pre></div>
+<pre><code>## Loading required package: carData</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary) <span class="co"># to summarize model estimates </span></span>
+<span id="cb4-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a regression model </span></span>
+<span id="cb4-4"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> .,</span>
+<span id="cb4-5"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> penguins) </span>
+<span id="cb4-6"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># examine results </span></span>
+<span id="cb4-8"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-8" aria-hidden="true" tabindex="-1"></a>fit <span class="sc">|&gt;</span> </span>
+<span id="cb4-9"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_regression</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-10"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code></pre></div>
+<div id="fzheqzhbti" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#fzheqzhbti .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fzheqzhbti .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fzheqzhbti .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fzheqzhbti .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fzheqzhbti .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fzheqzhbti .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fzheqzhbti .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fzheqzhbti .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fzheqzhbti .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fzheqzhbti .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fzheqzhbti .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fzheqzhbti .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fzheqzhbti .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fzheqzhbti .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fzheqzhbti .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fzheqzhbti .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fzheqzhbti .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fzheqzhbti .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fzheqzhbti .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fzheqzhbti .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fzheqzhbti .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fzheqzhbti .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fzheqzhbti .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fzheqzhbti .gt_left {
+  text-align: left;
+}
+
+#fzheqzhbti .gt_center {
+  text-align: center;
+}
+
+#fzheqzhbti .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fzheqzhbti .gt_font_normal {
+  font-weight: normal;
+}
+
+#fzheqzhbti .gt_font_bold {
+  font-weight: bold;
+}
+
+#fzheqzhbti .gt_font_italic {
+  font-style: italic;
+}
+
+#fzheqzhbti .gt_super {
+  font-size: 65%;
+}
+
+#fzheqzhbti .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#fzheqzhbti .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fzheqzhbti .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fzheqzhbti .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fzheqzhbti .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fzheqzhbti .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fzheqzhbti .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Beta&lt;/strong&gt;"><strong>Beta</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;95% CI&lt;/strong&gt;&lt;sup class=&quot;gt_footnote_marks&quot;&gt;1&lt;/sup&gt;"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;p-value&lt;/strong&gt;"><strong>p-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">species</td>
+<td headers="estimate" class="gt_row gt_center"></td>
+<td headers="ci" class="gt_row gt_center"></td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Adelie</td>
+<td headers="estimate" class="gt_row gt_center">—</td>
+<td headers="ci" class="gt_row gt_center">—</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Chinstrap</td>
+<td headers="estimate" class="gt_row gt_center">-283</td>
+<td headers="ci" class="gt_row gt_center">-457, -108</td>
+<td headers="p.value" class="gt_row gt_center">0.002</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Gentoo</td>
+<td headers="estimate" class="gt_row gt_center">891</td>
+<td headers="ci" class="gt_row gt_center">607, 1,175</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">island</td>
+<td headers="estimate" class="gt_row gt_center"></td>
+<td headers="ci" class="gt_row gt_center"></td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Biscoe</td>
+<td headers="estimate" class="gt_row gt_center">—</td>
+<td headers="ci" class="gt_row gt_center">—</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Dream</td>
+<td headers="estimate" class="gt_row gt_center">-21</td>
+<td headers="ci" class="gt_row gt_center">-136, 94</td>
+<td headers="p.value" class="gt_row gt_center">0.7</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Torgersen</td>
+<td headers="estimate" class="gt_row gt_center">-59</td>
+<td headers="ci" class="gt_row gt_center">-178, 61</td>
+<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">bill_length_mm</td>
+<td headers="estimate" class="gt_row gt_center">19</td>
+<td headers="ci" class="gt_row gt_center">5.0, 33</td>
+<td headers="p.value" class="gt_row gt_center">0.008</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">bill_depth_mm</td>
+<td headers="estimate" class="gt_row gt_center">61</td>
+<td headers="ci" class="gt_row gt_center">21, 100</td>
+<td headers="p.value" class="gt_row gt_center">0.003</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">flipper_length_mm</td>
+<td headers="estimate" class="gt_row gt_center">19</td>
+<td headers="ci" class="gt_row gt_center">12, 25</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">sex</td>
+<td headers="estimate" class="gt_row gt_center"></td>
+<td headers="ci" class="gt_row gt_center"></td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    female</td>
+<td headers="estimate" class="gt_row gt_center">—</td>
+<td headers="ci" class="gt_row gt_center">—</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    male</td>
+<td headers="estimate" class="gt_row gt_center">379</td>
+<td headers="ci" class="gt_row gt_center">284, 474</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">year</td>
+<td headers="estimate" class="gt_row gt_center">-43</td>
+<td headers="ci" class="gt_row gt_center">-84, -1.6</td>
+<td headers="p.value" class="gt_row gt_center">0.042</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"><sup class="gt_footnote_marks">1</sup> CI = Confidence Interval</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take note: some of these confidence intervals are ~super~ wide</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check assumptions (this gives me 4 plots): </span></span>
+<span id="cb6-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb6-3"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first plot checks linearity -- looks good </span></span>
+<span id="cb7-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># second plot checks normality -- beautiful </span></span>
+<span id="cb7-3"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># third plot checks heteroskedasticity - no evidence of an issue here</span></span>
+<span id="cb7-4"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 4th plot checks for outliers/leverage -- looks like we do have a couple of </span></span>
+<span id="cb7-5"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   outliers. Will proceed with caution...  </span></span>
+<span id="cb7-6"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check for multicollinearity: </span></span>
+<span id="cb7-9"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb7-9" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(fit) </span></code></pre></div>
+<pre><code>##                        GVIF Df GVIF^(1/(2*Df))
+## species           71.200285  2        2.904828
+## island             3.762055  2        1.392696
+## bill_length_mm     6.117069  1        2.473271
+## bill_depth_mm      6.274341  1        2.504864
+## flipper_length_mm  7.775036  1        2.788375
+## sex                2.343434  1        1.530828
+## year               1.172956  1        1.083031</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: Very high VIF for species. Flipper length also has a moderately high VIF</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize correlations: </span></span>
+<span id="cb10-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot) <span class="co"># Love this package </span></span></code></pre></div>
+<pre><code>## corrplot 0.92 loaded</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to assess correlations between variables, use the design matrix X: </span></span>
+<span id="cb12-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb12-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(fit)[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb12-3"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="at">corr =</span> <span class="fu">cor</span>(X)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<ul>
+<li><code>gtsummary</code> can summarize a regression model in a pretty table. Example:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using our penguins data again...</span></span>
+<span id="cb13-2"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb13-2" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> sex <span class="sc">+</span> year <span class="sc">+</span> species, <span class="at">data =</span> penguins)</span>
+<span id="cb13-3"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb13-4" aria-hidden="true" tabindex="-1"></a>fit2 <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_regression</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="the-basics-t-tests-anova-and-linear-regression.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code></pre></div>
+<div id="cmrvvfdofb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cmrvvfdofb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cmrvvfdofb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cmrvvfdofb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cmrvvfdofb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cmrvvfdofb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cmrvvfdofb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cmrvvfdofb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cmrvvfdofb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cmrvvfdofb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cmrvvfdofb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cmrvvfdofb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cmrvvfdofb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cmrvvfdofb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cmrvvfdofb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cmrvvfdofb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cmrvvfdofb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cmrvvfdofb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cmrvvfdofb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cmrvvfdofb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cmrvvfdofb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cmrvvfdofb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cmrvvfdofb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cmrvvfdofb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cmrvvfdofb .gt_left {
+  text-align: left;
+}
+
+#cmrvvfdofb .gt_center {
+  text-align: center;
+}
+
+#cmrvvfdofb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cmrvvfdofb .gt_font_normal {
+  font-weight: normal;
+}
+
+#cmrvvfdofb .gt_font_bold {
+  font-weight: bold;
+}
+
+#cmrvvfdofb .gt_font_italic {
+  font-style: italic;
+}
+
+#cmrvvfdofb .gt_super {
+  font-size: 65%;
+}
+
+#cmrvvfdofb .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#cmrvvfdofb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cmrvvfdofb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cmrvvfdofb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cmrvvfdofb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cmrvvfdofb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cmrvvfdofb .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Beta&lt;/strong&gt;"><strong>Beta</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;95% CI&lt;/strong&gt;&lt;sup class=&quot;gt_footnote_marks&quot;&gt;1&lt;/sup&gt;"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;p-value&lt;/strong&gt;"><strong>p-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">sex</td>
+<td headers="estimate" class="gt_row gt_center"></td>
+<td headers="ci" class="gt_row gt_center"></td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    female</td>
+<td headers="estimate" class="gt_row gt_center">—</td>
+<td headers="ci" class="gt_row gt_center">—</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    male</td>
+<td headers="estimate" class="gt_row gt_center">3.7</td>
+<td headers="ci" class="gt_row gt_center">3.2, 4.2</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">year</td>
+<td headers="estimate" class="gt_row gt_center">0.32</td>
+<td headers="ci" class="gt_row gt_center">0.02, 0.63</td>
+<td headers="p.value" class="gt_row gt_center">0.039</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">species</td>
+<td headers="estimate" class="gt_row gt_center"></td>
+<td headers="ci" class="gt_row gt_center"></td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Adelie</td>
+<td headers="estimate" class="gt_row gt_center">—</td>
+<td headers="ci" class="gt_row gt_center">—</td>
+<td headers="p.value" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Chinstrap</td>
+<td headers="estimate" class="gt_row gt_center">10</td>
+<td headers="ci" class="gt_row gt_center">9.4, 11</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Gentoo</td>
+<td headers="estimate" class="gt_row gt_center">8.7</td>
+<td headers="ci" class="gt_row gt_center">8.1, 9.3</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"><sup class="gt_footnote_marks">1</sup> CI = Confidence Interval</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
 
 </div>
 </div>

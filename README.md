@@ -1,4 +1,4 @@
-Welcome! 
+# Welcome! 
 
 This is an in-development draft of a reference manual for training new biostatistics graduate research assistants (GRAs). The objective of this manual is to equip new biostatistics GRAs to produce readable, rigorous, and reproducible results. Topics covered include: 
 
@@ -15,5 +15,5 @@ Although the main objective pertains to biostatistics/biostatisticians, some pri
 
 The author, T. K. Peter,  is a master's level biostatistician working at the [University of Iowa College of Dentistry](https://dentistry.uiowa.edu/research/biostatistics-and-computational-biology), and a PhD candidate studying with [Prof. Patrick Breheny](https://myweb.uiowa.edu/pbreheny/) in the [University of Iowa College of Public Health](https://www.public-health.uiowa.edu/). 
 
-This reference manual is being written using R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+This reference manual is being written using R Markdown and [bookdown](https://github.com/rstudio/bookdown). 
 

@@ -26,7 +26,7 @@ With this tension in mind, the goal of this reference manual is to 1) outline so
 
 This is a reference manual, not a textbook. As such, my philosophy in writing this is to summarize the most helpful things I have learned in a way that is conducive to quick review. The chapters that are titled after broad areas of research (e.g., 'survival analysis') contain more links than new content. I assume throughout this writing that the readers are either familiar with foundational statistical concepts or are currently in courses that are teaching those concepts. 
 
-## Acronymns 
+## Acronymns {#acronyms}
 
 Throughout this work, I use the following acronyms: 
 
@@ -37,6 +37,7 @@ Throughout this work, I use the following acronyms:
   - **HPC**: High performance computing 
   - **SAS**: [Statistical Analysis System](https://en.wikipedia.org/wiki/SAS_(software)) software
   - **GWAS**: Genome-wide association study 
+  - **QC**: quality control 
 
 ## Working with the garage door open 
 

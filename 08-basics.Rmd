@@ -4,7 +4,7 @@ The most basic statistical analyses for a GRA to use are t-tests, analysis of va
 
 ## t-tests & ANOVA
 
-Many t-test and ANOVA results can be implemented by the same functions I've suggested for creating [summary tables](#tables) 
+Many t-test and ANOVA results can be implemented by the same functions I've suggested for creating [summary tables](#tables). 
 
 
 ### Assumptions/diagnostics 
@@ -32,17 +32,103 @@ As the [regression diagnostics page](https://sphweb.bumc.bu.edu/otlt/MPH-Modules
 
 When using a linear model, here are the diagnostics you should check: 
 
-  1. Check the linearity assumption: make a plot of the residuals $\textbf{r}$ versus the fitted values $\hat Y$. If this assumption holds, you should see a horizontal line without a distinct pattern. Patterns like a cone-shape or a curve are red flags. 
+  1. Check the linearity assumption: make a plot of the residuals $\textbf{r}$ versus the fitted values $\hat{\mathbf{Y}}$. If this assumption holds, you should see a horizontal line without a distinct pattern. Patterns like a cone-shape or a curve are red flags.  
   
-  2. Check the normality assumption: Make a QQ plot of the residuals using `qqnorm` and `qqline`. If the normality assumption is reasonable, the points should fall on the diagonal line drawn by `qqline`. You could also make a histogram of the residuals and see if the histogram has a bell-curve shape. 
+  2. Check the normality assumption: Make a QQ plot of the residuals using `qqnorm` and `qqline`. If the normality assumption is reasonable, the points should fall on the diagonal line drawn by `qqline`. You could also make a histogram of the residuals and see if the histogram has a bell-curve shape. **Note**: plotting the observed outcomes $Y$ is *not* the same as checking this assumption. The linearity assumption pertains to the residuals being bell-curve shaped, not the observed outcome values. 
   
   3. Check the heteroskedasticity assumption: Plot the standardized residuals versus the fitted values (this is a scale-location plot). You want to see no pattern here; if you notice a curved or cone-shaped pattern, that's a red flag. 
   
   4. Check for outliers and high leverage points: [Cooks distance](https://en.wikipedia.org/wiki/Cook%27s_distance) is a metric for identifying influential points. You can calculate this in `R` using `cooks.distance()`, which is one of several functions provided in the `stats` package for assessing influence. See `?influence.measures` for details. 
+  
+  5. It is a good idea to check for [multicollinearity](https://en.wikipedia.org/wiki/Multicollinearity) -- to do this, you can start by estimating the [variance inflation factor](https://en.wikipedia.org/wiki/Variance_inflation_factor) (VIF) values for each parameter in your model using the `vif` function from the `car` package. Rule of thumb: if any VIF values are greater than 10, the degree of multicollinearity in your model is causing your estimates to suffer. To deal with highly correlated values, you can try any of the following: 
 
+1. Where there are two or more variables that are measuring the same thing, narrow down the model to include just one of these variables. 
+    
+2. Try [ridge regression](https://myweb.uiowa.edu/pbreheny/7240/s23/notes/2-02.pdf)
+    
 
 ### Examples: 
 
   - This article on [STHDA](http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/) gives some examples of residual plots in `R`. 
 
 ### R code tips 
+
+This extended example shows how I fit a model, check diagnostics, and deal with multicollinearity: 
+
+```{r}
+library(palmerpenguins) # example data 'penguins' 
+library(car) # has vif() function 
+library(gtsummary) # to summarize model estimates 
+
+# fit a regression model 
+fit <- lm(body_mass_g ~ .,
+          data = penguins) 
+
+# examine results 
+fit |> 
+  tbl_regression() |> 
+  bold_labels()
+
+
+# take note: some of these confidence intervals are ~super~ wide
+
+```
+
+```{r}
+# check assumptions (this gives me 4 plots): 
+par(mfrow=c(2,2))
+plot(fit) 
+
+```
+
+Notes from diagnostic plots: 
+
+  - first plot checks linearity -- looks good 
+  - second plot checks normality -- beautiful 
+  - third plot checks heteroskedasticity - no evidence of an issue here
+  - 4th plot checks for outliers/leverage -- looks like we do have a couple of outliers. Will proceed with caution...  
+
+
+```{r}
+# check for multicollinearity: 
+car::vif(fit) 
+
+```
+
+Note: Very high VIF for species. Flipper length also has a moderately high VIF
+
+```{r}
+# visualize correlations: 
+library(corrplot) # Love this package 
+# to assess correlations between variables, use the design matrix X: 
+X <- model.matrix(fit)[,-1]
+corrplot(corr = cor(X)) 
+
+```
+
+Now we see the problem: there are notable correlations between species and several other variables. Suppose the research question involves comparing the species of penguins, e.g., "We aim to assess whether/how body mass (measured in grams) varies between penguins of three species: the Adelie, the Chinstrap, and the Gentoo." In this kind of context, the bill length and flipper length variables are not directly related to the research question. Also, 'island' seems to be capturing the same information as 'speciess.' In this case, I would eliminate these redundant variables from the model and create a reduced fit: 
+
+```{r}
+fit_reduc <- lm(body_mass_g ~ species + sex + year, 
+                data = penguins)
+
+fit_reduc |> 
+  tbl_regression() |> 
+  bold_labels()
+
+# TODO: Pick up here! 
+```
+
+
+- `gtsummary` can summarize a regression model in a pretty table. Example: 
+
+```{r}
+# using our penguins data again...
+fit2 <- lm(bill_length_mm ~ sex + year + species, data = penguins)
+
+fit2 |> 
+  tbl_regression() |> 
+  bold_labels()
+  
+```
+
