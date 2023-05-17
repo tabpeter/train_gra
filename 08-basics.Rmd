@@ -106,29 +106,50 @@ corrplot(corr = cor(X))
 
 ```
 
-Now we see the problem: there are notable correlations between species and several other variables. Suppose the research question involves comparing the species of penguins, e.g., "We aim to assess whether/how body mass (measured in grams) varies between penguins of three species: the Adelie, the Chinstrap, and the Gentoo." In this kind of context, the bill length and flipper length variables are not directly related to the research question. Also, 'island' seems to be capturing the same information as 'speciess.' In this case, I would eliminate these redundant variables from the model and create a reduced fit: 
+Now we see the problem: there are notable correlations between species and several other variables. Suppose the research question involves comparing the species of penguins, e.g., "We aim to assess whether/how body mass (measured in grams) varies between penguins of three species: the Adelie, the Chinstrap, and the Gentoo." In this kind of context, the bill depth and flipper length variables are not directly related to the research question. Also, 'island' seems to be capturing the same information as 'species.' In this case, I would eliminate these redundant variables from the model and create a reduced fit: 
+
+**WARNING**: From this point on, the example is in-development. I have not yet gotten what follows to a level where I would share it with a new GRA. 
 
 ```{r}
-fit_reduc <- lm(body_mass_g ~ species + sex + year, 
+fit_reduc <- lm(body_mass_g ~ species + bill_length_mm + sex + year, 
                 data = penguins)
 
 fit_reduc |> 
   tbl_regression() |> 
   bold_labels()
-
-# TODO: Pick up here! 
 ```
 
-
-- `gtsummary` can summarize a regression model in a pretty table. Example: 
+Notice that the revised model has a much more reasonable confidence interval for 'species', and the coefficient representing the impact of 'Chinstrap' species is no longer significant. However, using the [AIC](https://en.wikipedia.org/wiki/Akaike_information_criterion) to assess model fit, we see that our reduced model does not fit our data as well as the model with all the coefficients: 
 
 ```{r}
-# using our penguins data again...
-fit2 <- lm(bill_length_mm ~ sex + year + species, data = penguins)
-
-fit2 |> 
-  tbl_regression() |> 
-  bold_labels()
-  
+# AIC: lower is better
+AIC(fit); AIC(fit_reduc)
 ```
+
+A better approach may be using ridge regression: 
+
+```{r}
+library(hdrm) # for ridge() function 
+library(knitr) # for kable() function 
+
+# fit model with lambda sequence 
+fit_ridge <- ridge(body_mass_g ~ species + bill_length_mm + sex + year,
+          data = penguins) 
+# look at results 
+plot(fit_ridge)
+# choose lambda that minimizes GCV
+bestlam <- fit_ridge$lambda[which.min(fit_ridge$GCV)]
+# re-fit model at best lambda 
+fit_ridge <- ridge(body_mass_g ~ .,
+                   data = penguins,
+                   lambda = bestlam)
+# summarize results (no gtsummary function for this, so I build my own table)
+res_ridge <- data.frame(OR = exp(coef(fit_ridge)),
+                        exp(confint(fit_ridge)),
+                        p = summary(fit_ridge)[,"p"])
+
+kable(res_ridge)
+```
+
+
 

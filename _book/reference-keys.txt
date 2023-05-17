@@ -81,3 +81,7 @@ command-line-tools
 geographic-gis-data-analysis
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
 acronyms
+tab:unnamed-chunk-3
+tab:unnamed-chunk-2
+tips
+extended-example

@@ -41,7 +41,7 @@ Throughout this work, I use the following acronyms:
 
 ## Working with the garage door open 
 
-This manual is not nearly complete! I am writing this as I work my way through my own program, making notes as I go. This is in the spirit of [working with the garage door open](https://notes.andymatuschak.org/About_these_notes?stackedNotes=z21cgR9K3UcQ5a7yPsj2RUim3oM2TzdBByZu), an approach to learning that really resonates with me. 
+This manual is a work in progress. I am writing this as I work my way through my own program, making notes as I go. This is in the spirit of [working with the garage door open](https://notes.andymatuschak.org/About_these_notes?stackedNotes=z21cgR9K3UcQ5a7yPsj2RUim3oM2TzdBByZu), an approach to learning that really resonates with me. 
 
 If you think of a reference that you'd like to see included, open a GitHub issue or make a pull request to let me know. 
 

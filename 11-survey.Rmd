@@ -1,8 +1,82 @@
 # Survey data analysis 
 
+One of my more recent projects has involved working with the [UI Public Policy Center](https://ppc.uiowa.edu/) to study data from the [Pregnancy Risk Assessment and Monitoring System (PRAMS)](https://www.cdc.gov/prams/index.htm). PRAMS contains survey data from participants across the US and its territories. The data I have are a subset of PRAMS that describes participants from specific years who used Medicaid during their pregnancies. 
+
+I will give an overview of the tools and tips I have found helpful as I have worked with survey data 
+
 ## Tools for analyzing survey data
 
   - The [survey R package](https://cran.r-project.org/web/packages/survey/index.html) is the classic tool for this type of analysis. 
 
-  - The [srvyr R package](https://cran.r-project.org/web/packages/srvyr/vignettes/srvyr-vs-survey.html) offers `tidyverse` syntax of the `survey` package functions 
+  - The [srvyr R package](https://cran.r-project.org/web/packages/srvyr/vignettes/srvyr-vs-survey.html) offers `tidyverse` syntax of the `survey` package functions - this was so helpful for subsetting and transforming the data to fit my research objective. 
   
+  - The [svydiags R package](https://cran.r-project.org/web/packages/svydiags/index.html) offers several functions for model diagnostics with survey data 
+  
+  
+## Tips 
+
+  1. Whenever you subset the data from a survey, you must always consider the survey weights! In R, create a `svy.design` object *before* you subset. 
+  
+  2. The `gtsummary` package has functions that are designed to present results from a survey - take advantage of this when making tables 
+  
+  3. Acronymn to know: "FPC" = **f**inite **p**opulation **c**orrection. This is a common variable included in survey data -- if you have this, you should use it when you create your 'design' object in `R`. 
+  
+  
+## Quick demo
+
+Suppose our research question pertains to the academic performance index (api) of elementary schools. Using the `apipop` data from the `survey` package, we will investigate this question. 
+
+```{r, message=FALSE, comment=""}
+library(survey)
+library(srvyr)
+
+data(api) # data from survey package
+
+# first, create a 'design' object 
+api_design <- apistrat |> 
+  as_survey_design(ids = 0, # if there was a clustering variable, it'd go here
+                   strata = stype, # stratification variable 
+                   fpc = fpc, # finite population correction 
+                   weights = pw # survey weights 
+                   )
+
+```
+
+After creating a 'design' object, I can filter down to a subset of interest. Supposing I am interested in schools from LA county, I can examine the api of students in LA county alone:
+
+```{r, message=FALSE, comment=""}
+# look at LA county only 
+la <- api_design |> 
+  filter(cname == "Los Angeles")
+
+# summary table & bivariate tests 
+library(gtsummary)
+interest_vars <- c("pcttest", "both", "meals", "ell", "yr.rnd", "mobility",
+                   "avg.ed", "full","enroll", "api.stu")
+tbl_svysummary(la, 
+               # include only select variables in the table
+               include = all_of(interest_vars),
+               by = "both", 
+               type = list(all_dichotomous() ~ "categorical")) |> 
+  # formatting 
+  bold_labels() |> 
+  # tests
+  add_p(test = list(all_categorical() ~ "svy.chisq.test",
+                    all_continuous() ~ "svy.t.test"))
+  # NB: survey-specific tests available; these tests incorporate/adjust for 
+  #   survey weights 
+
+```
+
+I can also summarize a multivariate model: 
+
+```{r, message=FALSE, comment=""}
+lhs <- paste(interest_vars, collapse="+") # lhs = left hand side (of equation)
+rhs <- paste0("api99~", lhs)
+
+fit <- lm(as.formula(rhs),
+          data = apistrat)
+
+tbl_regression(fit) |> bold_labels()
+```
+
