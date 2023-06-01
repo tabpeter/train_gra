@@ -1,0 +1,37 @@
+# Data processing and preparation 
+
+One of the most challenging aspects of a project can be preparing the data for analysis. In real life, our data seldom looks like something from `mtcars`: 
+
+
+```{r}
+knitr::kable(
+  head(mtcars[, 1:8], 10),
+  booktabs = TRUE,
+  caption = 'Canonical example of clean data'
+)
+```
+
+
+Instead, I often receive data that looks like this: 
+
+
+![An example adapted from real unprocessed data](img/unprocessed_data.png)
+
+Instead of Google searching how to handle each step of processing data like this, this chapter will offer a step-by-step outline of the whole game. I will show you what packages and strategies I used to prepare these data for analysis in R. 
+
+## Start with a sketch 
+
+When I need to process raw data, I like to begin by sketching ... 
+
+
+## Reading in the data 
+
+
+
+## Making data 'square' 
+
+
+## Making data 'long form' 
+
+
+

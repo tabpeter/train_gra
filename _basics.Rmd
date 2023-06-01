@@ -1,4 +1,4 @@
-# The basics: t-tests, ANOVA, and linear regression
+# T-tests, ANOVA, and Linear Regression 
 
 The most basic statistical analyses for a GRA to use are t-tests, analysis of variance, and linear regression. Here are some tips and references for getting started using any of these tools: 
 
@@ -12,6 +12,7 @@ Many t-test and ANOVA results can be implemented by the same functions I've sugg
 
 ### Examples: 
 
+[This new online course](https://bookdown.org/tpinto_home/regression_modelling_for_biostatistics_1/) seems to have a lot of code and examples pertaining to foundational biostatistics concepts and applications.
 
 ### R code tips 
 

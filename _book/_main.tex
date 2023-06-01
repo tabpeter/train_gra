@@ -124,7 +124,7 @@
 \makeatother
 \subtitle{Towards readable, rigorous, and reproducible results}
 \author{T. K. Peter}
-\date{2023-05-12}
+\date{2023-06-01}
 
 \begin{document}
 \maketitle
@@ -147,8 +147,8 @@ With this tension in mind, the goal of this reference manual is to 1) outline so
 
 This is a reference manual, not a textbook. As such, my philosophy in writing this is to summarize the most helpful things I have learned in a way that is conducive to quick review. The chapters that are titled after broad areas of research (e.g., `survival analysis') contain more links than new content. I assume throughout this writing that the readers are either familiar with foundational statistical concepts or are currently in courses that are teaching those concepts.
 
-\hypertarget{acronymns}{%
-\section{Acronymns}\label{acronymns}}
+\hypertarget{acronyms}{%
+\section{Acronymns}\label{acronyms}}
 
 Throughout this work, I use the following acronyms:
 
@@ -168,12 +168,14 @@ Throughout this work, I use the following acronyms:
   \textbf{SAS}: \href{https://en.wikipedia.org/wiki/SAS_(software)}{Statistical Analysis System} software
 \item
   \textbf{GWAS}: Genome-wide association study
+\item
+  \textbf{QC}: quality control
 \end{itemize}
 
 \hypertarget{working-with-the-garage-door-open}{%
 \section{Working with the garage door open}\label{working-with-the-garage-door-open}}
 
-This manual is not nearly complete! I am writing this as I work my way through my own program, making notes as I go. This is in the spirit of \href{https://notes.andymatuschak.org/About_these_notes?stackedNotes=z21cgR9K3UcQ5a7yPsj2RUim3oM2TzdBByZu}{working with the garage door open}, an approach to learning that really resonates with me.
+This manual is a work in progress. I am writing this as I work my way through my own program, making notes as I go. This is in the spirit of \href{https://notes.andymatuschak.org/About_these_notes?stackedNotes=z21cgR9K3UcQ5a7yPsj2RUim3oM2TzdBByZu}{working with the garage door open}, an approach to learning that really resonates with me.
 
 If you think of a reference that you'd like to see included, open a GitHub issue or make a pull request to let me know.
 
@@ -849,70 +851,67 @@ A presentation is effective when everyone in the audience learns something. With
   \href{https://github.com/tabpeter/ui_latex}{University of Iowa Beamer slides template}. This template is UI specific, and the color schemes stay within the guidelines of the \href{https://brand.uiowa.edu/color}{UI brand manual}.
 \end{itemize}
 
-\hypertarget{the-basics-t-tests-anova-and-linear-regression}{%
-\chapter{The basics: t-tests, ANOVA, and linear regression}\label{the-basics-t-tests-anova-and-linear-regression}}
+\hypertarget{data-processing-and-preparation}{%
+\chapter{Data processing and preparation}\label{data-processing-and-preparation}}
 
-The most basic statistical analyses for a GRA to use are t-tests, analysis of variance, and linear regression. Here are some tips and references for getting started using any of these tools:
+One of the most challenging aspects of a project can be preparing the data for analysis. In real life, our data seldom looks like something from \texttt{mtcars}:
 
-\hypertarget{t-tests-anova}{%
-\section{t-tests \& ANOVA}\label{t-tests-anova}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
+  \FunctionTok{head}\NormalTok{(mtcars[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{], }\DecValTok{10}\NormalTok{),}
+  \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{caption =} \StringTok{\textquotesingle{}Canonical example of clean data\textquotesingle{}}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Many t-test and ANOVA results can be implemented by the same functions I've suggested for creating \protect\hyperlink{tables}{summary tables}
+\begin{table}
 
-\hypertarget{assumptionsdiagnostics}{%
-\subsection{Assumptions/diagnostics}\label{assumptionsdiagnostics}}
+\caption{\label{tab:unnamed-chunk-6}Canonical example of clean data}
+\centering
+\begin{tabular}[t]{lrrrrrrrr}
+\toprule
+  & mpg & cyl & disp & hp & drat & wt & qsec & vs\\
+\midrule
+Mazda RX4 & 21.0 & 6 & 160.0 & 110 & 3.90 & 2.620 & 16.46 & 0\\
+Mazda RX4 Wag & 21.0 & 6 & 160.0 & 110 & 3.90 & 2.875 & 17.02 & 0\\
+Datsun 710 & 22.8 & 4 & 108.0 & 93 & 3.85 & 2.320 & 18.61 & 1\\
+Hornet 4 Drive & 21.4 & 6 & 258.0 & 110 & 3.08 & 3.215 & 19.44 & 1\\
+Hornet Sportabout & 18.7 & 8 & 360.0 & 175 & 3.15 & 3.440 & 17.02 & 0\\
+\addlinespace
+Valiant & 18.1 & 6 & 225.0 & 105 & 2.76 & 3.460 & 20.22 & 1\\
+Duster 360 & 14.3 & 8 & 360.0 & 245 & 3.21 & 3.570 & 15.84 & 0\\
+Merc 240D & 24.4 & 4 & 146.7 & 62 & 3.69 & 3.190 & 20.00 & 1\\
+Merc 230 & 22.8 & 4 & 140.8 & 95 & 3.92 & 3.150 & 22.90 & 1\\
+Merc 280 & 19.2 & 6 & 167.6 & 123 & 3.92 & 3.440 & 18.30 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\hypertarget{examples}{%
-\subsection{Examples:}\label{examples}}
+Instead, I often receive data that looks like this:
 
-\hypertarget{r-code-tips}{%
-\subsection{R code tips}\label{r-code-tips}}
+\begin{figure}
+\centering
+\includegraphics{img/unprocessed_data.png}
+\caption{An example adapted from real unprocessed data}
+\end{figure}
 
-\hypertarget{linear-regression}{%
-\section{Linear regression}\label{linear-regression}}
+Instead of Google searching how to handle each step of processing data like this, this chapter will offer a step-by-step outline of the whole game. I will show you what packages and strategies I used to prepare these data for analysis in R.
 
-\hypertarget{assumptionsdiagnostics-1}{%
-\subsection{Assumptions/diagnostics}\label{assumptionsdiagnostics-1}}
+\hypertarget{start-with-a-sketch}{%
+\section{Start with a sketch}\label{start-with-a-sketch}}
 
-As the \href{https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/R/R5_Correlation-Regression/R5_Correlation-Regression7.html}{regression diagnostics page} at Boston University explains, there are 4 key assumptions in linear regression:
+When I need to process raw data, I like to begin by sketching \ldots{}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{Linearity}: the data \(X\) are in a linear relationship with the mean of the outcome \(\hat Y\)
-\item
-  \textbf{Homoskedasticity}: The variance of the residual \(\sigma^2\) is the same for all observations of \(X\).
-\item
-  \textbf{Independence}: For all observations \(i\) and \(j\), \(i \perp j\).
-\item
-  \textbf{Normality}: The residuals \(\textbf{r} \equiv Y - X\beta\) are distributed normally.
-\end{enumerate}
+\hypertarget{reading-in-the-data}{%
+\section{Reading in the data}\label{reading-in-the-data}}
 
-When using a linear model, here are the diagnostics you should check:
+\hypertarget{making-data-square}{%
+\section{Making data `square'}\label{making-data-square}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Check the linearity assumption: make a plot of the residuals \(\textbf{r}\) versus the fitted values \(\hat Y\). If this assumption holds, you should see a horizontal line without a distinct pattern. Patterns like a cone-shape or a curve are red flags.
-\item
-  Check the normality assumption: Make a QQ plot of the residuals using \texttt{qqnorm} and \texttt{qqline}. If the normality assumption is reasonable, the points should fall on the diagonal line drawn by \texttt{qqline}. You could also make a histogram of the residuals and see if the histogram has a bell-curve shape.
-\item
-  Check the heteroskedasticity assumption: Plot the standardized residuals versus the fitted values (this is a scale-location plot). You want to see no pattern here; if you notice a curved or cone-shaped pattern, that's a red flag.
-\item
-  Check for outliers and high leverage points: \href{https://en.wikipedia.org/wiki/Cook\%27s_distance}{Cooks distance} is a metric for identifying influential points. You can calculate this in \texttt{R} using \texttt{cooks.distance()}, which is one of several functions provided in the \texttt{stats} package for assessing influence. See \texttt{?influence.measures} for details.
-\end{enumerate}
-
-\hypertarget{examples-1}{%
-\subsection{Examples:}\label{examples-1}}
-
-\begin{itemize}
-\tightlist
-\item
-  This article on \href{http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/}{STHDA} gives some examples of residual plots in \texttt{R}.
-\end{itemize}
-
-\hypertarget{r-code-tips-1}{%
-\subsection{R code tips}\label{r-code-tips-1}}
+\hypertarget{making-data-long-form}{%
+\section{Making data `long form'}\label{making-data-long-form}}
 
 \hypertarget{power-and-sample-size-calculations}{%
 \chapter{Power and sample size calculations}\label{power-and-sample-size-calculations}}
@@ -1070,13 +1069,13 @@ The most-used methods in survival analysis are the \emph{log-rank test} and the 
 
 {[}ADD A WORD BANK HERE{]}
 
-\hypertarget{assumptionsdiagnostics-2}{%
-\section{Assumptions/diagnostics}\label{assumptionsdiagnostics-2}}
+\hypertarget{assumptionsdiagnostics}{%
+\section{Assumptions/diagnostics}\label{assumptionsdiagnostics}}
 
 {[}ADD INFO HERE{]}
 
-\hypertarget{examples-2}{%
-\section{Examples:}\label{examples-2}}
+\hypertarget{examples}{%
+\section{Examples:}\label{examples}}
 
 \begin{itemize}
 \item
@@ -1087,8 +1086,8 @@ The most-used methods in survival analysis are the \emph{log-rank test} and the 
   Industry/manufacturing: Suppose there are four machines on a factor floor, two from brand A and two from brand B. The time until next malfunction could be used to compare the two brands of machines.
 \end{itemize}
 
-\hypertarget{r-code-tips-2}{%
-\section{R code tips}\label{r-code-tips-2}}
+\hypertarget{r-code-tips}{%
+\section{R code tips}\label{r-code-tips}}
 
 Packages to know about:
 
@@ -1113,6 +1112,10 @@ Packages to know about:
 \hypertarget{survey-data-analysis}{%
 \chapter{Survey data analysis}\label{survey-data-analysis}}
 
+One of my more recent projects has involved working with the \href{https://ppc.uiowa.edu/}{UI Public Policy Center} to study data from the \href{https://www.cdc.gov/prams/index.htm}{Pregnancy Risk Assessment and Monitoring System (PRAMS)}. PRAMS contains survey data from participants across the US and its territories. The data I have are a subset of PRAMS that describes participants from specific years who used Medicaid during their pregnancies.
+
+I will give an overview of the tools and tips I have found helpful as I have worked with survey data
+
 \hypertarget{tools-for-analyzing-survey-data}{%
 \section{Tools for analyzing survey data}\label{tools-for-analyzing-survey-data}}
 
@@ -1120,8 +1123,153 @@ Packages to know about:
 \item
   The \href{https://cran.r-project.org/web/packages/survey/index.html}{survey R package} is the classic tool for this type of analysis.
 \item
-  The \href{https://cran.r-project.org/web/packages/srvyr/vignettes/srvyr-vs-survey.html}{srvyr R package} offers \texttt{tidyverse} syntax of the \texttt{survey} package functions
+  The \href{https://cran.r-project.org/web/packages/srvyr/vignettes/srvyr-vs-survey.html}{srvyr R package} offers \texttt{tidyverse} syntax of the \texttt{survey} package functions - this was so helpful for subsetting and transforming the data to fit my research objective.
+\item
+  The \href{https://cran.r-project.org/web/packages/svydiags/index.html}{svydiags R package} offers several functions for model diagnostics with survey data
 \end{itemize}
+
+\hypertarget{tips}{%
+\section{Tips}\label{tips}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Whenever you subset the data from a survey, you must always consider the survey weights! In R, create a \texttt{svy.design} object \emph{before} you subset.
+\item
+  The \texttt{gtsummary} package has functions that are designed to present results from a survey - take advantage of this when making tables
+\item
+  Acronymn to know: ``FPC'' = \textbf{f}inite \textbf{p}opulation \textbf{c}orrection. This is a common variable included in survey data -- if you have this, you should use it when you create your `design' object in \texttt{R}.
+\end{enumerate}
+
+\hypertarget{quick-demo}{%
+\section{Quick demo}\label{quick-demo}}
+
+Suppose our research question pertains to the academic performance index (api) of elementary schools. Using the \texttt{apipop} data from the \texttt{survey} package, we will investigate this question.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(survey)}
+\FunctionTok{library}\NormalTok{(srvyr)}
+
+\FunctionTok{data}\NormalTok{(api) }\CommentTok{\# data from survey package}
+
+\CommentTok{\# first, create a \textquotesingle{}design\textquotesingle{} object }
+\NormalTok{api\_design }\OtherTok{\textless{}{-}}\NormalTok{ apistrat }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{as\_survey\_design}\NormalTok{(}\AttributeTok{ids =} \DecValTok{0}\NormalTok{, }\CommentTok{\# if there was a clustering variable, it\textquotesingle{}d go here}
+                   \AttributeTok{strata =}\NormalTok{ stype, }\CommentTok{\# stratification variable }
+                   \AttributeTok{fpc =}\NormalTok{ fpc, }\CommentTok{\# finite population correction }
+                   \AttributeTok{weights =}\NormalTok{ pw }\CommentTok{\# survey weights }
+\NormalTok{                   )}
+\end{Highlighting}
+\end{Shaded}
+
+After creating a `design' object, I can filter down to a subset of interest. Supposing I am interested in schools from LA county, I can examine the api of students in LA county alone:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# look at LA county only }
+\NormalTok{la }\OtherTok{\textless{}{-}}\NormalTok{ api\_design }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{filter}\NormalTok{(cname }\SpecialCharTok{==} \StringTok{"Los Angeles"}\NormalTok{)}
+
+\CommentTok{\# summary table \& bivariate tests }
+\FunctionTok{library}\NormalTok{(gtsummary)}
+\NormalTok{interest\_vars }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"pcttest"}\NormalTok{, }\StringTok{"both"}\NormalTok{, }\StringTok{"meals"}\NormalTok{, }\StringTok{"ell"}\NormalTok{, }\StringTok{"yr.rnd"}\NormalTok{, }\StringTok{"mobility"}\NormalTok{,}
+                   \StringTok{"avg.ed"}\NormalTok{, }\StringTok{"full"}\NormalTok{,}\StringTok{"enroll"}\NormalTok{, }\StringTok{"api.stu"}\NormalTok{)}
+\FunctionTok{tbl\_svysummary}\NormalTok{(la, }
+               \CommentTok{\# include only select variables in the table}
+               \AttributeTok{include =} \FunctionTok{all\_of}\NormalTok{(interest\_vars),}
+               \AttributeTok{by =} \StringTok{"both"}\NormalTok{, }
+               \AttributeTok{type =} \FunctionTok{list}\NormalTok{(}\FunctionTok{all\_dichotomous}\NormalTok{() }\SpecialCharTok{\textasciitilde{}} \StringTok{"categorical"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
+  \CommentTok{\# formatting }
+  \FunctionTok{bold\_labels}\NormalTok{() }\SpecialCharTok{|\textgreater{}} 
+  \CommentTok{\# tests}
+  \FunctionTok{add\_p}\NormalTok{(}\AttributeTok{test =} \FunctionTok{list}\NormalTok{(}\FunctionTok{all\_categorical}\NormalTok{() }\SpecialCharTok{\textasciitilde{}} \StringTok{"svy.chisq.test"}\NormalTok{,}
+                    \FunctionTok{all\_continuous}\NormalTok{() }\SpecialCharTok{\textasciitilde{}} \StringTok{"svy.t.test"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|c|c|c}
+\hline
+**Characteristic** & **No**, N = 620 & **Yes**, N = 753 & **p-value**\\
+\hline
+\_\_pcttest\_\_ & 99 (97, 99) & 100 (99, 100) & 0.10\\
+\hline
+\_\_meals\_\_ & 72 (28, 93) & 60 (35, 82) & 0.8\\
+\hline
+\_\_ell\_\_ & 23 (10, 34) & 20 (7, 46) & 0.6\\
+\hline
+\_\_yr.rnd\_\_ &  &  & 0.067\\
+\hline
+No & 585 (94\%) & 576 (77\%) & \\
+\hline
+Yes & 35 (5.7\%) & 177 (23\%) & \\
+\hline
+\_\_mobility\_\_ & 16 (12, 19) & 19 (13, 23) & 0.11\\
+\hline
+\_\_avg.ed\_\_ & 2.52 (2.20, 3.27) & 2.74 (2.26, 3.35) & 0.6\\
+\hline
+\_\_full\_\_ & 76 (52, 85) & 74 (67, 87) & 0.2\\
+\hline
+\_\_enroll\_\_ & 446 (413, 936) & 401 (288, 673) & 0.056\\
+\hline
+\_\_api.stu\_\_ & 401 (325, 628) & 338 (257, 571) & 0.072\\
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# NB: survey{-}specific tests available; these tests incorporate/adjust for }
+  \CommentTok{\#   survey weights }
+\end{Highlighting}
+\end{Shaded}
+
+I can also summarize a multivariate model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lhs }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(interest\_vars, }\AttributeTok{collapse=}\StringTok{"+"}\NormalTok{) }\CommentTok{\# lhs = left hand side (of equation)}
+\NormalTok{rhs }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"api99\textasciitilde{}"}\NormalTok{, lhs)}
+
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{as.formula}\NormalTok{(rhs),}
+          \AttributeTok{data =}\NormalTok{ apistrat)}
+
+\FunctionTok{tbl\_regression}\NormalTok{(fit) }\SpecialCharTok{|\textgreater{}} \FunctionTok{bold\_labels}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|c|c|c}
+\hline
+**Characteristic** & **Beta** & **95\% CI** & **p-value**\\
+\hline
+\_\_pcttest\_\_ & 1.0 & -1.3, 3.3 & 0.4\\
+\hline
+\_\_both\_\_ &  &  & \\
+\hline
+No & — & — & \\
+\hline
+Yes & -3.2 & -21, 15 & 0.7\\
+\hline
+\_\_meals\_\_ & -1.6 & -2.2, -0.98 & <0.001\\
+\hline
+\_\_ell\_\_ & 0.13 & -0.51, 0.77 & 0.7\\
+\hline
+\_\_yr.rnd\_\_ &  &  & \\
+\hline
+No & — & — & \\
+\hline
+Yes & 2.6 & -27, 32 & 0.9\\
+\hline
+\_\_mobility\_\_ & -0.05 & -0.76, 0.66 & 0.9\\
+\hline
+\_\_avg.ed\_\_ & 87 & 65, 109 & <0.001\\
+\hline
+\_\_full\_\_ & 1.5 & 0.81, 2.2 & <0.001\\
+\hline
+\_\_enroll\_\_ & -0.07 & -0.13, 0.00 & 0.042\\
+\hline
+\_\_api.stu\_\_ & 0.04 & -0.03, 0.11 & 0.3\\
+\hline
+\end{tabular}
 
 \hypertarget{longitudinal-data-analysis}{%
 \chapter{Longitudinal data analysis}\label{longitudinal-data-analysis}}
@@ -1151,32 +1299,32 @@ Microbiome data analysis requires working with two separate subtypes of data: th
 \begin{itemize}
 \tightlist
 \item
-  \href{https://grunwaldlab.github.io/metacoder_documentation/}{metacoder} is an \texttt{R} package that is built on previous packages \href{https://peat-clark.github.io/BIO381/veganTutorial.html}{vegan} and \href{https://vaulot.github.io/tutorials/Phyloseq_tutorial.html\#phyloseq-r-library}{phyloseq}. All of these links include tutorials for working with taxonomic data.
+  \href{https://grunwaldlab.github.io/metacoder_documentation/}{metacoder} and \href{https://docs.ropensci.org/taxa/}{taxa} are \texttt{R} packages built on previous packages \href{https://peat-clark.github.io/BIO381/veganTutorial.html}{vegan} and \href{https://vaulot.github.io/tutorials/Phyloseq_tutorial.html\#phyloseq-r-library}{phyloseq}. All of these links include tutorials for working with taxonomic data.
 \end{itemize}
 
 \hypertarget{genetics-gwas-data-analysis}{%
 \chapter{Genetics (GWAS) data analysis}\label{genetics-gwas-data-analysis}}
 
-The rate at which new tools for GWAS data analysis are created is mind-boggling. It seems like a new paper in this area comes out each week -- which makes it a challenge to summarize the tools available for working in this area. With this in mind, consider the set of tools and tips provided here as select suggesions from my own experience rather than an exhaustive list.
+The rate at which new tools for GWAS data analysis are created is mind-boggling. It seems like a new paper in this area comes out each week -- which makes it a challenge to summarize the tools available for working in this area. With this in mind, consider the set of tools and tips provided here as select suggestions from my own experience rather than an exhaustive list.
 
 \hypertarget{r-packages}{%
 \section{R packages}\label{r-packages}}
 
 \begin{itemize}
 \item
-  \href{}{bigsnpr}
+  \href{https://privefl.github.io/bigsnpr/index.html}{bigsnpr} - a relatively new package that offers functions for manipulating PLINK data files, doing \protect\hyperlink{acronyms}{QC} and relatedness/imputation, pruning/clumping and correlation analysis, and calculation of polygenic scores. Functions for basic marginal association analysis are also available.
 \item
-  \href{}{snpStats}
+  \href{https://www.bioconductor.org/packages/release/bioc/html/snpStats.html}{snpStats} - an older, widely-used Bioconductor package that has functions for doing QC, imputation, and marginal association analysis. Note: this package is not as memory efficient as \texttt{bigsnpr}.
 \item
-  \href{}{ncvreg}
+  \href{https://pbreheny.github.io/ncvreg/}{ncvreg} - a newer package that implements penalized regression models for high dimensional data. TL;DR: this package will allow you to analyze SNPs (or whatever the features of the data are) \emph{jointly}, taking into account the relationships between them. This is in stark contrast to the marginal (one-feature-at-a-time) approaches that are widely used. A note for the stats nerds: unlike the popular \href{https://glmnet.stanford.edu/articles/glmnet.html\#:~:text=Glmnet\%20is\%20a\%20package\%20that,for\%20the\%20regularization\%20parameter\%20lambda.}{glmnet} package, \texttt{ncvreg} offers non-convex penalties in addition to the lasso.
 \item
-  \href{}{penalizedLMM}
+  \href{https://areisett.github.io/penalizedLMM/}{penalizedLMM} - an in-development package for joint analysis of features in contexts where the data are structured (e.g., admixed populations, family-based GWAS data, etc.). This package has contributions from several of \href{https://myweb.uiowa.edu/pbreheny/students.html}{Patrick Breheny's doc students} (including me).
 \item
-  \href{}{qqman}
+  \href{https://cran.r-project.org/web/packages/qqman/}{qqman} - a package for creating QQ plots and Manhattan plots from GWAS analysis results.
 \item
-  \href{}{CMplot}
+  \href{https://github.com/YinLiLin/CMplot}{CMplot} - a package for creating `fancy' QQ plots and Manhattan plots, including those that are circular. This package offers many customization options for annotation these plots.
 \item
-  \href{}{PLACO}: this isn't a `package' per se, but this method for assessing pleiotropy between traits is implemented in \texttt{R}.
+  \href{https://github.com/RayDebashree/PLACO}{PLACO}: this isn't a `package' \emph{per se}, but this method for assessing pleiotropy between traits is implemented in \texttt{R}.
 \end{itemize}
 
 \hypertarget{command-line-tools}{%
@@ -1184,13 +1332,153 @@ The rate at which new tools for GWAS data analysis are created is mind-boggling.
 
 \begin{itemize}
 \item
-  \href{}{PLINK}
+  \href{https://www.cog-genomics.org/plink/1.9/}{PLINK}
 \item
-  \href{}{LDSC}
+  \href{https://github.com/bulik/ldsc/wiki/Heritability-and-Genetic-Correlation}{LDSC}
 \end{itemize}
 
 \hypertarget{geographic-gis-data-analysis}{%
 \chapter{Geographic (GIS) data analysis}\label{geographic-gis-data-analysis}}
+
+In a couple of my projects, I have had the opportunity to visualize data using maps at the county level. Here is an example of the sort of maps I have made, using some simulated data.
+
+Suppose that a PI wants to study access to care through teledentistry. The specific research question is something like, ``in a population of patients treated at my dental clinic from January 2021 - May 2023, what were the patterns in the relationships between 1) the distance traveled to the clinic, 2) the mode of the intake exam (in-person or virtual), and 3) treatment completion within 6 months (yes or no). Suppose further that I (the analyst) have access to the county in which each person lives, in addition to the clinical information relevant to our research in the electronic dental records.
+
+The first thing I would do is look online to find \href{https://geodata.iowa.gov/datasets/iowa::iowa-county-boundaries/explore?location=42.011193\%2C-93.543500\%2C8.00}{publicly available data} with \href{https://en.wikipedia.org/wiki/FIPS_county_code}{Federal Information Processing Standard (FIPS) codes} for Iowa at the county level. I will use the R package \texttt{sf} to handle GIS data, which often comes in \texttt{.shp} or \texttt{GeoJSON} formats. Data in these sorts of files have what we need to draw a map of Iowa with the counties demarcated on the map.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sf) }\CommentTok{\# package for GIS data }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ia }\OtherTok{\textless{}{-}} \FunctionTok{st\_read}\NormalTok{(}\StringTok{"data/Iowa\_County\_Boundaries.geojson"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `IowaCounties' from data source 
+##   `/Users/tabithapeter/Desktop/train_gra/data/Iowa_County_Boundaries.geojson' 
+##   using driver `GeoJSON'
+## Simple feature collection with 99 features and 9 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -96.63944 ymin: 40.37566 xmax: -90.1401 ymax: 43.50109
+## Geodetic CRS:  WGS 84
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ia\_geom }\OtherTok{\textless{}{-}} \FunctionTok{st\_geometry}\NormalTok{(ia)}
+
+
+\CommentTok{\# check {-} a test plot to make sure the map looks right. }
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(ia[}\DecValTok{1}\NormalTok{], }\AttributeTok{reset =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\# reset = FALSE: we want to add to a plot with a legend}
+\FunctionTok{plot}\NormalTok{(ia[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{], }\AttributeTok{col =} \StringTok{\textquotesingle{}grey\textquotesingle{}}\NormalTok{, }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-14-1.pdf}
+This sample map is the correct shape -- here, the 99 counties are colored according to their index (1-99). We want to make a map where the colors correspond to the number of patients representing each county.
+
+Supposing one has access to electronic dental records, the data for such a study may look like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# simulate data}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{key }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/ia\_counties.csv"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} 
+  \CommentTok{\# narrow down to only IA (for sake of example)}
+  \FunctionTok{filter}\NormalTok{(State }\SpecialCharTok{==} \StringTok{"IA"}\NormalTok{) }\CommentTok{\# gives me county names }
+
+
+
+\CommentTok{\# TD = teledentistry}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{52242}\NormalTok{) }
+\NormalTok{td }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{id =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{,}
+  \AttributeTok{year =} \FunctionTok{sample}\NormalTok{(}\DecValTok{2021}\SpecialCharTok{:}\DecValTok{2023}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{complete =} \FunctionTok{sample}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{county =} \FunctionTok{sample}\NormalTok{(key}\SpecialCharTok{$}\NormalTok{NAME, }\DecValTok{1000}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{mode =} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"virtual"}\NormalTok{, }\StringTok{"in{-}person"}\NormalTok{), }\DecValTok{1000}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{head}\NormalTok{(td) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Simulated data from electronic dental records"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-15}Simulated data from electronic dental records}
+\centering
+\begin{tabular}[t]{r|r|r|l|l}
+\hline
+id & year & complete & county & mode\\
+\hline
+1 & 2021 & 0 & Howard & virtual\\
+\hline
+2 & 2021 & 1 & Clay & in-person\\
+\hline
+3 & 2021 & 0 & Palo Alto & virtual\\
+\hline
+4 & 2022 & 0 & Buchanan & virtual\\
+\hline
+5 & 2022 & 0 & O'Brien & virtual\\
+\hline
+6 & 2023 & 1 & Floyd & virtual\\
+\hline
+\end{tabular}
+\end{table}
+
+Now, I am ready to create a map that will communicate to my collaborators where our patients are driving from to receive their treatment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# determine how many patients in each county}
+\NormalTok{td\_summarize }\OtherTok{\textless{}{-}}\NormalTok{ td }\SpecialCharTok{|\textgreater{}}
+    \FunctionTok{group\_by}\NormalTok{(county) }\SpecialCharTok{|\textgreater{}}
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{N =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{()}
+
+\CommentTok{\# add fips codes (from GeoJSON file)}
+\NormalTok{td\_summarize }\OtherTok{\textless{}{-}} \FunctionTok{right\_join}\NormalTok{(td\_summarize, ia,}
+            \AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"county"} \OtherTok{=} \StringTok{"CountyName"}\NormalTok{)) }
+
+\CommentTok{\# create sf object (for drawing a map)}
+\NormalTok{map }\OtherTok{\textless{}{-}}\NormalTok{ td\_summarize }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{st\_as\_sf}\NormalTok{()}
+
+\CommentTok{\# draw the map }
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(viridis)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: viridisLite
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data =}\NormalTok{ map,}
+          \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ N)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_viridis}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Map of IA Residents by County"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Number of }\SpecialCharTok{\textbackslash{}n}\StringTok{patients"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-16-1.pdf}
 
   \bibliography{book.bib}
 

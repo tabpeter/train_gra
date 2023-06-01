@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Writing reports | A Reference Manual for the Biostatistics GRA</title>
+  <title>Chapter 9 Data processing and preparation | A Reference Manual for the Biostatistics GRA</title>
   <meta name="description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Writing reports | A Reference Manual for the Biostatistics GRA" />
+  <meta property="og:title" content="Chapter 9 Data processing and preparation | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   <meta name="github-repo" content="tabpeter/ra_training_manual" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Writing reports | A Reference Manual for the Biostatistics GRA" />
+  <meta name="twitter:title" content="Chapter 9 Data processing and preparation | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="your-computing-setup.html"/>
-<link rel="next" href="giving-presentations.html"/>
+<link rel="prev" href="giving-presentations.html"/>
+<link rel="next" href="power-and-sample-size-calculations.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -281,34 +281,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="writing-reports" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Writing reports<a href="writing-reports.html#writing-reports" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="what-makes-a-report-good" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> What makes a report ‘good’?<a href="writing-reports.html#what-makes-a-report-good" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The final product for a project is usually a report, rather than a script or a set of unformatted results. Once you have your statistical estimates, consider how you can craft the results into a story. Good research reports effectively communicate stories.</p>
-<p>Here are some general features of reports that tell stories:</p>
-<ul>
-<li><p>Reproducibility: can you reproduce your report in one line of code? If not, this is usually a red flag.</p></li>
-<li><p>Easily navigated by audience: don’t send raw output to collaborators!</p></li>
-<li><p>Outlines context, methods, results, and limitations. You need all four to tell the truth.</p></li>
-<li><p>Summarizes information in graphs whenever possible.</p></li>
-</ul>
-<p><a href="https://youtu.be/Bs6EYlw6di0">Here is a video</a> showing an example of one of my reports.</p>
+<div id="data-processing-and-preparation" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Data processing and preparation<a href="data-processing-and-preparation.html#data-processing-and-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>One of the most challenging aspects of a project can be preparing the data for analysis. In real life, our data seldom looks like something from <code>mtcars</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-processing-and-preparation.html#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb7-2"><a href="data-processing-and-preparation.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(mtcars[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="dv">10</span>),</span>
+<span id="cb7-3"><a href="data-processing-and-preparation.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-4"><a href="data-processing-and-preparation.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&#39;Canonical example of clean data&#39;</span></span>
+<span id="cb7-5"><a href="data-processing-and-preparation.html#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-6">Table 9.1: </span>Canonical example of clean data</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160.0</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.620</td>
+<td align="right">16.46</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160.0</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.875</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108.0</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.320</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258.0</td>
+<td align="right">110</td>
+<td align="right">3.08</td>
+<td align="right">3.215</td>
+<td align="right">19.44</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Valiant</td>
+<td align="right">18.1</td>
+<td align="right">6</td>
+<td align="right">225.0</td>
+<td align="right">105</td>
+<td align="right">2.76</td>
+<td align="right">3.460</td>
+<td align="right">20.22</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Duster 360</td>
+<td align="right">14.3</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">245</td>
+<td align="right">3.21</td>
+<td align="right">3.570</td>
+<td align="right">15.84</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 240D</td>
+<td align="right">24.4</td>
+<td align="right">4</td>
+<td align="right">146.7</td>
+<td align="right">62</td>
+<td align="right">3.69</td>
+<td align="right">3.190</td>
+<td align="right">20.00</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Merc 230</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">140.8</td>
+<td align="right">95</td>
+<td align="right">3.92</td>
+<td align="right">3.150</td>
+<td align="right">22.90</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 280</td>
+<td align="right">19.2</td>
+<td align="right">6</td>
+<td align="right">167.6</td>
+<td align="right">123</td>
+<td align="right">3.92</td>
+<td align="right">3.440</td>
+<td align="right">18.30</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Instead, I often receive data that looks like this:</p>
+<div class="figure">
+<img src="img/unprocessed_data.png" alt="" />
+<p class="caption">An example adapted from real unprocessed data</p>
 </div>
-<div id="tables" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Tools for writing reports<a href="writing-reports.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>R packages to create tables</strong>:</p>
-<ul>
-<li><p><a href="https://www.danieldsjoberg.com/gtsummary/">gtsummary</a> - best overall; best for displaying regression model estimates; ‘prettiest’ output</p></li>
-<li><p><a href="https://cran.r-project.org/web/packages/compareGroups/vignettes/compareGroups_vignette.html">compareGroups</a> - best bivariate testing table (shows ORs)</p></li>
-<li><p><a href="https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html">arsenal</a> - easiest to customize</p></li>
-</ul>
-<p><strong>Resources to format reports</strong>:</p>
-<ul>
-<li><p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kableextra.html">kable/kableExtra R packages</a></p></li>
-<li><p><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf">tutorial on LaTeX tables in PDF</a></p></li>
-<li><p><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">tutorial on tables in HTML</a></p></li>
-</ul>
+<p>Instead of Google searching how to handle each step of processing data like this, this chapter will offer a step-by-step outline of the whole game. I will show you what packages and strategies I used to prepare these data for analysis in R.</p>
+<div id="start-with-a-sketch" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Start with a sketch<a href="data-processing-and-preparation.html#start-with-a-sketch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When I need to process raw data, I like to begin by sketching …</p>
+</div>
+<div id="reading-in-the-data" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Reading in the data<a href="data-processing-and-preparation.html#reading-in-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="making-data-square" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Making data ‘square’<a href="data-processing-and-preparation.html#making-data-square" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="making-data-long-form" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Making data ‘long form’<a href="data-processing-and-preparation.html#making-data-long-form" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -317,8 +443,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="your-computing-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="giving-presentations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="giving-presentations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="power-and-sample-size-calculations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -349,7 +475,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/tabpeter/ra_training_manual/edit/master/06-writing-reports.Rmd",
+"link": "https://github.com/tabpeter/ra_training_manual/edit/master/08-data-processing.Rmd",
 "text": "Edit"
 },
 "history": {
