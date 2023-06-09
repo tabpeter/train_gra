@@ -79,3 +79,7 @@ genetics-gwas-data-analysis
 r-packages
 command-line-tools
 geographic-gis-data-analysis
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+libraries
+tab:unnamed-chunk-1
+work-with-color-codes
