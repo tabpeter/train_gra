@@ -1,5 +1,5 @@
 tab:unnamed-chunk-6
-tab:unnamed-chunk-15
+tab:unnamed-chunk-24
 motivation
 what-this-book-assumes
 acronyms
@@ -57,9 +57,11 @@ giving-presentations
 tools-for-giving-presentations
 data-processing-and-preparation
 start-with-a-sketch
+libraries
 reading-in-the-data
-making-data-square
 making-data-long-form
+work-with-color-codes
+final-steps
 power-and-sample-size-calculations
 sas
 survival-time-to-event-analysis
@@ -79,7 +81,3 @@ genetics-gwas-data-analysis
 r-packages
 command-line-tools
 geographic-gis-data-analysis
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
-libraries
-tab:unnamed-chunk-1
-work-with-color-codes

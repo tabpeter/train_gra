@@ -107,7 +107,7 @@ cells_by_color <- function(formats, cells, color){
 ```
 
 Now, to see my function in action: 
-```{r}
+```{r, eval=FALSE}
 # NB: column M in raw data = phenotypeotype 1
 # column N in raw data = phenotypeotype 2
 # column O in raw data = phenotypeotype 3
@@ -148,7 +148,7 @@ yellow <- cells_by_color(formats = raw_formats,
 
 With the color codes labeled, I am ready to create a data frame with both genotype and phenotype information: 
 
-```{r}
+```{r, eval=FALSE}
 # TODO: pick up here! 
 phen1 <- bind_rows(
   red |> filter(phen == "phenotype1"),
@@ -193,7 +193,7 @@ phen3 <- bind_rows(
 
 I will write one more function to help me with the last step: 
 
-```{r}
+```{r, eval=FALSE}
 #' a function to retrieve the Nth value in an strsplit() list 
 #' @param x The character to split 
 #' @param split The split 
@@ -207,7 +207,7 @@ split_which <- function(x, split, which){
 
 Finally, I have: 
 
-```{r}
+```{r, eval=FALSE}
 phen <- full_join(phen1, phen2) |> 
   full_join(phen3) |> 
   rename(individual = character) |> 
