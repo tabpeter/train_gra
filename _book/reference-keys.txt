@@ -1,9 +1,10 @@
 tab:unnamed-chunk-6
-tab:unnamed-chunk-24
+tab:unnamed-chunk-25
 motivation
 what-this-book-assumes
 acronyms
 working-with-the-garage-door-open
+acknowledgements
 dedication
 first-principles---invisible-and-integral-work
 getting-organized-the-first-3-days-of-a-new-ra-job

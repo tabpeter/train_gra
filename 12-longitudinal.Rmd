@@ -7,6 +7,9 @@
   - [nlme](https://cran.r-project.org/web/packages/nlme/index.html) R package - offers functionality for nonlinear mixed effect models 
   
 
-TODO: add SAS procedures/documentation 
+```{r, include=FALSE, eval=FALSE}
+# TODO: add SAS procedures/documentation 
 
-TODO: see if I can get permission to post my comps exam work as an example 
+# TODO: see if I can get permission to post my comps exam work as an example 
+```
+

@@ -10,15 +10,15 @@
 
   <meta property="og:title" content="Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="github-repo" content="tabpeter/ra_training_manual" />
+  <meta name="github-repo" content="tabpeter/train_gra" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  
+  <meta name="twitter:image" content="/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
@@ -141,7 +141,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-assumes"><i class="fa fa-check"></i><b>1.1</b> What this book assumes</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acronyms"><i class="fa fa-check"></i><b>1.2</b> Acronymns</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#working-with-the-garage-door-open"><i class="fa fa-check"></i><b>1.3</b> Working with the garage door open</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.4</b> Dedication</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.5</b> Dedication</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="first-principles---invisible-and-integral-work.html"><a href="first-principles---invisible-and-integral-work.html"><i class="fa fa-check"></i><b>2</b> First Principles - invisible and integral work</a></li>
 <li class="chapter" data-level="3" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html"><i class="fa fa-check"></i><b>3</b> Getting organized: The first 3 days of a new RA job</a>
@@ -304,23 +305,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="customize-rstudio" class="section level3 hasAnchor" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> Customize RStudio<a href="your-computing-setup.html#customize-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once you have RStudio installed, you will see that you have a ‘Tools’ option at the top of your screen. Follow this menu to Tools &gt; Global Options. This will give you a pane that offers lots of settings. One cool thing to check out is the theme, meaning the color scheme/appearance of your terminal. You can choose a custom font or color palette in the ‘Appearances’ menu. I always use a dark mode theme (<code>Tomorrow night</code> is the theme I am using these days; <code>Dracula</code> is cool too).</p>
-<p>You will see that in your default RStudio viewer, you have 4 panes: one is the console (probably bottom left); code runs here, but <strong>nothing is saved here</strong> – it is like a place for ‘scratch work’. To save your work in a file, you need to open it in File &gt; Open file (this will probably open in the top left). Third, you will have a pane that shows your files (like a ‘Finder’ window on Mac, or a ‘Files’ window on Windows) - this pane is usually at the bottom right. At the top right, you will see a pane with a bar at the top listing options like ‘Environment’, ‘History’, etc. <code>R</code> is an <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented programming language</a> (you can get really deep into thinking about this) – for our purposes now, just know that in <code>R</code>, the objects you create will show up in this ‘Environment’ pane.</p>
+<p>You will see that in your default RStudio viewer, you have 4 panes: one is the console (probably bottom left); code runs here, but <strong>nothing is saved here</strong> – it is like a place for ‘scratch work’. To save your work in a file, you need to open it in File &gt; Open file (this will probably open in the top left). Third, you will have a pane that shows your files (like a ‘Finder’ window on Mac, or a ‘Files’ window on Windows) - this pane is usually at the bottom right. At the top right, you will see a pane with a bar at the top listing options like ‘Environment’, ‘History’, etc. <code>R</code> is an <a href="https://en.wikipedia.org/wiki/Functional_programming">functional programming language</a> (you can get really deep into thinking about this) – for our purposes now, just know that in <code>R</code>, the objects you create will show up in this ‘Environment’ pane.</p>
 </div>
 <div id="setting-up-your-r-library" class="section level3 hasAnchor" number="6.1.4">
 <h3><span class="header-section-number">6.1.4</span> Setting up your R library<a href="your-computing-setup.html#setting-up-your-r-library" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using <code>R</code> requires packages. Most packages that you use will come from one of three places: <a href="https://cran.r-project.org/">CRAN</a>, <a href="https://www.bioconductor.org/">Bioconductor</a>, or someone’s GitHub repository.</p>
 <p>To download and use a package from CRAN, use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="your-computing-setup.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># only need to do this once </span></span>
-<span id="cb2-2"><a href="your-computing-setup.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># this is what you would do each time </span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="your-computing-setup.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># only need to do this once </span></span>
+<span id="cb1-2"><a href="your-computing-setup.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># this is what you would do each time </span></span></code></pre></div>
 <p>To download a package from Bioconductor, use</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="your-computing-setup.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) </span>
-<span id="cb3-2"><a href="your-computing-setup.html#cb3-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;package_name&quot;</span>))</span>
-<span id="cb3-3"><a href="your-computing-setup.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="your-computing-setup.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) </span>
+<span id="cb2-2"><a href="your-computing-setup.html#cb2-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;package_name&quot;</span>))</span>
+<span id="cb2-3"><a href="your-computing-setup.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>)</span></code></pre></div>
 <p>To download a package from a GitHub repository, use</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="your-computing-setup.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb4-2"><a href="your-computing-setup.html#cb4-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;user/repo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="your-computing-setup.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb3-2"><a href="your-computing-setup.html#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;user/repo&quot;</span>)</span></code></pre></div>
 <p>When you download a package, the package is saved in location that is specified as your <em>library path</em>. If you want to know where that is, type</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="your-computing-setup.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="your-computing-setup.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library&quot;</code></pre>
 </div>
 <div id="tips-things-you-should-never-do-in-rrstudio" class="section level3 hasAnchor" number="6.1.5">

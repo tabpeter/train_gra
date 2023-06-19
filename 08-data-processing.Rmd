@@ -23,6 +23,8 @@ Instead of Google searching how to handle each step of processing data like this
 
 When I need to process raw data, I like to begin by sketching the data frame I want to build. Here is a sketch of what I need this data set to look like for analysis: 
 
+(As of 2023/06/19, I still need to add this sketch)
+
 
 ## Libraries 
 After a sketch, I start with choosing some tools for working with color-coded Excel data. Beside each library I load, I'll comment the reason I find it useful:
@@ -88,6 +90,7 @@ colors <- raw_formats$local$fill$patternFill$fgColor$rgb
 # NB: colors are given here in order of appearance on the sheet (reading top to bottom)
 
 ```
+
 To help me work with the color codes, I wrote a function called `cells_by_color`. **As soon as you catch yourself being tempted to copy and paste a chunk of code several times, it is time to write a function!**. This is the *most important message* of the tutorial. Data cleaning is a place where there is no room to be sloppy. 
 
 ```{r}
@@ -107,6 +110,7 @@ cells_by_color <- function(formats, cells, color){
 ```
 
 Now, to see my function in action: 
+
 ```{r, eval=FALSE}
 # NB: column M in raw data = phenotypeotype 1
 # column N in raw data = phenotypeotype 2
@@ -148,12 +152,14 @@ yellow <- cells_by_color(formats = raw_formats,
 
 With the color codes labeled, I am ready to create a data frame with both genotype and phenotype information: 
 
-```{r, eval=FALSE}
+(As of 2023/06/19, this chapter is still in progress... will add more below). 
+
+```{r, eval=FALSE, include=FALSE}
 # TODO: pick up here! 
 phen1 <- bind_rows(
-  red |> filter(phen == "phenotype1"),
-  green |> filter(phen == "phenotype1"),
-  yellow |> filter(phen == "phenotype1")
+  red |> filter(phenotype == "phenotype1"),
+  green |> filter(phenotype == "phenotype1"),
+  yellow |> filter(phenotype == "phenotype1")
 ) |> 
   mutate(phen1 = case_when(
     color == "green" ~ 1,
@@ -165,27 +171,27 @@ phen1 <- bind_rows(
 
 
 phen2 <- bind_rows(
-  red |> filter(phen == "phenotype2"),
-  green |> filter(phen == "phenotype2")
+  red |> filter(phenotype == "phenotype2"),
+  green |> filter(phenotype == "phenotype2")
 ) |> 
   mutate(phen2 = case_when(
     color == "green" ~ 1,
     color == "red" ~ 0
   )) |> 
   right_join(raw_id, by = "row") |> 
-  select(c("character", "phenotype2"))
+  select(c("character", "phenotype"))
 
 
 phen3 <- bind_rows(
-  red |> filter(phen == "phenotype3"),
-  green |> filter(phen == "phenotype3")
+  red |> filter(phenotype == "phenotype3"),
+  green |> filter(phenotype == "phenotype3")
 ) |> 
   mutate(phen3 = case_when(
     color == "green" ~ 1,
     color == "red" ~ 0
   )) |> 
   right_join(raw_id, by = "row") |> 
-  select(c("character", "phenotype3"))
+  select(c("character", "phenotype"))
 
 ```
 
@@ -193,7 +199,7 @@ phen3 <- bind_rows(
 
 I will write one more function to help me with the last step: 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, include=FALSE}
 #' a function to retrieve the Nth value in an strsplit() list 
 #' @param x The character to split 
 #' @param split The split 
@@ -207,7 +213,7 @@ split_which <- function(x, split, which){
 
 Finally, I have: 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, include=FALSE}
 phen <- full_join(phen1, phen2) |> 
   full_join(phen3) |> 
   rename(individual = character) |> 

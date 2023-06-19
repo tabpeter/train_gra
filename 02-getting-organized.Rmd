@@ -46,13 +46,13 @@ Here is a step-by-step example of how I use a file structure to organize myself 
   
   4. I go to my `TKP23-A-Endo` folder (which now has two things in it: a `.Rproj` file and a `README` file), and I make 4 subfolders: `data`, `scripts`, `reference`, and `reports`. These are the building blocks of my projects. 
   
-    - I will get data from Collaborator A, and it will go in the data folder. **Nothing else** will go in the data folder, and I will never change any files in the data folder.   
+- I will get data from Collaborator A, and it will go in the data folder. **Nothing else** will go in the data folder, and I will never change any original files in the data folder. If I need to edit the data in some way (this is esp. relevant when data come in the form of Excel), I make a copy of the files I want to change and then work with those copies. 
     
-    - `scripts` will be the place where I put all of the code I use for data cleaning and analysis. 
+- `scripts` will be the place where I put all of the code I use for data cleaning and analysis. 
     
-    - `reference` is where I will put things Collaborator A shares with me that help me understand the research question -- this could be articles in endodontics that provide an explanation of the terminology, or a PowerPoint that explains how the data are collected. I would also keep a copy of the [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-boards-frequently-asked-questions) documentation in this `reference` folder.  
+- `reference` is where I will put things Collaborator A shares with me that help me understand the research question -- this could be articles in endodontics that provide an explanation of the terminology, or a PowerPoint that explains how the data are collected. I would also keep a copy of the [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-boards-frequently-asked-questions) documentation in this `reference` folder.  
     
-    - `reports` is where I will keep my final `.Rmd` file for writing the report which I will share with Collaborator A. 
+- `reports` is where I will keep my final `.Rmd` file for writing the report which I will share with Collaborator A. 
     
 From here, I begin writing scripts. 
     

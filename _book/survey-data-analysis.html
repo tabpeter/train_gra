@@ -10,15 +10,15 @@
 
   <meta property="og:title" content="Chapter 12 Survey data analysis | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="github-repo" content="tabpeter/ra_training_manual" />
+  <meta name="github-repo" content="tabpeter/train_gra" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 12 Survey data analysis | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  
+  <meta name="twitter:image" content="/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
@@ -141,7 +141,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-assumes"><i class="fa fa-check"></i><b>1.1</b> What this book assumes</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acronyms"><i class="fa fa-check"></i><b>1.2</b> Acronymns</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#working-with-the-garage-door-open"><i class="fa fa-check"></i><b>1.3</b> Working with the garage door open</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.4</b> Dedication</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.5</b> Dedication</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="first-principles---invisible-and-integral-work.html"><a href="first-principles---invisible-and-integral-work.html"><i class="fa fa-check"></i><b>2</b> First Principles - invisible and integral work</a></li>
 <li class="chapter" data-level="3" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html"><i class="fa fa-check"></i><b>3</b> Getting organized: The first 3 days of a new RA job</a>
@@ -306,43 +307,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quick-demo" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> Quick demo<a href="survey-data-analysis.html#quick-demo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose our research question pertains to the academic performance index (api) of elementary schools. Using the <code>apipop</code> data from the <code>survey</code> package, we will investigate this question.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="survey-data-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
-<span id="cb23-2"><a href="survey-data-analysis.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr)</span>
-<span id="cb23-3"><a href="survey-data-analysis.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="survey-data-analysis.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(api) <span class="co"># data from survey package</span></span>
-<span id="cb23-5"><a href="survey-data-analysis.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="survey-data-analysis.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># first, create a &#39;design&#39; object </span></span>
-<span id="cb23-7"><a href="survey-data-analysis.html#cb23-7" aria-hidden="true" tabindex="-1"></a>api_design <span class="ot">&lt;-</span> apistrat <span class="sc">|&gt;</span> </span>
-<span id="cb23-8"><a href="survey-data-analysis.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="dv">0</span>, <span class="co"># if there was a clustering variable, it&#39;d go here</span></span>
-<span id="cb23-9"><a href="survey-data-analysis.html#cb23-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> stype, <span class="co"># stratification variable </span></span>
-<span id="cb23-10"><a href="survey-data-analysis.html#cb23-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fpc =</span> fpc, <span class="co"># finite population correction </span></span>
-<span id="cb23-11"><a href="survey-data-analysis.html#cb23-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> pw <span class="co"># survey weights </span></span>
-<span id="cb23-12"><a href="survey-data-analysis.html#cb23-12" aria-hidden="true" tabindex="-1"></a>                   )</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="survey-data-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb19-2"><a href="survey-data-analysis.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr)</span>
+<span id="cb19-3"><a href="survey-data-analysis.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="survey-data-analysis.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(api) <span class="co"># data from survey package</span></span>
+<span id="cb19-5"><a href="survey-data-analysis.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="survey-data-analysis.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># first, create a &#39;design&#39; object </span></span>
+<span id="cb19-7"><a href="survey-data-analysis.html#cb19-7" aria-hidden="true" tabindex="-1"></a>api_design <span class="ot">&lt;-</span> apistrat <span class="sc">|&gt;</span> </span>
+<span id="cb19-8"><a href="survey-data-analysis.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="dv">0</span>, <span class="co"># if there was a clustering variable, it&#39;d go here</span></span>
+<span id="cb19-9"><a href="survey-data-analysis.html#cb19-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> stype, <span class="co"># stratification variable </span></span>
+<span id="cb19-10"><a href="survey-data-analysis.html#cb19-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fpc =</span> fpc, <span class="co"># finite population correction </span></span>
+<span id="cb19-11"><a href="survey-data-analysis.html#cb19-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> pw <span class="co"># survey weights </span></span>
+<span id="cb19-12"><a href="survey-data-analysis.html#cb19-12" aria-hidden="true" tabindex="-1"></a>                   )</span></code></pre></div>
 <p>After creating a ‘design’ object, I can filter down to a subset of interest. Supposing I am interested in schools from LA county, I can examine the api of students in LA county alone:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="survey-data-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at LA county only </span></span>
-<span id="cb24-2"><a href="survey-data-analysis.html#cb24-2" aria-hidden="true" tabindex="-1"></a>la <span class="ot">&lt;-</span> api_design <span class="sc">|&gt;</span> </span>
-<span id="cb24-3"><a href="survey-data-analysis.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cname <span class="sc">==</span> <span class="st">&quot;Los Angeles&quot;</span>)</span>
-<span id="cb24-4"><a href="survey-data-analysis.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="survey-data-analysis.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># summary table &amp; bivariate tests </span></span>
-<span id="cb24-6"><a href="survey-data-analysis.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
-<span id="cb24-7"><a href="survey-data-analysis.html#cb24-7" aria-hidden="true" tabindex="-1"></a>interest_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pcttest&quot;</span>, <span class="st">&quot;both&quot;</span>, <span class="st">&quot;meals&quot;</span>, <span class="st">&quot;ell&quot;</span>, <span class="st">&quot;yr.rnd&quot;</span>, <span class="st">&quot;mobility&quot;</span>,</span>
-<span id="cb24-8"><a href="survey-data-analysis.html#cb24-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;avg.ed&quot;</span>, <span class="st">&quot;full&quot;</span>,<span class="st">&quot;enroll&quot;</span>, <span class="st">&quot;api.stu&quot;</span>)</span>
-<span id="cb24-9"><a href="survey-data-analysis.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_svysummary</span>(la, </span>
-<span id="cb24-10"><a href="survey-data-analysis.html#cb24-10" aria-hidden="true" tabindex="-1"></a>               <span class="co"># include only select variables in the table</span></span>
-<span id="cb24-11"><a href="survey-data-analysis.html#cb24-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">include =</span> <span class="fu">all_of</span>(interest_vars),</span>
-<span id="cb24-12"><a href="survey-data-analysis.html#cb24-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">by =</span> <span class="st">&quot;both&quot;</span>, </span>
-<span id="cb24-13"><a href="survey-data-analysis.html#cb24-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">type =</span> <span class="fu">list</span>(<span class="fu">all_dichotomous</span>() <span class="sc">~</span> <span class="st">&quot;categorical&quot;</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb24-14"><a href="survey-data-analysis.html#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># formatting </span></span>
-<span id="cb24-15"><a href="survey-data-analysis.html#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb24-16"><a href="survey-data-analysis.html#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tests</span></span>
-<span id="cb24-17"><a href="survey-data-analysis.html#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>(<span class="at">test =</span> <span class="fu">list</span>(<span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">&quot;svy.chisq.test&quot;</span>,</span>
-<span id="cb24-18"><a href="survey-data-analysis.html#cb24-18" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">&quot;svy.t.test&quot;</span>))</span></code></pre></div>
-<div id="xrxlfrnuge" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="survey-data-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at LA county only </span></span>
+<span id="cb20-2"><a href="survey-data-analysis.html#cb20-2" aria-hidden="true" tabindex="-1"></a>la <span class="ot">&lt;-</span> api_design <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="survey-data-analysis.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cname <span class="sc">==</span> <span class="st">&quot;Los Angeles&quot;</span>)</span>
+<span id="cb20-4"><a href="survey-data-analysis.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="survey-data-analysis.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># summary table &amp; bivariate tests </span></span>
+<span id="cb20-6"><a href="survey-data-analysis.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb20-7"><a href="survey-data-analysis.html#cb20-7" aria-hidden="true" tabindex="-1"></a>interest_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pcttest&quot;</span>, <span class="st">&quot;both&quot;</span>, <span class="st">&quot;meals&quot;</span>, <span class="st">&quot;ell&quot;</span>, <span class="st">&quot;yr.rnd&quot;</span>, <span class="st">&quot;mobility&quot;</span>,</span>
+<span id="cb20-8"><a href="survey-data-analysis.html#cb20-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;avg.ed&quot;</span>, <span class="st">&quot;full&quot;</span>,<span class="st">&quot;enroll&quot;</span>, <span class="st">&quot;api.stu&quot;</span>)</span>
+<span id="cb20-9"><a href="survey-data-analysis.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_svysummary</span>(la, </span>
+<span id="cb20-10"><a href="survey-data-analysis.html#cb20-10" aria-hidden="true" tabindex="-1"></a>               <span class="co"># include only select variables in the table</span></span>
+<span id="cb20-11"><a href="survey-data-analysis.html#cb20-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">include =</span> <span class="fu">all_of</span>(interest_vars),</span>
+<span id="cb20-12"><a href="survey-data-analysis.html#cb20-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">by =</span> <span class="st">&quot;both&quot;</span>, </span>
+<span id="cb20-13"><a href="survey-data-analysis.html#cb20-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">type =</span> <span class="fu">list</span>(<span class="fu">all_dichotomous</span>() <span class="sc">~</span> <span class="st">&quot;categorical&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-14"><a href="survey-data-analysis.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># formatting </span></span>
+<span id="cb20-15"><a href="survey-data-analysis.html#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb20-16"><a href="survey-data-analysis.html#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tests</span></span>
+<span id="cb20-17"><a href="survey-data-analysis.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>(<span class="at">test =</span> <span class="fu">list</span>(<span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">&quot;svy.chisq.test&quot;</span>,</span>
+<span id="cb20-18"><a href="survey-data-analysis.html#cb20-18" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">&quot;svy.t.test&quot;</span>))</span></code></pre></div>
+<div id="tpybfjgegw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xrxlfrnuge .gt_table {
+#tpybfjgegw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -367,7 +368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_heading {
+#tpybfjgegw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -379,12 +380,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_caption {
+#tpybfjgegw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xrxlfrnuge .gt_title {
+#tpybfjgegw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -396,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#xrxlfrnuge .gt_subtitle {
+#tpybfjgegw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -408,13 +409,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#xrxlfrnuge .gt_bottom_border {
+#tpybfjgegw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_col_headings {
+#tpybfjgegw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -429,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_col_heading {
+#tpybfjgegw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -449,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#xrxlfrnuge .gt_column_spanner_outer {
+#tpybfjgegw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -461,15 +462,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#xrxlfrnuge .gt_column_spanner_outer:first-child {
+#tpybfjgegw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xrxlfrnuge .gt_column_spanner_outer:last-child {
+#tpybfjgegw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xrxlfrnuge .gt_column_spanner {
+#tpybfjgegw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -481,7 +482,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#xrxlfrnuge .gt_group_heading {
+#tpybfjgegw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -507,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#xrxlfrnuge .gt_empty_group_heading {
+#tpybfjgegw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -522,15 +523,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#xrxlfrnuge .gt_from_md > :first-child {
+#tpybfjgegw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xrxlfrnuge .gt_from_md > :last-child {
+#tpybfjgegw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xrxlfrnuge .gt_row {
+#tpybfjgegw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -549,7 +550,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#xrxlfrnuge .gt_stub {
+#tpybfjgegw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -562,7 +563,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#xrxlfrnuge .gt_stub_row_group {
+#tpybfjgegw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -576,11 +577,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#xrxlfrnuge .gt_row_group_first td {
+#tpybfjgegw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xrxlfrnuge .gt_summary_row {
+#tpybfjgegw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -590,16 +591,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#xrxlfrnuge .gt_first_summary_row {
+#tpybfjgegw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_first_summary_row.thick {
+#tpybfjgegw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xrxlfrnuge .gt_last_summary_row {
+#tpybfjgegw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -609,7 +610,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_grand_summary_row {
+#tpybfjgegw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -619,7 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#xrxlfrnuge .gt_first_grand_summary_row {
+#tpybfjgegw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -629,11 +630,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_striped {
+#tpybfjgegw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xrxlfrnuge .gt_table_body {
+#tpybfjgegw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -642,7 +643,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_footnotes {
+#tpybfjgegw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -656,7 +657,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_footnote {
+#tpybfjgegw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -665,7 +666,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#xrxlfrnuge .gt_sourcenotes {
+#tpybfjgegw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -679,7 +680,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#xrxlfrnuge .gt_sourcenote {
+#tpybfjgegw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -687,64 +688,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#xrxlfrnuge .gt_left {
+#tpybfjgegw .gt_left {
   text-align: left;
 }
 
-#xrxlfrnuge .gt_center {
+#tpybfjgegw .gt_center {
   text-align: center;
 }
 
-#xrxlfrnuge .gt_right {
+#tpybfjgegw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xrxlfrnuge .gt_font_normal {
+#tpybfjgegw .gt_font_normal {
   font-weight: normal;
 }
 
-#xrxlfrnuge .gt_font_bold {
+#tpybfjgegw .gt_font_bold {
   font-weight: bold;
 }
 
-#xrxlfrnuge .gt_font_italic {
+#tpybfjgegw .gt_font_italic {
   font-style: italic;
 }
 
-#xrxlfrnuge .gt_super {
+#tpybfjgegw .gt_super {
   font-size: 65%;
 }
 
-#xrxlfrnuge .gt_footnote_marks {
+#tpybfjgegw .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#xrxlfrnuge .gt_asterisk {
+#tpybfjgegw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xrxlfrnuge .gt_indent_1 {
+#tpybfjgegw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xrxlfrnuge .gt_indent_2 {
+#tpybfjgegw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xrxlfrnuge .gt_indent_3 {
+#tpybfjgegw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xrxlfrnuge .gt_indent_4 {
+#tpybfjgegw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xrxlfrnuge .gt_indent_5 {
+#tpybfjgegw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -815,22 +816,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </tfoot>
 </table>
 </div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="survey-data-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># NB: survey-specific tests available; these tests incorporate/adjust for </span></span>
-<span id="cb25-2"><a href="survey-data-analysis.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   survey weights </span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="survey-data-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># NB: survey-specific tests available; these tests incorporate/adjust for </span></span>
+<span id="cb21-2"><a href="survey-data-analysis.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   survey weights </span></span></code></pre></div>
 <p>I can also summarize a multivariate model:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="survey-data-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a>lhs <span class="ot">&lt;-</span> <span class="fu">paste</span>(interest_vars, <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>) <span class="co"># lhs = left hand side (of equation)</span></span>
-<span id="cb26-2"><a href="survey-data-analysis.html#cb26-2" aria-hidden="true" tabindex="-1"></a>rhs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;api99~&quot;</span>, lhs)</span>
-<span id="cb26-3"><a href="survey-data-analysis.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="survey-data-analysis.html#cb26-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(rhs),</span>
-<span id="cb26-5"><a href="survey-data-analysis.html#cb26-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> apistrat)</span>
-<span id="cb26-6"><a href="survey-data-analysis.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="survey-data-analysis.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_regression</span>(fit) <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>()</span></code></pre></div>
-<div id="ikrdgelhcr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="survey-data-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a>lhs <span class="ot">&lt;-</span> <span class="fu">paste</span>(interest_vars, <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>) <span class="co"># lhs = left hand side (of equation)</span></span>
+<span id="cb22-2"><a href="survey-data-analysis.html#cb22-2" aria-hidden="true" tabindex="-1"></a>rhs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;api99~&quot;</span>, lhs)</span>
+<span id="cb22-3"><a href="survey-data-analysis.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="survey-data-analysis.html#cb22-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(rhs),</span>
+<span id="cb22-5"><a href="survey-data-analysis.html#cb22-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> apistrat)</span>
+<span id="cb22-6"><a href="survey-data-analysis.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="survey-data-analysis.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_regression</span>(fit) <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>()</span></code></pre></div>
+<div id="ipxkougxsw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ikrdgelhcr .gt_table {
+#ipxkougxsw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -855,7 +856,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_heading {
+#ipxkougxsw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -867,12 +868,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_caption {
+#ipxkougxsw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ikrdgelhcr .gt_title {
+#ipxkougxsw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -884,7 +885,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#ikrdgelhcr .gt_subtitle {
+#ipxkougxsw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -896,13 +897,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#ikrdgelhcr .gt_bottom_border {
+#ipxkougxsw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_col_headings {
+#ipxkougxsw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -917,7 +918,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_col_heading {
+#ipxkougxsw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -937,7 +938,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#ikrdgelhcr .gt_column_spanner_outer {
+#ipxkougxsw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -949,15 +950,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#ikrdgelhcr .gt_column_spanner_outer:first-child {
+#ipxkougxsw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ikrdgelhcr .gt_column_spanner_outer:last-child {
+#ipxkougxsw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ikrdgelhcr .gt_column_spanner {
+#ipxkougxsw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -969,7 +970,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#ikrdgelhcr .gt_group_heading {
+#ipxkougxsw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -995,7 +996,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#ikrdgelhcr .gt_empty_group_heading {
+#ipxkougxsw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1010,15 +1011,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#ikrdgelhcr .gt_from_md > :first-child {
+#ipxkougxsw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ikrdgelhcr .gt_from_md > :last-child {
+#ipxkougxsw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ikrdgelhcr .gt_row {
+#ipxkougxsw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1037,7 +1038,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#ikrdgelhcr .gt_stub {
+#ipxkougxsw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1050,7 +1051,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ikrdgelhcr .gt_stub_row_group {
+#ipxkougxsw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1064,11 +1065,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#ikrdgelhcr .gt_row_group_first td {
+#ipxkougxsw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ikrdgelhcr .gt_summary_row {
+#ipxkougxsw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1078,16 +1079,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ikrdgelhcr .gt_first_summary_row {
+#ipxkougxsw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_first_summary_row.thick {
+#ipxkougxsw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ikrdgelhcr .gt_last_summary_row {
+#ipxkougxsw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1097,7 +1098,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_grand_summary_row {
+#ipxkougxsw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1107,7 +1108,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ikrdgelhcr .gt_first_grand_summary_row {
+#ipxkougxsw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1117,11 +1118,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_striped {
+#ipxkougxsw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ikrdgelhcr .gt_table_body {
+#ipxkougxsw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1130,7 +1131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_footnotes {
+#ipxkougxsw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1144,7 +1145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_footnote {
+#ipxkougxsw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1153,7 +1154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ikrdgelhcr .gt_sourcenotes {
+#ipxkougxsw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1167,7 +1168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ikrdgelhcr .gt_sourcenote {
+#ipxkougxsw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1175,64 +1176,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ikrdgelhcr .gt_left {
+#ipxkougxsw .gt_left {
   text-align: left;
 }
 
-#ikrdgelhcr .gt_center {
+#ipxkougxsw .gt_center {
   text-align: center;
 }
 
-#ikrdgelhcr .gt_right {
+#ipxkougxsw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ikrdgelhcr .gt_font_normal {
+#ipxkougxsw .gt_font_normal {
   font-weight: normal;
 }
 
-#ikrdgelhcr .gt_font_bold {
+#ipxkougxsw .gt_font_bold {
   font-weight: bold;
 }
 
-#ikrdgelhcr .gt_font_italic {
+#ipxkougxsw .gt_font_italic {
   font-style: italic;
 }
 
-#ikrdgelhcr .gt_super {
+#ipxkougxsw .gt_super {
   font-size: 65%;
 }
 
-#ikrdgelhcr .gt_footnote_marks {
+#ipxkougxsw .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ikrdgelhcr .gt_asterisk {
+#ipxkougxsw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ikrdgelhcr .gt_indent_1 {
+#ipxkougxsw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ikrdgelhcr .gt_indent_2 {
+#ipxkougxsw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ikrdgelhcr .gt_indent_3 {
+#ipxkougxsw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ikrdgelhcr .gt_indent_4 {
+#ipxkougxsw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ikrdgelhcr .gt_indent_5 {
+#ipxkougxsw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

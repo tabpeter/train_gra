@@ -10,15 +10,15 @@
 
   <meta property="og:title" content="Chapter 3 Getting organized: The first 3 days of a new RA job | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="github-repo" content="tabpeter/ra_training_manual" />
+  <meta name="github-repo" content="tabpeter/train_gra" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Getting organized: The first 3 days of a new RA job | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  
+  <meta name="twitter:image" content="/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
@@ -141,7 +141,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-assumes"><i class="fa fa-check"></i><b>1.1</b> What this book assumes</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#acronyms"><i class="fa fa-check"></i><b>1.2</b> Acronymns</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#working-with-the-garage-door-open"><i class="fa fa-check"></i><b>1.3</b> Working with the garage door open</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.4</b> Dedication</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#dedication"><i class="fa fa-check"></i><b>1.5</b> Dedication</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="first-principles---invisible-and-integral-work.html"><a href="first-principles---invisible-and-integral-work.html"><i class="fa fa-check"></i><b>2</b> First Principles - invisible and integral work</a></li>
 <li class="chapter" data-level="3" data-path="getting-organized-the-first-3-days-of-a-new-ra-job.html"><a href="getting-organized-the-first-3-days-of-a-new-ra-job.html"><i class="fa fa-check"></i><b>3</b> Getting organized: The first 3 days of a new RA job</a>
@@ -328,13 +329,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>I open <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> and go to <code>File &gt; New Project</code>. I follow the prompts to create a new project, and the directory (a.k.a the folder) in which this project will live is my new <code>TKP23-A-Endo</code> folder. Using an R project is an example of a broader principle of <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">project-oriented workflow</a>.</p></li>
 <li><p>I go to my <code>TKP23-A-Endo</code> folder (which now has two things in it: a <code>.Rproj</code> file and a <code>README</code> file), and I make 4 subfolders: <code>data</code>, <code>scripts</code>, <code>reference</code>, and <code>reports</code>. These are the building blocks of my projects.</p></li>
 </ol>
-<pre><code>- I will get data from Collaborator A, and it will go in the data folder. **Nothing else** will go in the data folder, and I will never change any files in the data folder.   
-
-- `scripts` will be the place where I put all of the code I use for data cleaning and analysis. 
-
-- `reference` is where I will put things Collaborator A shares with me that help me understand the research question -- this could be articles in endodontics that provide an explanation of the terminology, or a PowerPoint that explains how the data are collected. I would also keep a copy of the [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-boards-frequently-asked-questions) documentation in this `reference` folder.  
-
-- `reports` is where I will keep my final `.Rmd` file for writing the report which I will share with Collaborator A. </code></pre>
+<ul>
+<li><p>I will get data from Collaborator A, and it will go in the data folder. <strong>Nothing else</strong> will go in the data folder, and I will never change any original files in the data folder. If I need to edit the data in some way (this is esp. relevant when data come in the form of Excel), I make a copy of the files I want to change and then work with those copies.</p></li>
+<li><p><code>scripts</code> will be the place where I put all of the code I use for data cleaning and analysis.</p></li>
+<li><p><code>reference</code> is where I will put things Collaborator A shares with me that help me understand the research question – this could be articles in endodontics that provide an explanation of the terminology, or a PowerPoint that explains how the data are collected. I would also keep a copy of the <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-boards-frequently-asked-questions">IRB</a> documentation in this <code>reference</code> folder.</p></li>
+<li><p><code>reports</code> is where I will keep my final <code>.Rmd</code> file for writing the report which I will share with Collaborator A.</p></li>
+</ul>
 <p>From here, I begin writing scripts.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>As the project moves along, I may find that I need other subfolders. For instance, a <code>graphics</code> subfolder would be useful if I am making a ton of plots for a project. If I am writing a manuscript and there’s quite a bit of back-and-forth with reviewers, I would use a <code>submission</code> subfolder that contains all my point-to-point responses (CROSS REF) for reviewers.</li>
