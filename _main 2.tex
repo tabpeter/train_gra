@@ -5,19 +5,16 @@
 \documentclass[
 ]{book}
 \usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -47,13 +44,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -61,7 +58,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -70,7 +67,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -125,7 +122,7 @@
 \bibliographystyle{plainnat}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
+\urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={A Reference Manual for the Biostatistics GRA},
   pdfauthor={T. K. Peter},
@@ -141,7 +138,7 @@
 \makeatother
 \subtitle{Towards readable, rigorous, and reproducible results}
 \author{T. K. Peter}
-\date{2023-08-16}
+\date{2023-06-19}
 
 \begin{document}
 \maketitle
@@ -153,16 +150,16 @@
 \hypertarget{motivation}{%
 \chapter{Motivation}\label{motivation}}
 
-The meta-question behind this short book is `where to begin?'. I started graduate school in August of 2019, coming straight from an undergrad program in math to a doctoral program in biostatistics. In the same week that I started classes, I started my work as a graduate research assistant in the \href{https://dentistry.uiowa.edu/research/biostatistics-and-computational-biology}{Division of Biostatistics and Computational Biology} at the University of Iowa College of Dentistry. It was a steep learning curve. Now heading into my 5th year as a Ph.D.~student, I began compiling some notes/tips to share with the other graduate research assistants (GRAs) who joined our team after me. Those notes have become this reference manual.
+The meta-question behind this book is `where to begin?'. I started graduate school in August of 2019, coming straight from an undergrad (I got a B.S. in math) to a doctoral program in biostatistics. In the same week that I started classes, I started my work as a graduate research assistant in the \href{https://dentistry.uiowa.edu/research/biostatistics-and-computational-biology}{Division of Biostatistics and Computational Biology} at the University of Iowa College of Dentistry. It was a steep learning curve. Now heading into my 5th year as a Ph.D.~student, I began compiling some notes/tips to share with the other GRA's who joined our team after me. Those notes have become this reference manual.
 
-The `first principles' chapter is me diving into the philosophy of why I think this kind of training manual is important. Here, I'll give you the TL;DR: Although a significant component of graduate level study is learning how to learn, brand new GRAs also need to know what to Google. GRAs need to struggle with hard concepts and new ideas -- the learning is truly in the struggle. At the same time, they need to know where to start. This creates a tension: new GRAs need to engage in independent study work, but they also need resources that outline guiding principles. If GRAs don't know what they're searching for, they won't know if they've found it. Moreover, if novice GRAs \emph{think} they know what they are searching for without any guidance, they could easily come across bad advice (by `bad', I mean that which leads to suboptimal outcomes with respect to rigor and reproducibility).
+The `first principles' chapter is me diving into the philosophy of why I think this kind of training manual is important. Here, I'll give you the TL;DR: when you are starting off as a GRA in a new field, you need to know what to Google. A significant component of graduate level study is learning how to learn. You need to struggle with hard concepts and new ideas -- the learning is truly in the struggle. At the same time, you need to know where to start. This creates a tension: new GRAs need to engage in independent study work, but they also need resources that teach them the \emph{correct} principles. If you don't know what your searching for, you won't know if you've found it. Moreover, if you are a novice who \emph{thinks} you know what you are searching for, you could easily come across bad advice (by `bad', I mean that which leads to suboptimal outcomes with respect to rigor and reproducibility).
 
 With this tension in mind, the goal of this reference manual is to 1) outline some of the main ideas that you will need to be successful, and 2) to provide you with some vocabulary to help you as you learn independently. Many of the chapters here outline some general concepts and then provide links to further reading.
 
 \hypertarget{what-this-book-assumes}{%
 \section{What this book assumes}\label{what-this-book-assumes}}
 
-This is a reference manual, not a formal textbook. As such, my philosophy in writing this is to summarize the most helpful things I have learned in a way that is conducive to quick review. The chapters that are titled after broad areas of research (e.g., `survival analysis') contain more links than new content. I assume throughout this writing that the readers are either familiar with foundational statistical concepts or are currently enrolled in courses that are teaching those concepts.
+This is a reference manual, not a textbook. As such, my philosophy in writing this is to summarize the most helpful things I have learned in a way that is conducive to quick review. The chapters that are titled after broad areas of research (e.g., `survival analysis') contain more links than new content. I assume throughout this writing that the readers are either familiar with foundational statistical concepts or are currently in courses that are teaching those concepts.
 
 \hypertarget{acronyms}{%
 \section{Acronymns}\label{acronyms}}
@@ -194,19 +191,14 @@ Throughout this work, I use the following acronyms:
 
 This manual is a work in progress. I am writing this as I work my way through my own program, making notes as I go. This is in the spirit of \href{https://notes.andymatuschak.org/About_these_notes?stackedNotes=z21cgR9K3UcQ5a7yPsj2RUim3oM2TzdBByZu}{working with the garage door open}, an approach to learning that really resonates with me.
 
-Keep in mind that as I'm writing this, I am also a student myself. I want to make improvements to this manual as I keep learning. If you think of a reference that you'd like to see included, open a GitHub issue or make a pull request to let me know. I would welcome any feedback, and would appreciate any thoughtful critiques.
-
-\hypertarget{acknowledgements}{%
-\section{Acknowledgements}\label{acknowledgements}}
-
-So much of this work comes directly from what I have learned from my dissertation advisor \href{https://myweb.uiowa.edu/pbreheny/}{Patrick Breheny} and my GRA supervisor \href{https://scholar.google.com/citations?hl=en\&user=flqLOJIAAAAJ}{X. Jin Xie}. Both of these men have had a tremendous influence on my thinking.
-
-I also want to thank the other UI biostats professors who have taught my core courses; our department is stacked with faculty who are dedicated teachers as well as brilliant researchers.
+If you think of a reference that you'd like to see included, open a GitHub issue or make a pull request to let me know.
 
 \hypertarget{dedication}{%
 \section{Dedication}\label{dedication}}
 
-This work is dedicated in loving memory of my father, \href{https://www.hendersonvillefh.com/obituary/William-Peter}{Bill Peter} (1955-2022).
+This work is dedicated in memory of my father, \href{https://www.hendersonvillefh.com/obituary/William-Peter}{Bill Peter} (1955-2022).
+
+I miss him.
 
 \hypertarget{first-principles---invisible-and-integral-work}{%
 \chapter{First Principles - invisible and integral work}\label{first-principles---invisible-and-integral-work}}
@@ -321,16 +313,15 @@ Here is a step-by-step example of how I use a file structure to organize myself 
   I go to my \texttt{TKP23-A-Endo} folder (which now has two things in it: a \texttt{.Rproj} file and a \texttt{README} file), and I make 4 subfolders: \texttt{data}, \texttt{scripts}, \texttt{reference}, and \texttt{reports}. These are the building blocks of my projects.
 \end{enumerate}
 
-\begin{itemize}
-\item
-  I will get data from Collaborator A, and it will go in the data folder. \textbf{Nothing else} will go in the data folder, and I will never change any original files in the data folder. If I need to edit the data in some way (this is esp.~relevant when data come in the form of Excel), I make a copy of the files I want to change and then work with those copies.
-\item
-  \texttt{scripts} will be the place where I put all of the code I use for data cleaning and analysis.
-\item
-  \texttt{reference} is where I will put things Collaborator A shares with me that help me understand the research question -- this could be articles in endodontics that provide an explanation of the terminology, or a PowerPoint that explains how the data are collected. I would also keep a copy of the \href{https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-boards-frequently-asked-questions}{IRB} documentation in this \texttt{reference} folder.
-\item
-  \texttt{reports} is where I will keep my final \texttt{.Rmd} file for writing the report which I will share with Collaborator A.
-\end{itemize}
+\begin{verbatim}
+- I will get data from Collaborator A, and it will go in the data folder. **Nothing else** will go in the data folder, and I will never change any files in the data folder.   
+
+- `scripts` will be the place where I put all of the code I use for data cleaning and analysis. 
+
+- `reference` is where I will put things Collaborator A shares with me that help me understand the research question -- this could be articles in endodontics that provide an explanation of the terminology, or a PowerPoint that explains how the data are collected. I would also keep a copy of the [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-boards-frequently-asked-questions) documentation in this `reference` folder.  
+
+- `reports` is where I will keep my final `.Rmd` file for writing the report which I will share with Collaborator A. 
+\end{verbatim}
 
 From here, I begin writing scripts.
 
@@ -635,7 +626,7 @@ If you'd rather watch a video on how to install R and RStudio, check out \href{h
 
 Once you have RStudio installed, you will see that you have a `Tools' option at the top of your screen. Follow this menu to Tools \textgreater{} Global Options. This will give you a pane that offers lots of settings. One cool thing to check out is the theme, meaning the color scheme/appearance of your terminal. You can choose a custom font or color palette in the `Appearances' menu. I always use a dark mode theme (\texttt{Tomorrow\ night} is the theme I am using these days; \texttt{Dracula} is cool too).
 
-You will see that in your default RStudio viewer, you have 4 panes: one is the console (probably bottom left); code runs here, but \textbf{nothing is saved here} -- it is like a place for `scratch work'. To save your work in a file, you need to open it in File \textgreater{} Open file (this will probably open in the top left). Third, you will have a pane that shows your files (like a `Finder' window on Mac, or a `Files' window on Windows) - this pane is usually at the bottom right. At the top right, you will see a pane with a bar at the top listing options like `Environment', `History', etc. \texttt{R} is an \href{https://en.wikipedia.org/wiki/Functional_programming}{functional programming language} (you can get really deep into thinking about this) -- for our purposes now, just know that in \texttt{R}, the objects you create will show up in this `Environment' pane.
+You will see that in your default RStudio viewer, you have 4 panes: one is the console (probably bottom left); code runs here, but \textbf{nothing is saved here} -- it is like a place for `scratch work'. To save your work in a file, you need to open it in File \textgreater{} Open file (this will probably open in the top left). Third, you will have a pane that shows your files (like a `Finder' window on Mac, or a `Files' window on Windows) - this pane is usually at the bottom right. At the top right, you will see a pane with a bar at the top listing options like `Environment', `History', etc. \texttt{R} is an \href{https://en.wikipedia.org/wiki/Object-oriented_programming}{object-oriented programming language} (you can get really deep into thinking about this) -- for our purposes now, just know that in \texttt{R}, the objects you create will show up in this `Environment' pane.
 
 \hypertarget{setting-up-your-r-library}{%
 \subsection{Setting up your R library}\label{setting-up-your-r-library}}
@@ -922,7 +913,10 @@ Instead, I often receive data that looks like this:
 
 Instead of Google searching how to handle each step of processing data like this, this chapter will offer a step-by-step outline of the whole game. I will show you what packages and strategies I used to prepare these data for analysis in R.
 
-Aside: when I need to process raw data, I like to begin by sketching the data frame I want to build. Big fan of the white board for tasks like this.
+\hypertarget{start-with-a-sketch}{%
+\section{Start with a sketch}\label{start-with-a-sketch}}
+
+When I need to process raw data, I like to begin by sketching the data frame I want to build. Here is a sketch of what I need this data set to look like for analysis:
 
 \hypertarget{libraries}{%
 \section{Libraries}\label{libraries}}
@@ -956,6 +950,33 @@ Here, I read in the data multiple ways to obtain different information. The firs
 \NormalTok{raw\_cells }\OtherTok{\textless{}{-}} \FunctionTok{xlsx\_cells}\NormalTok{(}\AttributeTok{path =} \StringTok{"data/unprocessed\_data\_example.xlsx"}\NormalTok{) }
 \NormalTok{raw\_formats }\OtherTok{\textless{}{-}} \FunctionTok{xlsx\_formats}\NormalTok{(}\AttributeTok{path =} \StringTok{"data/unprocessed\_data\_example.xlsx"}\NormalTok{) }\CommentTok{\# has color codes }
 \NormalTok{raw\_id }\OtherTok{\textless{}{-}}\NormalTok{ raw\_cells[raw\_cells}\SpecialCharTok{$}\NormalTok{col }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{"address"}\NormalTok{, }\StringTok{"row"}\NormalTok{, }\StringTok{"col"}\NormalTok{, }\StringTok{"character"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{making-data-long-form}{%
+\section{Making data `long form'}\label{making-data-long-form}}
+
+My next step is to transform the data from \href{https://www.statology.org/long-vs-wide-data/\#:~:text=A\%20wide\%20format\%20contains\%20values,repeat\%20in\%20the\%20first\%20column}{wide to long}. The purpose of this is to create visuals later downstream.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# transform to long}
+\NormalTok{long1 }\OtherTok{\textless{}{-}}\NormalTok{ raw }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =}\NormalTok{ Gene1}\SpecialCharTok{:}\NormalTok{Gene10,}
+               \AttributeTok{names\_to =} \StringTok{"gene"}\NormalTok{,}
+               \AttributeTok{values\_to =} \StringTok{"alleles"}\NormalTok{)}
+\CommentTok{\# split alleles into two columns  }
+\NormalTok{long2 }\OtherTok{\textless{}{-}}\NormalTok{ long1 }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{allele1 =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    gene }\SpecialCharTok{!=} \StringTok{"Gene2"} \SpecialCharTok{\textasciitilde{}} \FunctionTok{substr}\NormalTok{(alleles, }\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+\NormalTok{    gene }\SpecialCharTok{==} \StringTok{"Gene2"} \SpecialCharTok{\textasciitilde{}} \ConstantTok{NA\_character\_}
+\NormalTok{  ),}
+  \AttributeTok{allele2  =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    gene }\SpecialCharTok{!=} \StringTok{"Gene2"} \SpecialCharTok{\textasciitilde{}} \FunctionTok{substr}\NormalTok{(alleles, }\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+\NormalTok{    gene }\SpecialCharTok{==} \StringTok{"Gene2"} \SpecialCharTok{\textasciitilde{}} \ConstantTok{NA\_character\_}
+\NormalTok{  )) }\SpecialCharTok{|\textgreater{}} 
+  \CommentTok{\# fix column names to have uniform case }
+  \FunctionTok{rename\_with}\NormalTok{(}\AttributeTok{.fn =}\NormalTok{ tolower) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1034,14 +1055,13 @@ Now, to see my function in action:
 
 With the color codes labeled, I am ready to create a data frame with both genotype and phenotype information:
 
-(As of 2023/06/19, this chapter is still in progress\ldots{} will add more below).
-
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: pick up here! }
 \NormalTok{phen1 }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(}
-\NormalTok{  red }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype1"}\NormalTok{),}
-\NormalTok{  green }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype1"}\NormalTok{),}
-\NormalTok{  yellow }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype1"}\NormalTok{)}
+\NormalTok{  red }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype1"}\NormalTok{),}
+\NormalTok{  green }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype1"}\NormalTok{),}
+\NormalTok{  yellow }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype1"}\NormalTok{)}
 \NormalTok{) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{phen1 =} \FunctionTok{case\_when}\NormalTok{(}
 \NormalTok{    color }\SpecialCharTok{==} \StringTok{"green"} \SpecialCharTok{\textasciitilde{}} \DecValTok{1}\NormalTok{,}
@@ -1049,37 +1069,31 @@ With the color codes labeled, I am ready to create a data frame with both genoty
 \NormalTok{    color }\SpecialCharTok{==} \StringTok{"yellow"} \SpecialCharTok{\textasciitilde{}} \FloatTok{0.5}
 \NormalTok{  )) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{right\_join}\NormalTok{(raw\_id, }\AttributeTok{by =} \StringTok{"row"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} 
-  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\StringTok{"phen1"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
-  \CommentTok{\# drop cells with no data (left over from header row)}
-  \FunctionTok{drop\_na}\NormalTok{(phen1) }
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\StringTok{"phen1"}\NormalTok{))}
 
 
 \NormalTok{phen2 }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(}
-\NormalTok{  red }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype2"}\NormalTok{),}
-\NormalTok{  green }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype2"}\NormalTok{)}
+\NormalTok{  red }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype2"}\NormalTok{),}
+\NormalTok{  green }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype2"}\NormalTok{)}
 \NormalTok{) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{phen2 =} \FunctionTok{case\_when}\NormalTok{(}
 \NormalTok{    color }\SpecialCharTok{==} \StringTok{"green"} \SpecialCharTok{\textasciitilde{}} \DecValTok{1}\NormalTok{,}
 \NormalTok{    color }\SpecialCharTok{==} \StringTok{"red"} \SpecialCharTok{\textasciitilde{}} \DecValTok{0}
 \NormalTok{  )) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{right\_join}\NormalTok{(raw\_id, }\AttributeTok{by =} \StringTok{"row"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} 
-  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\StringTok{"phen2"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
-  \CommentTok{\# drop cells with no data (left over from header row)}
-  \FunctionTok{drop\_na}\NormalTok{(phen2) }
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\StringTok{"phenotype2"}\NormalTok{))}
 
 
 \NormalTok{phen3 }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(}
-\NormalTok{  red }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype3"}\NormalTok{),}
-\NormalTok{  green }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"phenotype3"}\NormalTok{)}
+\NormalTok{  red }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype3"}\NormalTok{),}
+\NormalTok{  green }\SpecialCharTok{|\textgreater{}} \FunctionTok{filter}\NormalTok{(phen }\SpecialCharTok{==} \StringTok{"phenotype3"}\NormalTok{)}
 \NormalTok{) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{phen3 =} \FunctionTok{case\_when}\NormalTok{(}
 \NormalTok{    color }\SpecialCharTok{==} \StringTok{"green"} \SpecialCharTok{\textasciitilde{}} \DecValTok{1}\NormalTok{,}
 \NormalTok{    color }\SpecialCharTok{==} \StringTok{"red"} \SpecialCharTok{\textasciitilde{}} \DecValTok{0}
 \NormalTok{  )) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{right\_join}\NormalTok{(raw\_id, }\AttributeTok{by =} \StringTok{"row"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} 
-  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\StringTok{"phen3"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
-  \CommentTok{\# drop cells with no data (left over from header row)}
-  \FunctionTok{drop\_na}\NormalTok{(phen3) }
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\StringTok{"phenotype3"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1110,73 +1124,19 @@ Finally, I have:
   \FunctionTok{rename}\NormalTok{(}\AttributeTok{individual =}\NormalTok{ character) }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{filter}\NormalTok{(individual }\SpecialCharTok{!=} \StringTok{"Individual"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} 
   \CommentTok{\# need numeric ID for pedigreemm functions }
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{id =} \FunctionTok{split\_which}\NormalTok{(individual, }\StringTok{"\_"}\NormalTok{, }\DecValTok{2}\NormalTok{)) }
-\end{Highlighting}
-\end{Shaded}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{id =} \FunctionTok{split\_which}\NormalTok{(individual, }\StringTok{"\_"}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: pick up here! }
+\NormalTok{long3 }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(long2, phen,}
+                   \AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"phenoytpe"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \CommentTok{\# analysis decision: make the obligated carrier affected}
+  \CommentTok{\# }\AlertTok{TODO}\CommentTok{: check this with clinicians}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{phenotype =} \FunctionTok{if\_else}\NormalTok{(phenotype }\SpecialCharTok{==} \StringTok{"Obligated carrier (unaffected?)"}\NormalTok{, }\StringTok{"Affected"}\NormalTok{, phenotype))}
 
-\begin{verbatim}
-## Joining with `by = join_by(character)`
-## Joining with `by = join_by(character)`
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{wide }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(phen, raw,}
-                  \AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"individual"} \OtherTok{=} \StringTok{"Individual"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
-  \CommentTok{\# analysis decision: make the obligated carrier unaffected, as per discussion }
-  \CommentTok{\#   with clinicians}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{phenotype =} \FunctionTok{if\_else}\NormalTok{(Phenotype }\SpecialCharTok{==} \StringTok{"Obligated carrier (unaffected?)"}\NormalTok{,}
-                             \StringTok{"Unaffected"}\NormalTok{,}
-\NormalTok{                             Phenotype),}
-         \AttributeTok{id =} \FunctionTok{as.numeric}\NormalTok{(id)) }\SpecialCharTok{|\textgreater{}} 
-  \FunctionTok{select}\NormalTok{(individual, id, phenotype, }\FunctionTok{starts\_with}\NormalTok{(}\StringTok{\textquotesingle{}Gene\textquotesingle{}}\NormalTok{), }\FunctionTok{paste0}\NormalTok{(}\StringTok{"phen"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
-  \FunctionTok{arrange}\NormalTok{(id)}
-
-\CommentTok{\# snapshot of final data}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(wide[,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{,}\DecValTok{14}\SpecialCharTok{:}\DecValTok{16}\NormalTok{)],}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(long3[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{15}\NormalTok{,],}
        \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
        \AttributeTok{caption =} \StringTok{\textquotesingle{}Final product {-} ready to analyze/graph\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{table}
-
-\caption{\label{tab:unnamed-chunk-14}Final product - ready to analyze/graph}
-\centering
-\begin{tabular}[t]{lrllllrrr}
-\toprule
-individual & id & phenotype & Gene1 & Gene2 & Gene3 & phen1 & phen2 & phen3\\
-\midrule
-Patient\_01 & 1 & Affected & CT & het del & AG & 1.0 & 1 & 1\\
-Patient\_02 & 2 & Affected & CT & het del & AG & 0.0 & 0 & 1\\
-Patient\_03 & 3 & Unaffected & CC & no del & AA & 0.0 & 0 & 0\\
-Patient\_04 & 4 & Affected & CT & het del & AG & 0.5 & 0 & 0\\
-Patient\_05 & 5 & Unaffected & CC & no del & AA & 0.0 & 0 & 0\\
-\addlinespace
-Patient\_06 & 6 & Affected & CT & no del & AG & 0.0 & 0 & 1\\
-Patient\_07 & 7 & Unaffected & CC & no del & AA & 0.0 & 0 & 0\\
-Patient\_08 & 8 & Affected & CC & het del & AA & 0.0 & 1 & 1\\
-Patient\_09 & 9 & Unaffected & CC & het del & AA & 0.0 & 0 & 0\\
-Patient\_10 & 10 & Unaffected & CC & het del & AA & 0.0 & 0 & 0\\
-\addlinespace
-Patient\_11 & 11 & Unaffected & CC & homo del & AA & 0.0 & 0 & 0\\
-Patient\_12 & 12 & Affected & CC & homo del & AA & 0.0 & 1 & 0\\
-Patient\_13 & 13 & Affected & CT & het del & AG & 0.0 & 1 & 1\\
-Patient\_14 & 14 & Unaffected & CC & het del & AG & 0.0 & 0 & 0\\
-Patient\_15 & 15 & Unaffected & CT & het del & AG & 0.5 & 0 & 0\\
-\addlinespace
-Patient\_16 & 16 & Affected & CC & het del & AA & 0.0 & 1 & 1\\
-Patient\_17 & 17 & Unaffected & CT & het del & AA & 0.0 & 0 & 0\\
-Patient\_18 & 18 & Unaffected & CC & het del & AA & 0.0 & 0 & 0\\
-Patient\_19 & 19 & Unaffected & CC & no del & AA & 0.0 & 0 & 0\\
-Patient\_20 & 20 & Unaffected & CC & no del & AA & 0.0 & 0 & 0\\
-\addlinespace
-Patient\_21 & 21 & Unaffected & CT & het del & AA & 0.0 & 0 & 0\\
-Patient\_22 & 22 & Unaffected & CC & het del & AA & 0.0 & 0 & 0\\
-Patient\_23 & 23 & Unaffected & CC & no del & AA & 0.0 & 0 & 0\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \hypertarget{power-and-sample-size-calculations}{%
 \chapter{Power and sample size calculations}\label{power-and-sample-size-calculations}}
@@ -1527,6 +1487,10 @@ Yes & 2.6 & -27, 32 & 0.9\\
   \href{https://cran.r-project.org/web/packages/nlme/index.html}{nlme} R package - offers functionality for nonlinear mixed effect models
 \end{itemize}
 
+TODO: add SAS procedures/documentation
+
+TODO: see if I can get permission to post my comps exam work as an example
+
 \hypertarget{microbiome-data-analysis}{%
 \chapter{Microbiome data analysis}\label{microbiome-data-analysis}}
 
@@ -1624,7 +1588,7 @@ The first thing I would do is look online to find \href{https://geodata.iowa.gov
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-24-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-23-1.pdf}
 This sample map is the correct shape -- here, the 99 counties are colored according to their index (1-99). We want to make a map where the colors correspond to the number of patients representing each county.
 
 Supposing one has access to electronic dental records, the data for such a study may look like this:
@@ -1657,7 +1621,7 @@ Supposing one has access to electronic dental records, the data for such a study
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-25}Simulated data from electronic dental records}
+\caption{\label{tab:unnamed-chunk-24}Simulated data from electronic dental records}
 \centering
 \begin{tabular}[t]{r|r|r|l|l}
 \hline
@@ -1708,7 +1672,7 @@ Now, I am ready to create a map that will communicate to my collaborators where 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-26-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-25-1.pdf}
 
   \bibliography{book.bib}
 

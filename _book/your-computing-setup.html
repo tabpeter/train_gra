@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/img/cover.png" />
+  <meta property="og:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   <meta name="github-repo" content="tabpeter/train_gra" />
 
@@ -18,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 6 Your computing setup | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="twitter:image" content="/img/cover.png" />
+  <meta name="twitter:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
 
-<meta name="date" content="2023-06-19" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,12 +226,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html"><i class="fa fa-check"></i><b>9</b> Data processing and preparation</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#start-with-a-sketch"><i class="fa fa-check"></i><b>9.1</b> Start with a sketch</a></li>
-<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.2</b> Libraries</a></li>
-<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.3</b> Reading in the data</a></li>
-<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#making-data-long-form"><i class="fa fa-check"></i><b>9.4</b> Making data ‘long form’</a></li>
-<li class="chapter" data-level="9.5" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.5</b> Work with color codes</a></li>
-<li class="chapter" data-level="9.6" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.6</b> Final steps</a></li>
+<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.1</b> Libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.2</b> Reading in the data</a></li>
+<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.3</b> Work with color codes</a></li>
+<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.4</b> Final steps</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="power-and-sample-size-calculations.html"><a href="power-and-sample-size-calculations.html"><i class="fa fa-check"></i><b>10</b> Power and sample size calculations</a>
 <ul>
@@ -311,17 +309,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.1.4</span> Setting up your R library<a href="your-computing-setup.html#setting-up-your-r-library" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using <code>R</code> requires packages. Most packages that you use will come from one of three places: <a href="https://cran.r-project.org/">CRAN</a>, <a href="https://www.bioconductor.org/">Bioconductor</a>, or someone’s GitHub repository.</p>
 <p>To download and use a package from CRAN, use</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="your-computing-setup.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># only need to do this once </span></span>
-<span id="cb1-2"><a href="your-computing-setup.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># this is what you would do each time </span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="your-computing-setup.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># only need to do this once </span></span>
+<span id="cb1-2"><a href="your-computing-setup.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>) <span class="co"># this is what you would do each time </span></span></code></pre></div>
 <p>To download a package from Bioconductor, use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="your-computing-setup.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) </span>
-<span id="cb2-2"><a href="your-computing-setup.html#cb2-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;package_name&quot;</span>))</span>
-<span id="cb2-3"><a href="your-computing-setup.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="your-computing-setup.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>) </span>
+<span id="cb2-2"><a href="your-computing-setup.html#cb2-2" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;package_name&quot;</span>))</span>
+<span id="cb2-3"><a href="your-computing-setup.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;package_name&quot;</span>)</span></code></pre></div>
 <p>To download a package from a GitHub repository, use</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="your-computing-setup.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb3-2"><a href="your-computing-setup.html#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;user/repo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="your-computing-setup.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb3-2"><a href="your-computing-setup.html#cb3-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;user/repo&quot;</span>)</span></code></pre></div>
 <p>When you download a package, the package is saved in location that is specified as your <em>library path</em>. If you want to know where that is, type</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="your-computing-setup.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="your-computing-setup.html#cb4-1" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library&quot;</code></pre>
 </div>
 <div id="tips-things-you-should-never-do-in-rrstudio" class="section level3 hasAnchor" number="6.1.5">

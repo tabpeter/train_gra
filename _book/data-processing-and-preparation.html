@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 9 Data processing and preparation | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/img/cover.png" />
+  <meta property="og:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   <meta name="github-repo" content="tabpeter/train_gra" />
 
@@ -18,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 9 Data processing and preparation | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="twitter:image" content="/img/cover.png" />
+  <meta name="twitter:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
 
-<meta name="date" content="2023-06-19" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,12 +226,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html"><i class="fa fa-check"></i><b>9</b> Data processing and preparation</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#start-with-a-sketch"><i class="fa fa-check"></i><b>9.1</b> Start with a sketch</a></li>
-<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.2</b> Libraries</a></li>
-<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.3</b> Reading in the data</a></li>
-<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#making-data-long-form"><i class="fa fa-check"></i><b>9.4</b> Making data ‘long form’</a></li>
-<li class="chapter" data-level="9.5" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.5</b> Work with color codes</a></li>
-<li class="chapter" data-level="9.6" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.6</b> Final steps</a></li>
+<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.1</b> Libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.2</b> Reading in the data</a></li>
+<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.3</b> Work with color codes</a></li>
+<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.4</b> Final steps</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="power-and-sample-size-calculations.html"><a href="power-and-sample-size-calculations.html"><i class="fa fa-check"></i><b>10</b> Power and sample size calculations</a>
 <ul>
@@ -287,11 +285,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-processing-and-preparation" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Data processing and preparation<a href="data-processing-and-preparation.html#data-processing-and-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>One of the most challenging aspects of a project can be preparing the data for analysis. In real life, our data seldom looks like something from <code>mtcars</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-processing-and-preparation.html#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb6-2"><a href="data-processing-and-preparation.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(mtcars[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="dv">10</span>),</span>
-<span id="cb6-3"><a href="data-processing-and-preparation.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-4"><a href="data-processing-and-preparation.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&#39;Canonical example of clean data&#39;</span></span>
-<span id="cb6-5"><a href="data-processing-and-preparation.html#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-processing-and-preparation.html#cb6-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb6-2"><a href="data-processing-and-preparation.html#cb6-2" tabindex="-1"></a>  <span class="fu">head</span>(mtcars[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="dv">10</span>),</span>
+<span id="cb6-3"><a href="data-processing-and-preparation.html#cb6-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-4"><a href="data-processing-and-preparation.html#cb6-4" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&#39;Canonical example of clean data&#39;</span></span>
+<span id="cb6-5"><a href="data-processing-and-preparation.html#cb6-5" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-6">Table 9.1: </span>Canonical example of clean data</caption>
 <thead>
@@ -421,121 +419,874 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Instead, I often receive data that looks like this:</p>
-<div class="figure">
-<img src="img/unprocessed_data.png" alt="" />
-<p class="caption">An example adapted from real unprocessed data</p>
+<div class="float">
+<img src="img/unprocessed_data.png" alt="An example adapted from real unprocessed data" />
+<div class="figcaption">An example adapted from real unprocessed data</div>
 </div>
 <p>Instead of Google searching how to handle each step of processing data like this, this chapter will offer a step-by-step outline of the whole game. I will show you what packages and strategies I used to prepare these data for analysis in R.</p>
-<div id="start-with-a-sketch" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Start with a sketch<a href="data-processing-and-preparation.html#start-with-a-sketch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When I need to process raw data, I like to begin by sketching the data frame I want to build. Here is a sketch of what I need this data set to look like for analysis:</p>
-<p>(As of 2023/06/19, I still need to add this sketch)</p>
-</div>
-<div id="libraries" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Libraries<a href="data-processing-and-preparation.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aside: when I need to process raw data, I like to begin by sketching the data frame I want to build. Big fan of the white board for tasks like this.</p>
+<div id="libraries" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Libraries<a href="data-processing-and-preparation.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>After a sketch, I start with choosing some tools for working with color-coded Excel data. Beside each library I load, I’ll comment the reason I find it useful:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-processing-and-preparation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for data processing </span></span>
-<span id="cb7-2"><a href="data-processing-and-preparation.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># read in .xlsx documents </span></span>
-<span id="cb7-3"><a href="data-processing-and-preparation.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># transform &amp; clean data (with &#39;pivot_&#39; functions)</span></span>
-<span id="cb7-4"><a href="data-processing-and-preparation.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># transform &amp; clean data </span></span>
-<span id="cb7-5"><a href="data-processing-and-preparation.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyxl) <span class="co"># read in .xlsx *formatting*, including color codes</span></span>
-<span id="cb7-6"><a href="data-processing-and-preparation.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="data-processing-and-preparation.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># for visualization </span></span>
-<span id="cb7-8"><a href="data-processing-and-preparation.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># drawing plots </span></span>
-<span id="cb7-9"><a href="data-processing-and-preparation.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) <span class="co"># creating tables (has &#39;kable()&#39; function)</span></span>
-<span id="cb7-10"><a href="data-processing-and-preparation.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># making tables pretty </span></span>
-<span id="cb7-11"><a href="data-processing-and-preparation.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis) <span class="co"># choose color palettes</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-processing-and-preparation.html#cb7-1" tabindex="-1"></a><span class="co"># for data processing </span></span>
+<span id="cb7-2"><a href="data-processing-and-preparation.html#cb7-2" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># read in .xlsx documents </span></span>
+<span id="cb7-3"><a href="data-processing-and-preparation.html#cb7-3" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># transform &amp; clean data (with &#39;pivot_&#39; functions)</span></span>
+<span id="cb7-4"><a href="data-processing-and-preparation.html#cb7-4" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># transform &amp; clean data </span></span>
+<span id="cb7-5"><a href="data-processing-and-preparation.html#cb7-5" tabindex="-1"></a><span class="fu">library</span>(tidyxl) <span class="co"># read in .xlsx *formatting*, including color codes</span></span>
+<span id="cb7-6"><a href="data-processing-and-preparation.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="data-processing-and-preparation.html#cb7-7" tabindex="-1"></a><span class="co"># for visualization </span></span>
+<span id="cb7-8"><a href="data-processing-and-preparation.html#cb7-8" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># drawing plots </span></span>
+<span id="cb7-9"><a href="data-processing-and-preparation.html#cb7-9" tabindex="-1"></a><span class="fu">library</span>(knitr) <span class="co"># creating tables (has &#39;kable()&#39; function)</span></span>
+<span id="cb7-10"><a href="data-processing-and-preparation.html#cb7-10" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># making tables pretty </span></span>
+<span id="cb7-11"><a href="data-processing-and-preparation.html#cb7-11" tabindex="-1"></a><span class="fu">library</span>(viridis) <span class="co"># choose color palettes</span></span></code></pre></div>
 </div>
-<div id="reading-in-the-data" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Reading in the data<a href="data-processing-and-preparation.html#reading-in-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="reading-in-the-data" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Reading in the data<a href="data-processing-and-preparation.html#reading-in-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, I read in the data multiple ways to obtain different information. The first line creates <code>raw</code>, which reads in the data without any formatting information. This will make the phenotype columns have all <code>NA</code> values. I need the other <code>raw_</code> objects to get that information into a workable form.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-processing-and-preparation.html#cb8-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&quot;data/unprocessed_data_example.xlsx&quot;</span>)</span>
-<span id="cb8-2"><a href="data-processing-and-preparation.html#cb8-2" aria-hidden="true" tabindex="-1"></a>raw_cells <span class="ot">&lt;-</span> <span class="fu">xlsx_cells</span>(<span class="at">path =</span> <span class="st">&quot;data/unprocessed_data_example.xlsx&quot;</span>) </span>
-<span id="cb8-3"><a href="data-processing-and-preparation.html#cb8-3" aria-hidden="true" tabindex="-1"></a>raw_formats <span class="ot">&lt;-</span> <span class="fu">xlsx_formats</span>(<span class="at">path =</span> <span class="st">&quot;data/unprocessed_data_example.xlsx&quot;</span>) <span class="co"># has color codes </span></span>
-<span id="cb8-4"><a href="data-processing-and-preparation.html#cb8-4" aria-hidden="true" tabindex="-1"></a>raw_id <span class="ot">&lt;-</span> raw_cells[raw_cells<span class="sc">$</span>col <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">c</span>(<span class="st">&quot;address&quot;</span>, <span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>, <span class="st">&quot;character&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-processing-and-preparation.html#cb8-1" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&quot;data/unprocessed_data_example.xlsx&quot;</span>)</span>
+<span id="cb8-2"><a href="data-processing-and-preparation.html#cb8-2" tabindex="-1"></a>raw_cells <span class="ot">&lt;-</span> <span class="fu">xlsx_cells</span>(<span class="at">path =</span> <span class="st">&quot;data/unprocessed_data_example.xlsx&quot;</span>) </span>
+<span id="cb8-3"><a href="data-processing-and-preparation.html#cb8-3" tabindex="-1"></a>raw_formats <span class="ot">&lt;-</span> <span class="fu">xlsx_formats</span>(<span class="at">path =</span> <span class="st">&quot;data/unprocessed_data_example.xlsx&quot;</span>) <span class="co"># has color codes </span></span>
+<span id="cb8-4"><a href="data-processing-and-preparation.html#cb8-4" tabindex="-1"></a>raw_id <span class="ot">&lt;-</span> raw_cells[raw_cells<span class="sc">$</span>col <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">c</span>(<span class="st">&quot;address&quot;</span>, <span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>, <span class="st">&quot;character&quot;</span>)]</span></code></pre></div>
 </div>
-<div id="making-data-long-form" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Making data ‘long form’<a href="data-processing-and-preparation.html#making-data-long-form" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>My next step is to transform the data from <a href="https://www.statology.org/long-vs-wide-data/#:~:text=A%20wide%20format%20contains%20values,repeat%20in%20the%20first%20column">wide to long</a>. The purpose of this is to create visuals later downstream.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data-processing-and-preparation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to long</span></span>
-<span id="cb9-2"><a href="data-processing-and-preparation.html#cb9-2" aria-hidden="true" tabindex="-1"></a>long1 <span class="ot">&lt;-</span> raw <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a href="data-processing-and-preparation.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Gene1<span class="sc">:</span>Gene10,</span>
-<span id="cb9-4"><a href="data-processing-and-preparation.html#cb9-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;gene&quot;</span>,</span>
-<span id="cb9-5"><a href="data-processing-and-preparation.html#cb9-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;alleles&quot;</span>)</span>
-<span id="cb9-6"><a href="data-processing-and-preparation.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># split alleles into two columns  </span></span>
-<span id="cb9-7"><a href="data-processing-and-preparation.html#cb9-7" aria-hidden="true" tabindex="-1"></a>long2 <span class="ot">&lt;-</span> long1 <span class="sc">|&gt;</span> </span>
-<span id="cb9-8"><a href="data-processing-and-preparation.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">allele1 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb9-9"><a href="data-processing-and-preparation.html#cb9-9" aria-hidden="true" tabindex="-1"></a>    gene <span class="sc">!=</span> <span class="st">&quot;Gene2&quot;</span> <span class="sc">~</span> <span class="fu">substr</span>(alleles, <span class="dv">1</span>,<span class="dv">1</span>),</span>
-<span id="cb9-10"><a href="data-processing-and-preparation.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    gene <span class="sc">==</span> <span class="st">&quot;Gene2&quot;</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
-<span id="cb9-11"><a href="data-processing-and-preparation.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb9-12"><a href="data-processing-and-preparation.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">allele2  =</span> <span class="fu">case_when</span>(</span>
-<span id="cb9-13"><a href="data-processing-and-preparation.html#cb9-13" aria-hidden="true" tabindex="-1"></a>    gene <span class="sc">!=</span> <span class="st">&quot;Gene2&quot;</span> <span class="sc">~</span> <span class="fu">substr</span>(alleles, <span class="dv">2</span>,<span class="dv">2</span>),</span>
-<span id="cb9-14"><a href="data-processing-and-preparation.html#cb9-14" aria-hidden="true" tabindex="-1"></a>    gene <span class="sc">==</span> <span class="st">&quot;Gene2&quot;</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
-<span id="cb9-15"><a href="data-processing-and-preparation.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb9-16"><a href="data-processing-and-preparation.html#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix column names to have uniform case </span></span>
-<span id="cb9-17"><a href="data-processing-and-preparation.html#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="at">.fn =</span> tolower) </span></code></pre></div>
-</div>
-<div id="work-with-color-codes" class="section level2 hasAnchor" number="9.5">
-<h2><span class="header-section-number">9.5</span> Work with color codes<a href="data-processing-and-preparation.html#work-with-color-codes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="work-with-color-codes" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Work with color codes<a href="data-processing-and-preparation.html#work-with-color-codes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Next, I need to fill in the phenotype information that is color-coded. The colors will be included in <code>raw_formats</code> as <a href="https://www.makeuseof.com/hex-code-what-is-it/">HEX codes</a> (without the leading hashtag).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-processing-and-preparation.html#cb10-1" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> raw_formats<span class="sc">$</span>local<span class="sc">$</span>fill<span class="sc">$</span>patternFill<span class="sc">$</span>fgColor<span class="sc">$</span>rgb</span>
-<span id="cb10-2"><a href="data-processing-and-preparation.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NB: colors are given here in order of appearance on the sheet (reading top to bottom)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data-processing-and-preparation.html#cb9-1" tabindex="-1"></a>colors <span class="ot">&lt;-</span> raw_formats<span class="sc">$</span>local<span class="sc">$</span>fill<span class="sc">$</span>patternFill<span class="sc">$</span>fgColor<span class="sc">$</span>rgb</span>
+<span id="cb9-2"><a href="data-processing-and-preparation.html#cb9-2" tabindex="-1"></a><span class="co"># NB: colors are given here in order of appearance on the sheet (reading top to bottom)</span></span></code></pre></div>
 <p>To help me work with the color codes, I wrote a function called <code>cells_by_color</code>. <strong>As soon as you catch yourself being tempted to copy and paste a chunk of code several times, it is time to write a function!</strong>. This is the <em>most important message</em> of the tutorial. Data cleaning is a place where there is no room to be sloppy.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-processing-and-preparation.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; a function to return the cells of a given color </span></span>
-<span id="cb11-2"><a href="data-processing-and-preparation.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param formats An object returned from tidyxl::xlsx_formats</span></span>
-<span id="cb11-3"><a href="data-processing-and-preparation.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param cells An object returned from tidyxl::xlsx_cells</span></span>
-<span id="cb11-4"><a href="data-processing-and-preparation.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param color The hex color WITHOUT the leading &quot;#&quot; mark</span></span>
-<span id="cb11-5"><a href="data-processing-and-preparation.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a tibble with the addresses of the cells in that color </span></span>
-<span id="cb11-6"><a href="data-processing-and-preparation.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb11-7"><a href="data-processing-and-preparation.html#cb11-7" aria-hidden="true" tabindex="-1"></a>cells_by_color <span class="ot">&lt;-</span> <span class="cf">function</span>(formats, cells, color){</span>
-<span id="cb11-8"><a href="data-processing-and-preparation.html#cb11-8" aria-hidden="true" tabindex="-1"></a>  colors <span class="ot">&lt;-</span> formats<span class="sc">$</span>local<span class="sc">$</span>fill<span class="sc">$</span>patternFill<span class="sc">$</span>fgColor<span class="sc">$</span>rgb</span>
-<span id="cb11-9"><a href="data-processing-and-preparation.html#cb11-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-10"><a href="data-processing-and-preparation.html#cb11-10" aria-hidden="true" tabindex="-1"></a>  cells[cells<span class="sc">$</span>local_format_id <span class="sc">%in%</span> <span class="fu">which</span>(colors <span class="sc">==</span> color), </span>
-<span id="cb11-11"><a href="data-processing-and-preparation.html#cb11-11" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">c</span>(<span class="st">&quot;address&quot;</span>, <span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)]</span>
-<span id="cb11-12"><a href="data-processing-and-preparation.html#cb11-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-13"><a href="data-processing-and-preparation.html#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-processing-and-preparation.html#cb10-1" tabindex="-1"></a><span class="co">#&#39; a function to return the cells of a given color </span></span>
+<span id="cb10-2"><a href="data-processing-and-preparation.html#cb10-2" tabindex="-1"></a><span class="co">#&#39; @param formats An object returned from tidyxl::xlsx_formats</span></span>
+<span id="cb10-3"><a href="data-processing-and-preparation.html#cb10-3" tabindex="-1"></a><span class="co">#&#39; @param cells An object returned from tidyxl::xlsx_cells</span></span>
+<span id="cb10-4"><a href="data-processing-and-preparation.html#cb10-4" tabindex="-1"></a><span class="co">#&#39; @param color The hex color WITHOUT the leading &quot;#&quot; mark</span></span>
+<span id="cb10-5"><a href="data-processing-and-preparation.html#cb10-5" tabindex="-1"></a><span class="co">#&#39; @return a tibble with the addresses of the cells in that color </span></span>
+<span id="cb10-6"><a href="data-processing-and-preparation.html#cb10-6" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb10-7"><a href="data-processing-and-preparation.html#cb10-7" tabindex="-1"></a>cells_by_color <span class="ot">&lt;-</span> <span class="cf">function</span>(formats, cells, color){</span>
+<span id="cb10-8"><a href="data-processing-and-preparation.html#cb10-8" tabindex="-1"></a>  colors <span class="ot">&lt;-</span> formats<span class="sc">$</span>local<span class="sc">$</span>fill<span class="sc">$</span>patternFill<span class="sc">$</span>fgColor<span class="sc">$</span>rgb</span>
+<span id="cb10-9"><a href="data-processing-and-preparation.html#cb10-9" tabindex="-1"></a>  </span>
+<span id="cb10-10"><a href="data-processing-and-preparation.html#cb10-10" tabindex="-1"></a>  cells[cells<span class="sc">$</span>local_format_id <span class="sc">%in%</span> <span class="fu">which</span>(colors <span class="sc">==</span> color), </span>
+<span id="cb10-11"><a href="data-processing-and-preparation.html#cb10-11" tabindex="-1"></a>                      <span class="fu">c</span>(<span class="st">&quot;address&quot;</span>, <span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)]</span>
+<span id="cb10-12"><a href="data-processing-and-preparation.html#cb10-12" tabindex="-1"></a>  </span>
+<span id="cb10-13"><a href="data-processing-and-preparation.html#cb10-13" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, to see my function in action:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-processing-and-preparation.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NB: column M in raw data = phenotypeotype 1</span></span>
-<span id="cb12-2"><a href="data-processing-and-preparation.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># column N in raw data = phenotypeotype 2</span></span>
-<span id="cb12-3"><a href="data-processing-and-preparation.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># column O in raw data = phenotypeotype 3</span></span>
-<span id="cb12-4"><a href="data-processing-and-preparation.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="data-processing-and-preparation.html#cb12-5" aria-hidden="true" tabindex="-1"></a>green <span class="ot">&lt;-</span> <span class="fu">cells_by_color</span>(<span class="at">formats =</span> raw_formats,</span>
-<span id="cb12-6"><a href="data-processing-and-preparation.html#cb12-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">cells =</span> raw_cells,</span>
-<span id="cb12-7"><a href="data-processing-and-preparation.html#cb12-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">color =</span> <span class="st">&quot;FF92D050&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-8"><a href="data-processing-and-preparation.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">case_when</span>(</span>
-<span id="cb12-9"><a href="data-processing-and-preparation.html#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype1&quot;</span>,</span>
-<span id="cb12-10"><a href="data-processing-and-preparation.html#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype2&quot;</span>,</span>
-<span id="cb12-11"><a href="data-processing-and-preparation.html#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;O&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype3&quot;</span></span>
-<span id="cb12-12"><a href="data-processing-and-preparation.html#cb12-12" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb12-13"><a href="data-processing-and-preparation.html#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;green&quot;</span>)</span>
-<span id="cb12-14"><a href="data-processing-and-preparation.html#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="data-processing-and-preparation.html#cb12-15" aria-hidden="true" tabindex="-1"></a>red <span class="ot">&lt;-</span> <span class="fu">cells_by_color</span>(<span class="at">formats =</span> raw_formats,</span>
-<span id="cb12-16"><a href="data-processing-and-preparation.html#cb12-16" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cells =</span> raw_cells,</span>
-<span id="cb12-17"><a href="data-processing-and-preparation.html#cb12-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">color =</span> <span class="st">&quot;FFFF0000&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-18"><a href="data-processing-and-preparation.html#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">case_when</span>(</span>
-<span id="cb12-19"><a href="data-processing-and-preparation.html#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype1&quot;</span>,</span>
-<span id="cb12-20"><a href="data-processing-and-preparation.html#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype2&quot;</span>,</span>
-<span id="cb12-21"><a href="data-processing-and-preparation.html#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;O&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype3&quot;</span></span>
-<span id="cb12-22"><a href="data-processing-and-preparation.html#cb12-22" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb12-23"><a href="data-processing-and-preparation.html#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb12-24"><a href="data-processing-and-preparation.html#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="data-processing-and-preparation.html#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="data-processing-and-preparation.html#cb12-26" aria-hidden="true" tabindex="-1"></a>yellow <span class="ot">&lt;-</span> <span class="fu">cells_by_color</span>(<span class="at">formats =</span> raw_formats,</span>
-<span id="cb12-27"><a href="data-processing-and-preparation.html#cb12-27" aria-hidden="true" tabindex="-1"></a>                         <span class="at">cells =</span> raw_cells,</span>
-<span id="cb12-28"><a href="data-processing-and-preparation.html#cb12-28" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">&quot;FFFFFF00&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-29"><a href="data-processing-and-preparation.html#cb12-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">case_when</span>(</span>
-<span id="cb12-30"><a href="data-processing-and-preparation.html#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype1&quot;</span>,</span>
-<span id="cb12-31"><a href="data-processing-and-preparation.html#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype2&quot;</span>,</span>
-<span id="cb12-32"><a href="data-processing-and-preparation.html#cb12-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;O&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype3&quot;</span></span>
-<span id="cb12-33"><a href="data-processing-and-preparation.html#cb12-33" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb12-34"><a href="data-processing-and-preparation.html#cb12-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-processing-and-preparation.html#cb11-1" tabindex="-1"></a><span class="co"># NB: column M in raw data = phenotypeotype 1</span></span>
+<span id="cb11-2"><a href="data-processing-and-preparation.html#cb11-2" tabindex="-1"></a><span class="co"># column N in raw data = phenotypeotype 2</span></span>
+<span id="cb11-3"><a href="data-processing-and-preparation.html#cb11-3" tabindex="-1"></a><span class="co"># column O in raw data = phenotypeotype 3</span></span>
+<span id="cb11-4"><a href="data-processing-and-preparation.html#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="data-processing-and-preparation.html#cb11-5" tabindex="-1"></a>green <span class="ot">&lt;-</span> <span class="fu">cells_by_color</span>(<span class="at">formats =</span> raw_formats,</span>
+<span id="cb11-6"><a href="data-processing-and-preparation.html#cb11-6" tabindex="-1"></a>                        <span class="at">cells =</span> raw_cells,</span>
+<span id="cb11-7"><a href="data-processing-and-preparation.html#cb11-7" tabindex="-1"></a>                        <span class="at">color =</span> <span class="st">&quot;FF92D050&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-8"><a href="data-processing-and-preparation.html#cb11-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-9"><a href="data-processing-and-preparation.html#cb11-9" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype1&quot;</span>,</span>
+<span id="cb11-10"><a href="data-processing-and-preparation.html#cb11-10" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype2&quot;</span>,</span>
+<span id="cb11-11"><a href="data-processing-and-preparation.html#cb11-11" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;O&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype3&quot;</span></span>
+<span id="cb11-12"><a href="data-processing-and-preparation.html#cb11-12" tabindex="-1"></a>  ),</span>
+<span id="cb11-13"><a href="data-processing-and-preparation.html#cb11-13" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;green&quot;</span>)</span>
+<span id="cb11-14"><a href="data-processing-and-preparation.html#cb11-14" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="data-processing-and-preparation.html#cb11-15" tabindex="-1"></a>red <span class="ot">&lt;-</span> <span class="fu">cells_by_color</span>(<span class="at">formats =</span> raw_formats,</span>
+<span id="cb11-16"><a href="data-processing-and-preparation.html#cb11-16" tabindex="-1"></a>                      <span class="at">cells =</span> raw_cells,</span>
+<span id="cb11-17"><a href="data-processing-and-preparation.html#cb11-17" tabindex="-1"></a>                      <span class="at">color =</span> <span class="st">&quot;FFFF0000&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-18"><a href="data-processing-and-preparation.html#cb11-18" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-19"><a href="data-processing-and-preparation.html#cb11-19" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype1&quot;</span>,</span>
+<span id="cb11-20"><a href="data-processing-and-preparation.html#cb11-20" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype2&quot;</span>,</span>
+<span id="cb11-21"><a href="data-processing-and-preparation.html#cb11-21" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;O&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype3&quot;</span></span>
+<span id="cb11-22"><a href="data-processing-and-preparation.html#cb11-22" tabindex="-1"></a>  ),</span>
+<span id="cb11-23"><a href="data-processing-and-preparation.html#cb11-23" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb11-24"><a href="data-processing-and-preparation.html#cb11-24" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="data-processing-and-preparation.html#cb11-25" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="data-processing-and-preparation.html#cb11-26" tabindex="-1"></a>yellow <span class="ot">&lt;-</span> <span class="fu">cells_by_color</span>(<span class="at">formats =</span> raw_formats,</span>
+<span id="cb11-27"><a href="data-processing-and-preparation.html#cb11-27" tabindex="-1"></a>                         <span class="at">cells =</span> raw_cells,</span>
+<span id="cb11-28"><a href="data-processing-and-preparation.html#cb11-28" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">&quot;FFFFFF00&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-29"><a href="data-processing-and-preparation.html#cb11-29" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-30"><a href="data-processing-and-preparation.html#cb11-30" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype1&quot;</span>,</span>
+<span id="cb11-31"><a href="data-processing-and-preparation.html#cb11-31" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;N&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype2&quot;</span>,</span>
+<span id="cb11-32"><a href="data-processing-and-preparation.html#cb11-32" tabindex="-1"></a>    <span class="fu">substr</span>(address, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">==</span> <span class="st">&quot;O&quot;</span> <span class="sc">~</span> <span class="st">&quot;phenotype3&quot;</span></span>
+<span id="cb11-33"><a href="data-processing-and-preparation.html#cb11-33" tabindex="-1"></a>  ),</span>
+<span id="cb11-34"><a href="data-processing-and-preparation.html#cb11-34" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
 <p>With the color codes labeled, I am ready to create a data frame with both genotype and phenotype information:</p>
 <p>(As of 2023/06/19, this chapter is still in progress… will add more below).</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-processing-and-preparation.html#cb12-1" tabindex="-1"></a>phen1 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb12-2"><a href="data-processing-and-preparation.html#cb12-2" tabindex="-1"></a>  red <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype1&quot;</span>),</span>
+<span id="cb12-3"><a href="data-processing-and-preparation.html#cb12-3" tabindex="-1"></a>  green <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype1&quot;</span>),</span>
+<span id="cb12-4"><a href="data-processing-and-preparation.html#cb12-4" tabindex="-1"></a>  yellow <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype1&quot;</span>)</span>
+<span id="cb12-5"><a href="data-processing-and-preparation.html#cb12-5" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a href="data-processing-and-preparation.html#cb12-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phen1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-7"><a href="data-processing-and-preparation.html#cb12-7" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;green&quot;</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb12-8"><a href="data-processing-and-preparation.html#cb12-8" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;red&quot;</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb12-9"><a href="data-processing-and-preparation.html#cb12-9" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span> <span class="sc">~</span> <span class="fl">0.5</span></span>
+<span id="cb12-10"><a href="data-processing-and-preparation.html#cb12-10" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb12-11"><a href="data-processing-and-preparation.html#cb12-11" tabindex="-1"></a>  <span class="fu">right_join</span>(raw_id, <span class="at">by =</span> <span class="st">&quot;row&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-12"><a href="data-processing-and-preparation.html#cb12-12" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;phen1&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-13"><a href="data-processing-and-preparation.html#cb12-13" tabindex="-1"></a>  <span class="co"># drop cells with no data (left over from header row)</span></span>
+<span id="cb12-14"><a href="data-processing-and-preparation.html#cb12-14" tabindex="-1"></a>  <span class="fu">drop_na</span>(phen1) </span>
+<span id="cb12-15"><a href="data-processing-and-preparation.html#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="data-processing-and-preparation.html#cb12-16" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="data-processing-and-preparation.html#cb12-17" tabindex="-1"></a>phen2 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb12-18"><a href="data-processing-and-preparation.html#cb12-18" tabindex="-1"></a>  red <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype2&quot;</span>),</span>
+<span id="cb12-19"><a href="data-processing-and-preparation.html#cb12-19" tabindex="-1"></a>  green <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype2&quot;</span>)</span>
+<span id="cb12-20"><a href="data-processing-and-preparation.html#cb12-20" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-21"><a href="data-processing-and-preparation.html#cb12-21" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phen2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-22"><a href="data-processing-and-preparation.html#cb12-22" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;green&quot;</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb12-23"><a href="data-processing-and-preparation.html#cb12-23" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;red&quot;</span> <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb12-24"><a href="data-processing-and-preparation.html#cb12-24" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb12-25"><a href="data-processing-and-preparation.html#cb12-25" tabindex="-1"></a>  <span class="fu">right_join</span>(raw_id, <span class="at">by =</span> <span class="st">&quot;row&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-26"><a href="data-processing-and-preparation.html#cb12-26" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;phen2&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-27"><a href="data-processing-and-preparation.html#cb12-27" tabindex="-1"></a>  <span class="co"># drop cells with no data (left over from header row)</span></span>
+<span id="cb12-28"><a href="data-processing-and-preparation.html#cb12-28" tabindex="-1"></a>  <span class="fu">drop_na</span>(phen2) </span>
+<span id="cb12-29"><a href="data-processing-and-preparation.html#cb12-29" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="data-processing-and-preparation.html#cb12-30" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="data-processing-and-preparation.html#cb12-31" tabindex="-1"></a>phen3 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb12-32"><a href="data-processing-and-preparation.html#cb12-32" tabindex="-1"></a>  red <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype3&quot;</span>),</span>
+<span id="cb12-33"><a href="data-processing-and-preparation.html#cb12-33" tabindex="-1"></a>  green <span class="sc">|&gt;</span> <span class="fu">filter</span>(phenotype <span class="sc">==</span> <span class="st">&quot;phenotype3&quot;</span>)</span>
+<span id="cb12-34"><a href="data-processing-and-preparation.html#cb12-34" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-35"><a href="data-processing-and-preparation.html#cb12-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phen3 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-36"><a href="data-processing-and-preparation.html#cb12-36" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;green&quot;</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb12-37"><a href="data-processing-and-preparation.html#cb12-37" tabindex="-1"></a>    color <span class="sc">==</span> <span class="st">&quot;red&quot;</span> <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb12-38"><a href="data-processing-and-preparation.html#cb12-38" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb12-39"><a href="data-processing-and-preparation.html#cb12-39" tabindex="-1"></a>  <span class="fu">right_join</span>(raw_id, <span class="at">by =</span> <span class="st">&quot;row&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-40"><a href="data-processing-and-preparation.html#cb12-40" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;phen3&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-41"><a href="data-processing-and-preparation.html#cb12-41" tabindex="-1"></a>  <span class="co"># drop cells with no data (left over from header row)</span></span>
+<span id="cb12-42"><a href="data-processing-and-preparation.html#cb12-42" tabindex="-1"></a>  <span class="fu">drop_na</span>(phen3) </span></code></pre></div>
 </div>
-<div id="final-steps" class="section level2 hasAnchor" number="9.6">
-<h2><span class="header-section-number">9.6</span> Final steps<a href="data-processing-and-preparation.html#final-steps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="final-steps" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Final steps<a href="data-processing-and-preparation.html#final-steps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I will write one more function to help me with the last step:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-processing-and-preparation.html#cb13-1" tabindex="-1"></a><span class="co">#&#39; a function to retrieve the Nth value in an strsplit() list </span></span>
+<span id="cb13-2"><a href="data-processing-and-preparation.html#cb13-2" tabindex="-1"></a><span class="co">#&#39; @param x The character to split </span></span>
+<span id="cb13-3"><a href="data-processing-and-preparation.html#cb13-3" tabindex="-1"></a><span class="co">#&#39; @param split The split </span></span>
+<span id="cb13-4"><a href="data-processing-and-preparation.html#cb13-4" tabindex="-1"></a><span class="co">#&#39; @param which The numeric value indicating which item to retrieve</span></span>
+<span id="cb13-5"><a href="data-processing-and-preparation.html#cb13-5" tabindex="-1"></a>split_which <span class="ot">&lt;-</span> <span class="cf">function</span>(x, split, which){</span>
+<span id="cb13-6"><a href="data-processing-and-preparation.html#cb13-6" tabindex="-1"></a>  split_x <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(x, split) <span class="sc">|&gt;</span> <span class="fu">lapply</span>(<span class="cf">function</span>(l){l[which]})</span>
+<span id="cb13-7"><a href="data-processing-and-preparation.html#cb13-7" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">unlist</span>(split_x))</span>
+<span id="cb13-8"><a href="data-processing-and-preparation.html#cb13-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>Finally, I have:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-processing-and-preparation.html#cb14-1" tabindex="-1"></a>phen <span class="ot">&lt;-</span> <span class="fu">full_join</span>(phen1, phen2) <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="data-processing-and-preparation.html#cb14-2" tabindex="-1"></a>  <span class="fu">full_join</span>(phen3) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="data-processing-and-preparation.html#cb14-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">individual =</span> character) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="data-processing-and-preparation.html#cb14-4" tabindex="-1"></a>  <span class="fu">filter</span>(individual <span class="sc">!=</span> <span class="st">&quot;Individual&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-5"><a href="data-processing-and-preparation.html#cb14-5" tabindex="-1"></a>  <span class="co"># need numeric ID for pedigreemm functions </span></span>
+<span id="cb14-6"><a href="data-processing-and-preparation.html#cb14-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">split_which</span>(individual, <span class="st">&quot;_&quot;</span>, <span class="dv">2</span>)) </span></code></pre></div>
+<pre><code>## Joining with `by = join_by(character)`
+## Joining with `by = join_by(character)`</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-processing-and-preparation.html#cb16-1" tabindex="-1"></a>wide <span class="ot">&lt;-</span> <span class="fu">left_join</span>(phen, raw,</span>
+<span id="cb16-2"><a href="data-processing-and-preparation.html#cb16-2" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;individual&quot;</span> <span class="ot">=</span> <span class="st">&quot;Individual&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="data-processing-and-preparation.html#cb16-3" tabindex="-1"></a>  <span class="co"># analysis decision: make the obligated carrier unaffected, as per discussion </span></span>
+<span id="cb16-4"><a href="data-processing-and-preparation.html#cb16-4" tabindex="-1"></a>  <span class="co">#   with clinicians</span></span>
+<span id="cb16-5"><a href="data-processing-and-preparation.html#cb16-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phenotype =</span> <span class="fu">if_else</span>(Phenotype <span class="sc">==</span> <span class="st">&quot;Obligated carrier (unaffected?)&quot;</span>,</span>
+<span id="cb16-6"><a href="data-processing-and-preparation.html#cb16-6" tabindex="-1"></a>                             <span class="st">&quot;Unaffected&quot;</span>,</span>
+<span id="cb16-7"><a href="data-processing-and-preparation.html#cb16-7" tabindex="-1"></a>                             Phenotype),</span>
+<span id="cb16-8"><a href="data-processing-and-preparation.html#cb16-8" tabindex="-1"></a>         <span class="at">id =</span> <span class="fu">as.numeric</span>(id)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-9"><a href="data-processing-and-preparation.html#cb16-9" tabindex="-1"></a>  <span class="fu">select</span>(individual, id, phenotype, <span class="fu">starts_with</span>(<span class="st">&#39;Gene&#39;</span>), <span class="fu">paste0</span>(<span class="st">&quot;phen&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-10"><a href="data-processing-and-preparation.html#cb16-10" tabindex="-1"></a>  <span class="fu">arrange</span>(id)</span>
+<span id="cb16-11"><a href="data-processing-and-preparation.html#cb16-11" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="data-processing-and-preparation.html#cb16-12" tabindex="-1"></a><span class="co"># snapshot of final data</span></span>
+<span id="cb16-13"><a href="data-processing-and-preparation.html#cb16-13" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(wide[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>)],</span>
+<span id="cb16-14"><a href="data-processing-and-preparation.html#cb16-14" tabindex="-1"></a>       <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-15"><a href="data-processing-and-preparation.html#cb16-15" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&#39;Final product - ready to analyze/graph&#39;</span>)</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-14">Table 9.2: </span>Final product - ready to analyze/graph
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+individual
+</th>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+phenotype
+</th>
+<th style="text-align:left;">
+Gene1
+</th>
+<th style="text-align:left;">
+Gene2
+</th>
+<th style="text-align:left;">
+Gene3
+</th>
+<th style="text-align:right;">
+phen1
+</th>
+<th style="text-align:right;">
+phen2
+</th>
+<th style="text-align:right;">
+phen3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Patient_01
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_02
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_03
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_04
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_05
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_06
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_07
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_08
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_09
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_10
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_11
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+homo del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_12
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+homo del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_13
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_14
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_15
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AG
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_16
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Affected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_17
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_18
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_19
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_20
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_21
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CT
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_22
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+het del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patient_23
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Unaffected
+</td>
+<td style="text-align:left;">
+CC
+</td>
+<td style="text-align:left;">
+no del
+</td>
+<td style="text-align:left;">
+AA
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

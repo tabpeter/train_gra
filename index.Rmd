@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+url: https://bookdown.org/tabitha_peter15/train_gra/
 cover-image: img/cover.png
 description: "This is a reference manual for training graduate research assistants in biostatistics and related fields."
 link-citations: yes

@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 16 Geographic (GIS) data analysis | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/img/cover.png" />
+  <meta property="og:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   <meta name="github-repo" content="tabpeter/train_gra" />
 
@@ -18,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 16 Geographic (GIS) data analysis | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="twitter:image" content="/img/cover.png" />
+  <meta name="twitter:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
 
-<meta name="date" content="2023-06-19" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,12 +226,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html"><i class="fa fa-check"></i><b>9</b> Data processing and preparation</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#start-with-a-sketch"><i class="fa fa-check"></i><b>9.1</b> Start with a sketch</a></li>
-<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.2</b> Libraries</a></li>
-<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.3</b> Reading in the data</a></li>
-<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#making-data-long-form"><i class="fa fa-check"></i><b>9.4</b> Making data ‘long form’</a></li>
-<li class="chapter" data-level="9.5" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.5</b> Work with color codes</a></li>
-<li class="chapter" data-level="9.6" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.6</b> Final steps</a></li>
+<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.1</b> Libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.2</b> Reading in the data</a></li>
+<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.3</b> Work with color codes</a></li>
+<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.4</b> Final steps</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="power-and-sample-size-calculations.html"><a href="power-and-sample-size-calculations.html"><i class="fa fa-check"></i><b>10</b> Power and sample size calculations</a>
 <ul>
@@ -289,9 +287,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In a couple of my projects, I have had the opportunity to visualize data using maps at the county level. Here is an example of the sort of maps I have made, using some simulated data.</p>
 <p>Suppose that a PI wants to study access to care through teledentistry. The specific research question is something like, “in a population of patients treated at my dental clinic from January 2021 - May 2023, what were the patterns in the relationships between 1) the distance traveled to the clinic, 2) the mode of the intake exam (in-person or virtual), and 3) treatment completion within 6 months (yes or no). Suppose further that I (the analyst) have access to the county in which each person lives, in addition to the clinical information relevant to our research in the electronic dental records.</p>
 <p>The first thing I would do is look online to find <a href="https://geodata.iowa.gov/datasets/iowa::iowa-county-boundaries/explore?location=42.011193%2C-93.543500%2C8.00">publicly available data</a> with <a href="https://en.wikipedia.org/wiki/FIPS_county_code">Federal Information Processing Standard (FIPS) codes</a> for Iowa at the county level. I will use the R package <code>sf</code> to handle GIS data, which often comes in <code>.shp</code> or <code>GeoJSON</code> formats. Data in these sorts of files have what we need to draw a map of Iowa with the counties demarcated on the map.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="geographic-gis-data-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># package for GIS data </span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="geographic-gis-data-analysis.html#cb27-1" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># package for GIS data </span></span></code></pre></div>
 <pre><code>## Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="geographic-gis-data-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a>ia <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/Iowa_County_Boundaries.geojson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="geographic-gis-data-analysis.html#cb29-1" tabindex="-1"></a>ia <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/Iowa_County_Boundaries.geojson&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `IowaCounties&#39; from data source 
 ##   `/Users/tabithapeter/Desktop/train_gra/data/Iowa_County_Boundaries.geojson&#39; 
 ##   using driver `GeoJSON&#39;
@@ -300,37 +298,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Dimension:     XY
 ## Bounding box:  xmin: -96.63944 ymin: 40.37566 xmax: -90.1401 ymax: 43.50109
 ## Geodetic CRS:  WGS 84</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="geographic-gis-data-analysis.html#cb27-1" aria-hidden="true" tabindex="-1"></a>ia_geom <span class="ot">&lt;-</span> <span class="fu">st_geometry</span>(ia)</span>
-<span id="cb27-2"><a href="geographic-gis-data-analysis.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="geographic-gis-data-analysis.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="geographic-gis-data-analysis.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check - a test plot to make sure the map looks right. </span></span>
-<span id="cb27-5"><a href="geographic-gis-data-analysis.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
-<span id="cb27-6"><a href="geographic-gis-data-analysis.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ia[<span class="dv">1</span>], <span class="at">reset =</span> <span class="cn">FALSE</span>) <span class="co"># reset = FALSE: we want to add to a plot with a legend</span></span>
-<span id="cb27-7"><a href="geographic-gis-data-analysis.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ia[<span class="dv">1</span>,<span class="dv">1</span>], <span class="at">col =</span> <span class="st">&#39;grey&#39;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="geographic-gis-data-analysis.html#cb31-1" tabindex="-1"></a>ia_geom <span class="ot">&lt;-</span> <span class="fu">st_geometry</span>(ia)</span>
+<span id="cb31-2"><a href="geographic-gis-data-analysis.html#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="geographic-gis-data-analysis.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="geographic-gis-data-analysis.html#cb31-4" tabindex="-1"></a><span class="co"># check - a test plot to make sure the map looks right. </span></span>
+<span id="cb31-5"><a href="geographic-gis-data-analysis.html#cb31-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb31-6"><a href="geographic-gis-data-analysis.html#cb31-6" tabindex="-1"></a><span class="fu">plot</span>(ia[<span class="dv">1</span>], <span class="at">reset =</span> <span class="cn">FALSE</span>) <span class="co"># reset = FALSE: we want to add to a plot with a legend</span></span>
+<span id="cb31-7"><a href="geographic-gis-data-analysis.html#cb31-7" tabindex="-1"></a><span class="fu">plot</span>(ia[<span class="dv">1</span>,<span class="dv">1</span>], <span class="at">col =</span> <span class="st">&#39;grey&#39;</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 This sample map is the correct shape – here, the 99 counties are colored according to their index (1-99). We want to make a map where the colors correspond to the number of patients representing each county.</p>
 <p>Supposing one has access to electronic dental records, the data for such a study may look like this:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="geographic-gis-data-analysis.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate data</span></span>
-<span id="cb28-2"><a href="geographic-gis-data-analysis.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb28-3"><a href="geographic-gis-data-analysis.html#cb28-3" aria-hidden="true" tabindex="-1"></a>key <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ia_counties.csv&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb28-4"><a href="geographic-gis-data-analysis.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># narrow down to only IA (for sake of example)</span></span>
-<span id="cb28-5"><a href="geographic-gis-data-analysis.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">&quot;IA&quot;</span>) <span class="co"># gives me county names </span></span>
-<span id="cb28-6"><a href="geographic-gis-data-analysis.html#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="geographic-gis-data-analysis.html#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="geographic-gis-data-analysis.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="geographic-gis-data-analysis.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># TD = teledentistry</span></span>
-<span id="cb28-10"><a href="geographic-gis-data-analysis.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">52242</span>) </span>
-<span id="cb28-11"><a href="geographic-gis-data-analysis.html#cb28-11" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb28-12"><a href="geographic-gis-data-analysis.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,</span>
-<span id="cb28-13"><a href="geographic-gis-data-analysis.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">sample</span>(<span class="dv">2021</span><span class="sc">:</span><span class="dv">2023</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb28-14"><a href="geographic-gis-data-analysis.html#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">complete =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb28-15"><a href="geographic-gis-data-analysis.html#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="fu">sample</span>(key<span class="sc">$</span>NAME, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb28-16"><a href="geographic-gis-data-analysis.html#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;virtual&quot;</span>, <span class="st">&quot;in-person&quot;</span>), <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-17"><a href="geographic-gis-data-analysis.html#cb28-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb28-18"><a href="geographic-gis-data-analysis.html#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-19"><a href="geographic-gis-data-analysis.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb28-20"><a href="geographic-gis-data-analysis.html#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td) <span class="sc">|&gt;</span></span>
-<span id="cb28-21"><a href="geographic-gis-data-analysis.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&quot;Simulated data from electronic dental records&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="geographic-gis-data-analysis.html#cb32-1" tabindex="-1"></a><span class="co"># simulate data</span></span>
+<span id="cb32-2"><a href="geographic-gis-data-analysis.html#cb32-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb32-3"><a href="geographic-gis-data-analysis.html#cb32-3" tabindex="-1"></a>key <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ia_counties.csv&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-4"><a href="geographic-gis-data-analysis.html#cb32-4" tabindex="-1"></a>  <span class="co"># narrow down to only IA (for sake of example)</span></span>
+<span id="cb32-5"><a href="geographic-gis-data-analysis.html#cb32-5" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">&quot;IA&quot;</span>) <span class="co"># gives me county names </span></span>
+<span id="cb32-6"><a href="geographic-gis-data-analysis.html#cb32-6" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="geographic-gis-data-analysis.html#cb32-7" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="geographic-gis-data-analysis.html#cb32-8" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="geographic-gis-data-analysis.html#cb32-9" tabindex="-1"></a><span class="co"># TD = teledentistry</span></span>
+<span id="cb32-10"><a href="geographic-gis-data-analysis.html#cb32-10" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">52242</span>) </span>
+<span id="cb32-11"><a href="geographic-gis-data-analysis.html#cb32-11" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb32-12"><a href="geographic-gis-data-analysis.html#cb32-12" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,</span>
+<span id="cb32-13"><a href="geographic-gis-data-analysis.html#cb32-13" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">sample</span>(<span class="dv">2021</span><span class="sc">:</span><span class="dv">2023</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-14"><a href="geographic-gis-data-analysis.html#cb32-14" tabindex="-1"></a>  <span class="at">complete =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-15"><a href="geographic-gis-data-analysis.html#cb32-15" tabindex="-1"></a>  <span class="at">county =</span> <span class="fu">sample</span>(key<span class="sc">$</span>NAME, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-16"><a href="geographic-gis-data-analysis.html#cb32-16" tabindex="-1"></a>  <span class="at">mode =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;virtual&quot;</span>, <span class="st">&quot;in-person&quot;</span>), <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-17"><a href="geographic-gis-data-analysis.html#cb32-17" tabindex="-1"></a>)</span>
+<span id="cb32-18"><a href="geographic-gis-data-analysis.html#cb32-18" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="geographic-gis-data-analysis.html#cb32-19" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb32-20"><a href="geographic-gis-data-analysis.html#cb32-20" tabindex="-1"></a><span class="fu">head</span>(td) <span class="sc">|&gt;</span></span>
+<span id="cb32-21"><a href="geographic-gis-data-analysis.html#cb32-21" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&quot;Simulated data from electronic dental records&quot;</span>)</span></code></pre></div>
 <table>
 <caption>
 <span id="tab:unnamed-chunk-25">Table 16.1: </span>Simulated data from electronic dental records
@@ -460,29 +458,29 @@ virtual
 </tbody>
 </table>
 <p>Now, I am ready to create a map that will communicate to my collaborators where our patients are driving from to receive their treatment.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="geographic-gis-data-analysis.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># determine how many patients in each county</span></span>
-<span id="cb29-2"><a href="geographic-gis-data-analysis.html#cb29-2" aria-hidden="true" tabindex="-1"></a>td_summarize <span class="ot">&lt;-</span> td <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="geographic-gis-data-analysis.html#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="geographic-gis-data-analysis.html#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb29-5"><a href="geographic-gis-data-analysis.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb29-6"><a href="geographic-gis-data-analysis.html#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="geographic-gis-data-analysis.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add fips codes (from GeoJSON file)</span></span>
-<span id="cb29-8"><a href="geographic-gis-data-analysis.html#cb29-8" aria-hidden="true" tabindex="-1"></a>td_summarize <span class="ot">&lt;-</span> <span class="fu">right_join</span>(td_summarize, ia,</span>
-<span id="cb29-9"><a href="geographic-gis-data-analysis.html#cb29-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;county&quot;</span> <span class="ot">=</span> <span class="st">&quot;CountyName&quot;</span>)) </span>
-<span id="cb29-10"><a href="geographic-gis-data-analysis.html#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-11"><a href="geographic-gis-data-analysis.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create sf object (for drawing a map)</span></span>
-<span id="cb29-12"><a href="geographic-gis-data-analysis.html#cb29-12" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> td_summarize <span class="sc">%&gt;%</span></span>
-<span id="cb29-13"><a href="geographic-gis-data-analysis.html#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span>
-<span id="cb29-14"><a href="geographic-gis-data-analysis.html#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-15"><a href="geographic-gis-data-analysis.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co"># draw the map </span></span>
-<span id="cb29-16"><a href="geographic-gis-data-analysis.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb29-17"><a href="geographic-gis-data-analysis.html#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb29-18"><a href="geographic-gis-data-analysis.html#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb29-19"><a href="geographic-gis-data-analysis.html#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> map,</span>
-<span id="cb29-20"><a href="geographic-gis-data-analysis.html#cb29-20" aria-hidden="true" tabindex="-1"></a>          <span class="fu">aes</span>(<span class="at">fill =</span> N)) <span class="sc">+</span> </span>
-<span id="cb29-21"><a href="geographic-gis-data-analysis.html#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>() <span class="sc">+</span> </span>
-<span id="cb29-22"><a href="geographic-gis-data-analysis.html#cb29-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Map of IA Residents by County&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Number of </span><span class="sc">\n</span><span class="st">patients&quot;</span>) <span class="sc">+</span></span>
-<span id="cb29-23"><a href="geographic-gis-data-analysis.html#cb29-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="geographic-gis-data-analysis.html#cb33-1" tabindex="-1"></a><span class="co"># determine how many patients in each county</span></span>
+<span id="cb33-2"><a href="geographic-gis-data-analysis.html#cb33-2" tabindex="-1"></a>td_summarize <span class="ot">&lt;-</span> td <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="geographic-gis-data-analysis.html#cb33-3" tabindex="-1"></a>    <span class="fu">group_by</span>(county) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="geographic-gis-data-analysis.html#cb33-4" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="geographic-gis-data-analysis.html#cb33-5" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb33-6"><a href="geographic-gis-data-analysis.html#cb33-6" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="geographic-gis-data-analysis.html#cb33-7" tabindex="-1"></a><span class="co"># add fips codes (from GeoJSON file)</span></span>
+<span id="cb33-8"><a href="geographic-gis-data-analysis.html#cb33-8" tabindex="-1"></a>td_summarize <span class="ot">&lt;-</span> <span class="fu">right_join</span>(td_summarize, ia,</span>
+<span id="cb33-9"><a href="geographic-gis-data-analysis.html#cb33-9" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;county&quot;</span> <span class="ot">=</span> <span class="st">&quot;CountyName&quot;</span>)) </span>
+<span id="cb33-10"><a href="geographic-gis-data-analysis.html#cb33-10" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="geographic-gis-data-analysis.html#cb33-11" tabindex="-1"></a><span class="co"># create sf object (for drawing a map)</span></span>
+<span id="cb33-12"><a href="geographic-gis-data-analysis.html#cb33-12" tabindex="-1"></a>map <span class="ot">&lt;-</span> td_summarize <span class="sc">%&gt;%</span></span>
+<span id="cb33-13"><a href="geographic-gis-data-analysis.html#cb33-13" tabindex="-1"></a>  <span class="fu">st_as_sf</span>()</span>
+<span id="cb33-14"><a href="geographic-gis-data-analysis.html#cb33-14" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="geographic-gis-data-analysis.html#cb33-15" tabindex="-1"></a><span class="co"># draw the map </span></span>
+<span id="cb33-16"><a href="geographic-gis-data-analysis.html#cb33-16" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb33-17"><a href="geographic-gis-data-analysis.html#cb33-17" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb33-18"><a href="geographic-gis-data-analysis.html#cb33-18" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb33-19"><a href="geographic-gis-data-analysis.html#cb33-19" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> map,</span>
+<span id="cb33-20"><a href="geographic-gis-data-analysis.html#cb33-20" tabindex="-1"></a>          <span class="fu">aes</span>(<span class="at">fill =</span> N)) <span class="sc">+</span> </span>
+<span id="cb33-21"><a href="geographic-gis-data-analysis.html#cb33-21" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>() <span class="sc">+</span> </span>
+<span id="cb33-22"><a href="geographic-gis-data-analysis.html#cb33-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Map of IA Residents by County&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Number of </span><span class="sc">\n</span><span class="st">patients&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-23"><a href="geographic-gis-data-analysis.html#cb33-23" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 
 </div>

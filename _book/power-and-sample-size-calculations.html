@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 10 Power and sample size calculations | A Reference Manual for the Biostatistics GRA" />
   <meta property="og:type" content="book" />
-  <meta property="og:image" content="/img/cover.png" />
+  <meta property="og:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
   <meta property="og:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
   <meta name="github-repo" content="tabpeter/train_gra" />
 
@@ -18,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 10 Power and sample size calculations | A Reference Manual for the Biostatistics GRA" />
   
   <meta name="twitter:description" content="This is a reference manual for training graduate research assistants in biostatistics and related fields." />
-  <meta name="twitter:image" content="/img/cover.png" />
+  <meta name="twitter:image" content="https://bookdown.org/tabitha_peter15/train_gra/img/cover.png" />
 
 <meta name="author" content="T. K. Peter" />
 
 
-<meta name="date" content="2023-06-19" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,12 +226,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html"><i class="fa fa-check"></i><b>9</b> Data processing and preparation</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#start-with-a-sketch"><i class="fa fa-check"></i><b>9.1</b> Start with a sketch</a></li>
-<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.2</b> Libraries</a></li>
-<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.3</b> Reading in the data</a></li>
-<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#making-data-long-form"><i class="fa fa-check"></i><b>9.4</b> Making data ‘long form’</a></li>
-<li class="chapter" data-level="9.5" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.5</b> Work with color codes</a></li>
-<li class="chapter" data-level="9.6" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.6</b> Final steps</a></li>
+<li class="chapter" data-level="9.1" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#libraries"><i class="fa fa-check"></i><b>9.1</b> Libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#reading-in-the-data"><i class="fa fa-check"></i><b>9.2</b> Reading in the data</a></li>
+<li class="chapter" data-level="9.3" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#work-with-color-codes"><i class="fa fa-check"></i><b>9.3</b> Work with color codes</a></li>
+<li class="chapter" data-level="9.4" data-path="data-processing-and-preparation.html"><a href="data-processing-and-preparation.html#final-steps"><i class="fa fa-check"></i><b>9.4</b> Final steps</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="power-and-sample-size-calculations.html"><a href="power-and-sample-size-calculations.html"><i class="fa fa-check"></i><b>10</b> Power and sample size calculations</a>
 <ul>
@@ -299,38 +297,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>desired alpha = 0.05</li>
 </ul>
 <p>Suppose your PIs don’t know what effect size they are looking for, but they do offer some preliminary data from a similar study. Begin with that preliminary data:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="power-and-sample-size-calculations.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb13-2"><a href="power-and-sample-size-calculations.html#cb13-2" aria-hidden="true" tabindex="-1"></a>prelim <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="fl">1.94</span>, <span class="fl">1.20</span>,</span>
-<span id="cb13-3"><a href="power-and-sample-size-calculations.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;A&quot;</span>, <span class="fl">2.75</span>, <span class="fl">0.39</span>,</span>
-<span id="cb13-4"><a href="power-and-sample-size-calculations.html#cb13-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;B&quot;</span>, <span class="fl">0.15</span>, <span class="fl">0.55</span>,</span>
-<span id="cb13-5"><a href="power-and-sample-size-calculations.html#cb13-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;B&quot;</span>, <span class="fl">0.33</span>, <span class="fl">0.74</span>),</span>
-<span id="cb13-6"><a href="power-and-sample-size-calculations.html#cb13-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">nrow =</span> <span class="dv">4</span>,</span>
-<span id="cb13-7"><a href="power-and-sample-size-calculations.html#cb13-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">byrow =</span> T)</span>
-<span id="cb13-8"><a href="power-and-sample-size-calculations.html#cb13-8" aria-hidden="true" tabindex="-1"></a>prelim <span class="ot">&lt;-</span> prelim <span class="sc">|&gt;</span> </span>
-<span id="cb13-9"><a href="power-and-sample-size-calculations.html#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb13-10"><a href="power-and-sample-size-calculations.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">.fns =</span> as.numeric)) <span class="sc">|&gt;</span></span>
-<span id="cb13-11"><a href="power-and-sample-size-calculations.html#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># collapse isthmus and canal measures, since our study is primarily </span></span>
-<span id="cb13-12"><a href="power-and-sample-size-calculations.html#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># aimed at comparing treatments A and B with standard of care </span></span>
-<span id="cb13-13"><a href="power-and-sample-size-calculations.html#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(V1) <span class="sc">|&gt;</span> </span>
-<span id="cb13-14"><a href="power-and-sample-size-calculations.html#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># average the mean and sd of each A/B group </span></span>
-<span id="cb13-15"><a href="power-and-sample-size-calculations.html#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(V2),</span>
-<span id="cb13-16"><a href="power-and-sample-size-calculations.html#cb13-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">mean</span>(V3))</span>
-<span id="cb13-17"><a href="power-and-sample-size-calculations.html#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="power-and-sample-size-calculations.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(prelim) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;measure&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="power-and-sample-size-calculations.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-2"><a href="power-and-sample-size-calculations.html#cb17-2" tabindex="-1"></a>prelim <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="fl">1.94</span>, <span class="fl">1.20</span>,</span>
+<span id="cb17-3"><a href="power-and-sample-size-calculations.html#cb17-3" tabindex="-1"></a>                             <span class="st">&quot;A&quot;</span>, <span class="fl">2.75</span>, <span class="fl">0.39</span>,</span>
+<span id="cb17-4"><a href="power-and-sample-size-calculations.html#cb17-4" tabindex="-1"></a>                             <span class="st">&quot;B&quot;</span>, <span class="fl">0.15</span>, <span class="fl">0.55</span>,</span>
+<span id="cb17-5"><a href="power-and-sample-size-calculations.html#cb17-5" tabindex="-1"></a>                             <span class="st">&quot;B&quot;</span>, <span class="fl">0.33</span>, <span class="fl">0.74</span>),</span>
+<span id="cb17-6"><a href="power-and-sample-size-calculations.html#cb17-6" tabindex="-1"></a>                    <span class="at">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb17-7"><a href="power-and-sample-size-calculations.html#cb17-7" tabindex="-1"></a>                    <span class="at">byrow =</span> T)</span>
+<span id="cb17-8"><a href="power-and-sample-size-calculations.html#cb17-8" tabindex="-1"></a>prelim <span class="ot">&lt;-</span> prelim <span class="sc">|&gt;</span> </span>
+<span id="cb17-9"><a href="power-and-sample-size-calculations.html#cb17-9" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-10"><a href="power-and-sample-size-calculations.html#cb17-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">.fns =</span> as.numeric)) <span class="sc">|&gt;</span></span>
+<span id="cb17-11"><a href="power-and-sample-size-calculations.html#cb17-11" tabindex="-1"></a>  <span class="co"># collapse isthmus and canal measures, since our study is primarily </span></span>
+<span id="cb17-12"><a href="power-and-sample-size-calculations.html#cb17-12" tabindex="-1"></a>  <span class="co"># aimed at comparing treatments A and B with standard of care </span></span>
+<span id="cb17-13"><a href="power-and-sample-size-calculations.html#cb17-13" tabindex="-1"></a>  <span class="fu">group_by</span>(V1) <span class="sc">|&gt;</span> </span>
+<span id="cb17-14"><a href="power-and-sample-size-calculations.html#cb17-14" tabindex="-1"></a>  <span class="co"># average the mean and sd of each A/B group </span></span>
+<span id="cb17-15"><a href="power-and-sample-size-calculations.html#cb17-15" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(V2),</span>
+<span id="cb17-16"><a href="power-and-sample-size-calculations.html#cb17-16" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">mean</span>(V3))</span>
+<span id="cb17-17"><a href="power-and-sample-size-calculations.html#cb17-17" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="power-and-sample-size-calculations.html#cb17-18" tabindex="-1"></a><span class="fu">names</span>(prelim) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;measure&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>)</span></code></pre></div>
 <p>Next, you can break down the types of variation:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="power-and-sample-size-calculations.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate the between group variance to be the variance in mean</span></span>
-<span id="cb14-2"><a href="power-and-sample-size-calculations.html#cb14-2" aria-hidden="true" tabindex="-1"></a>btw_group_var <span class="ot">&lt;-</span> <span class="fu">var</span>(prelim<span class="sc">$</span>mean)</span>
-<span id="cb14-3"><a href="power-and-sample-size-calculations.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="power-and-sample-size-calculations.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate the common variance to be the average of the reported variances </span></span>
-<span id="cb14-5"><a href="power-and-sample-size-calculations.html#cb14-5" aria-hidden="true" tabindex="-1"></a>within_group_var <span class="ot">&lt;-</span> <span class="fu">mean</span>((prelim<span class="sc">$</span>sd)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="power-and-sample-size-calculations.html#cb18-1" tabindex="-1"></a><span class="co"># estimate the between group variance to be the variance in mean</span></span>
+<span id="cb18-2"><a href="power-and-sample-size-calculations.html#cb18-2" tabindex="-1"></a>btw_group_var <span class="ot">&lt;-</span> <span class="fu">var</span>(prelim<span class="sc">$</span>mean)</span>
+<span id="cb18-3"><a href="power-and-sample-size-calculations.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="power-and-sample-size-calculations.html#cb18-4" tabindex="-1"></a><span class="co"># estimate the common variance to be the average of the reported variances </span></span>
+<span id="cb18-5"><a href="power-and-sample-size-calculations.html#cb18-5" tabindex="-1"></a>within_group_var <span class="ot">&lt;-</span> <span class="fu">mean</span>((prelim<span class="sc">$</span>sd)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <p>After taking these steps, I recommend calculating power using multiple tools and comparing the results you see:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="power-and-sample-size-calculations.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using &#39;stats&#39; package - this ships with R</span></span>
-<span id="cb15-2"><a href="power-and-sample-size-calculations.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">power.anova.test</span>(<span class="at">groups =</span> <span class="dv">3</span>,</span>
-<span id="cb15-3"><a href="power-and-sample-size-calculations.html#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">n =</span> <span class="cn">NULL</span>,</span>
-<span id="cb15-4"><a href="power-and-sample-size-calculations.html#cb15-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">between.var =</span> btw_group_var,</span>
-<span id="cb15-5"><a href="power-and-sample-size-calculations.html#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">within.var =</span> within_group_var,</span>
-<span id="cb15-6"><a href="power-and-sample-size-calculations.html#cb15-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
-<span id="cb15-7"><a href="power-and-sample-size-calculations.html#cb15-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">power =</span> <span class="fl">0.90</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="power-and-sample-size-calculations.html#cb19-1" tabindex="-1"></a><span class="co"># using &#39;stats&#39; package - this ships with R</span></span>
+<span id="cb19-2"><a href="power-and-sample-size-calculations.html#cb19-2" tabindex="-1"></a><span class="fu">power.anova.test</span>(<span class="at">groups =</span> <span class="dv">3</span>,</span>
+<span id="cb19-3"><a href="power-and-sample-size-calculations.html#cb19-3" tabindex="-1"></a>                 <span class="at">n =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-4"><a href="power-and-sample-size-calculations.html#cb19-4" tabindex="-1"></a>                 <span class="at">between.var =</span> btw_group_var,</span>
+<span id="cb19-5"><a href="power-and-sample-size-calculations.html#cb19-5" tabindex="-1"></a>                 <span class="at">within.var =</span> within_group_var,</span>
+<span id="cb19-6"><a href="power-and-sample-size-calculations.html#cb19-6" tabindex="-1"></a>                 <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb19-7"><a href="power-and-sample-size-calculations.html#cb19-7" tabindex="-1"></a>                 <span class="at">power =</span> <span class="fl">0.90</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Balanced one-way analysis of variance power calculation 
 ## 
@@ -342,15 +340,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##           power = 0.9
 ## 
 ## NOTE: n is number in each group</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="power-and-sample-size-calculations.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using pwr2</span></span>
-<span id="cb17-2"><a href="power-and-sample-size-calculations.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr2)</span>
-<span id="cb17-3"><a href="power-and-sample-size-calculations.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># using &#39;pwr2&#39; package </span></span>
-<span id="cb17-4"><a href="power-and-sample-size-calculations.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ss.1way</span>(<span class="at">k =</span> <span class="dv">3</span>,</span>
-<span id="cb17-5"><a href="power-and-sample-size-calculations.html#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.05</span>,</span>
-<span id="cb17-6"><a href="power-and-sample-size-calculations.html#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">beta =</span> <span class="fl">0.1</span>,</span>
-<span id="cb17-7"><a href="power-and-sample-size-calculations.html#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">delta =</span> <span class="fu">abs</span>(<span class="fu">diff</span>(prelim<span class="sc">$</span>mean)),</span>
-<span id="cb17-8"><a href="power-and-sample-size-calculations.html#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">sigma =</span> <span class="fu">mean</span>(prelim<span class="sc">$</span>sd),</span>
-<span id="cb17-9"><a href="power-and-sample-size-calculations.html#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">B =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="power-and-sample-size-calculations.html#cb21-1" tabindex="-1"></a><span class="co"># using pwr2</span></span>
+<span id="cb21-2"><a href="power-and-sample-size-calculations.html#cb21-2" tabindex="-1"></a><span class="fu">library</span>(pwr2)</span>
+<span id="cb21-3"><a href="power-and-sample-size-calculations.html#cb21-3" tabindex="-1"></a><span class="co"># using &#39;pwr2&#39; package </span></span>
+<span id="cb21-4"><a href="power-and-sample-size-calculations.html#cb21-4" tabindex="-1"></a><span class="fu">ss.1way</span>(<span class="at">k =</span> <span class="dv">3</span>,</span>
+<span id="cb21-5"><a href="power-and-sample-size-calculations.html#cb21-5" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.05</span>,</span>
+<span id="cb21-6"><a href="power-and-sample-size-calculations.html#cb21-6" tabindex="-1"></a>        <span class="at">beta =</span> <span class="fl">0.1</span>,</span>
+<span id="cb21-7"><a href="power-and-sample-size-calculations.html#cb21-7" tabindex="-1"></a>        <span class="at">delta =</span> <span class="fu">abs</span>(<span class="fu">diff</span>(prelim<span class="sc">$</span>mean)),</span>
+<span id="cb21-8"><a href="power-and-sample-size-calculations.html#cb21-8" tabindex="-1"></a>        <span class="at">sigma =</span> <span class="fu">mean</span>(prelim<span class="sc">$</span>sd),</span>
+<span id="cb21-9"><a href="power-and-sample-size-calculations.html#cb21-9" tabindex="-1"></a>        <span class="at">B =</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Balanced one-way analysis of variance sample size adjustment 
 ## 

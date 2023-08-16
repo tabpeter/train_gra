@@ -1,4 +1,5 @@
 tab:unnamed-chunk-6
+tab:unnamed-chunk-14
 tab:unnamed-chunk-25
 motivation
 what-this-book-assumes
@@ -57,10 +58,8 @@ tables
 giving-presentations
 tools-for-giving-presentations
 data-processing-and-preparation
-start-with-a-sketch
 libraries
 reading-in-the-data
-making-data-long-form
 work-with-color-codes
 final-steps
 power-and-sample-size-calculations
